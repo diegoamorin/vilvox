@@ -1,0 +1,24 @@
+/* Color de Seleccion */
+*::selection {
+    background: rgba(131, 131, 131, 0.350);
+}
+
+/* Codigo del Footer */
+
+.pie {
+	width: 100%;
+	background-color: rgb(53, 53, 53);
+	color: white;
+}
+.footer-item {
+	display: inline;
+}
+.wrapper {
+	padding: 20px;
+}
+
+.perfil {
+	width: 150px;
+    height: 150px;
+	border-radius: 50%;
+}

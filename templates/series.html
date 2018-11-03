@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Diego Amorin - Series
+{% endblock %}
+
+
+{% block jumbo %}
+
+	<h1 class="display-3">Series</h1>
+
+	{% if user.is_superuser %}
+		<a href="{% url 'addSerie' %}" class="btn btn-outline-dark">Nueva Serie</a>
+	{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="card-columns">
+	{% for serie in series %}
+		<div class="card mt-5">
+			<div class="card-body">
+				<h3 class="card-title text-center">{{ serie.title }}</h3>
+				<p class="card-text">{{ serie.description|truncatewords:30 }}</p>
+				<label>Articulos: {{ serie.posts.all|length }}</label>
+				<label>Updated: {{ serie.last_update }}</label>
+				<img class="card-img" src="{% get_media_prefix %}{{ serie.img }}">
+				<a href="#" class="btn btn-dark btn-block mt-5">Ver la serie</a>
+				{% if user.is_superuser %}
+				<a href="#" class="btn btn-success btn-block">Editar</a>
+				<a href="{% url 'deleteSerie' pk=serie.pk %}" class="btn btn-danger btn-block" >Eliminar</a>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

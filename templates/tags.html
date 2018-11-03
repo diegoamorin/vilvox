@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Diego Amorin - Tags
+{% endblock %}
+
+{% block jumbo %}
+<h1 class="display-3">Etiquetas</h1>
+
+{% if user.is_superuser %}
+	<a href="{% url 'addTag' %}" class="btn btn-outline-dark">Nueva Etiqueta</a>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="card-columns">
+	{% for tag in tags %}
+		<div class="card mt-5">
+			<div class="card-body">
+				<h3 class="card-title text-center">{{ tag.subject }}</h3>
+				<p>Articulos: {{ tag.posts.all|length }}</p>
+				<a href="#" class="btn btn-dark btn-block mt-5">Ver Articulos</a>
+
+				{% if user.is_superuser %}
+				<a href="#" class="btn btn-success btn-block">Editar</a>
+				<a href="{% url 'deleteTag' pk=tag.pk %}" class="btn btn-danger btn-block">Eliminar</a>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

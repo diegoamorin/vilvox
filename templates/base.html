@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>{% block title %}Diego Amorin{% endblock %}</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'img/Icon.png' %}">
+		<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	</head>
+	<body>
+		{% block navigator %}
+			{% include 'includes/_nav.html' %}
+		{% endblock %}
+
+		<div class="container">
+			<div class="text-center mt-5">
+				{% block jumbo %}
+				<h1 class="display-3">Diego Amorin</h1>
+				{% endblock %}
+			</div>
+			{% block content %}
+				<h2>Sin Contenido</h2>
+			{% endblock %}
+		</div>
+
+		{% block footer %}
+			{% include 'includes/_footer.html' %}
+		{% endblock %}
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+</html>
