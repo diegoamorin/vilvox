@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>{% block title %}Mitbit{% endblock %}</title>
+		<title>{% block title %}{{ site_name }}{% endblock %}</title>
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 		<link rel="shortcut icon" type="image/png" href="{% static 'img/dibujo.png' %}">
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="text-center mt-5">
 				{% block jumbo %}
-				<h1 class="display-3">Mitbit</h1>
+				<h1 class="display-3">{{ site_name}}</h1>
 				{% endblock %}
 			</div>
 			{% block content %}
