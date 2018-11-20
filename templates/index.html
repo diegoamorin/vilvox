@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block jumbo %}
-<h1 class="display-3">{{ site_name }}</h1>
-<p class="lead">Startups, Apps, Gadgets, Guías ...</p>
+<h1 class="lead">Startups, Apps, Gadgets, Guías ...</h1>
 
 {% if user.is_superuser %}
 	<a href="{% url 'addPost' %}" class="btn btn-outline-dark">Nueva Entrada</a>

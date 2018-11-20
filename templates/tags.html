@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block jumbo %}
-<h1 class="display-3">Etiquetas</h1>
+<h1 class="lead">Etiquetas</h1>
 
 {% if user.is_superuser %}
 	<a href="{% url 'addTag' %}" class="btn btn-outline-dark">Nueva Etiqueta</a>
