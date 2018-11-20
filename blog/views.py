@@ -1,18 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
 
 from .models import Post, Tag, List
 from .forms import PostForm, SerieForm, TagForm
-
-site_name = settings.SITE_NAME
 
 def index(request):
 	posts = Post.objects.all().order_by('-created_at')
 	
 	context = {
-		"posts": posts,
-		"site_name": site_name
+		"posts": posts
 	}
 	return render(request, 'index.html', context)
 
@@ -32,8 +28,7 @@ def addPost(request):
 
 	context = {
 		"form": form,
-		"jumbo": jumbo,
-		"site_name": site_name
+		"jumbo": jumbo
 	}
 	return render(request, "form.html", context)
 
@@ -54,8 +49,7 @@ def series(request):
 	series = List.objects.all()
 
 	series = {
-		"series": series,
-		"site_name": site_name
+		"series": series
 	}
 	return render(request, 'series.html', series)
 
@@ -72,8 +66,7 @@ def addSerie(request):
 
 	context = {
 		"form": form,
-		"jumbo": jumbo,
-		"site_name": site_name
+		"jumbo": jumbo
 	}
 	return render(request, "form.html", context)
 
@@ -89,8 +82,7 @@ def tags(request):
 	tags = Tag.objects.all()
 
 	tags = {
-		"tags": tags,
-		"site_name": site_name
+		"tags": tags
 	}
 	return render(request, 'tags.html', tags)
 
@@ -109,8 +101,7 @@ def addTag(request):
 	
 	context = {
 		"form": form,
-		"jumbo": jumbo,
-		"site_name": site_name
+		"jumbo": jumbo
 	}
 	return render(request, 'form.html', context)
 
