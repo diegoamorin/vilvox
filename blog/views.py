@@ -7,6 +7,10 @@ from .forms import PostForm, SerieForm, TagForm
 def index(request):
 	posts = Post.objects.all().order_by('-created_at')
 	
+	query_search = request.GET.get("q")
+	if query_search:
+		posts = posts.filter(title__icontains=query_search)
+
 	context = {
 		"posts": posts
 	}
