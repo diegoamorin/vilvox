@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.shortcuts import render
+
 from .models import Post, Tag, List
 from .forms import PostForm, SerieForm, TagForm
 
@@ -10,6 +13,11 @@ def index(request):
 	query_search = request.GET.get("q")
 	if query_search:
 		posts = posts.filter(title__icontains=query_search)
+
+	paginator = Paginator(posts, 5) # Show 5 pages per page
+
+	page = request.GET.get('page')
+	posts = paginator.get_page(page)
 
 	context = {
 		"posts": posts
