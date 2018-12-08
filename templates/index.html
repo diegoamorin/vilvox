@@ -21,7 +21,7 @@
 				<a href="{% url 'detailPost' slug=post.slug %}" class="btn btn-dark mt-5">Seguir Leyendo</a>
 				{% if user.is_superuser %}
 				<div class="ml-5 d-inline">
-					<a href="#" class="btn btn-success mt-5">Editar</a>
+					<a href="{% url 'editPost' pk=post.pk %}" class="btn btn-success mt-5">Editar</a>
 					<a href="{% url 'deletePost' pk=post.pk %}" class="btn btn-danger mt-5">Eliminar</a>
 				</div>
 				{% endif %}

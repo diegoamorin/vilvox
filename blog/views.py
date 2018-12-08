@@ -46,8 +46,16 @@ def addPost(request):
 
 @login_required
 def editPost(request, pk):
+	jumbo = "Editar Articulo"
 	post = get_object_or_404(Post, pk=pk)
 	form = PostForm(instance=post)
+
+	context = {
+		"form": form,
+		"jumbo": jumbo
+	}
+
+	return render(request, "form.html", context)
 
 @login_required
 def deletePost(request, pk):
