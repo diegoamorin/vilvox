@@ -77,8 +77,8 @@ def detailPost(request, slug):
 	query_tags = post.tags.values_list()
 	tags = []
 
-	for i in range(1, query_tags.count() + 1):
-		tags.append(query_tags.get(id=i)[1])
+	for i in range(query_tags.count()):
+		tags.append(query_tags[i][1])
 
 	context = {
 		"title": post.title,
