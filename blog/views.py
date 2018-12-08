@@ -129,10 +129,19 @@ def deleteSerie(request, pk):
 def tags(request):
 	tags = Tag.objects.all()
 
-	tags = {
+	context = {
 		"tags": tags
 	}
-	return render(request, 'tags.html', tags)
+	return render(request, 'tags.html', context)
+
+def detailTag(request, subject):
+	tag = Tag.objects.get(subject=subject)
+
+	context = {
+		"posts": tag.posts.values,
+		"subject": tag.subject,
+	}
+	return render(request, 'detailTag.html', context)
 
 @login_required
 def addTag(request):
