@@ -48,7 +48,15 @@ def addPost(request):
 def editPost(request, pk):
 	jumbo = "Editar Articulo"
 	post = get_object_or_404(Post, pk=pk)
-	form = PostForm(instance=post)
+
+	if request.method == 'POST':
+		form = PostForm(request.POST, request.FILES, instance=post)
+
+		if form.is_valid():
+			form.save()
+			return redirect("index")
+	else:
+		form = PostForm(instance=post)
 
 	context = {
 		"form": form,
