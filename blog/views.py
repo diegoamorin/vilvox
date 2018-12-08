@@ -58,10 +58,19 @@ def deletePost(request, pk):
 def detailPost(request, slug):
 	post = get_object_or_404(Post, slug=slug)
 
+	query_tags = post.tags.values_list()
+	tags = []
+
+	for i in range(1, query_tags.count() + 1):
+		tags.append(query_tags.get(id=i)[1])
+
 	context = {
 		"title": post.title,
 		"img": post.img,
-		"content": post.content
+		"content": post.content,
+		"created_at": post.created_at,
+		"updated_at": post.updated_at,
+		"tags": tags
 	}
 	
 	return render(request, "detailPost.html", context)
