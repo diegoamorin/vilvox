@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block content %}
+	<div class="lead">{{created_at}}</div>
 	<img class="card-img my-5" src="{% get_media_prefix %}{{ img }}" alt="">
+	
 	<div class="lead">{{ content }}</div>
 	
 	{% for tag in tags %}
