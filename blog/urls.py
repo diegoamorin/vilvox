@@ -4,7 +4,7 @@ from .views import (
     index, series, about, tags, 
     addPost, addSerie, addTag,
     deletePost, deleteSerie, deleteTag,
-    editPost,
+    editPost, editTag,
     detailPost, detailTag,
 )
 
@@ -24,5 +24,7 @@ urlpatterns = [
 
     path('detail/<slug:slug>', detailPost, name="detailPost"),
     path('detailTag/<str:subject>', detailTag, name="detailTag"),
-    path('editPost/<int:pk>', editPost, name="editPost")
+
+    path('editPost/<int:pk>', editPost, name="editPost"),
+    path('editTag/<str:subject>', editTag, name="editTag"),
 ]

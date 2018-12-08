@@ -144,6 +144,25 @@ def detailTag(request, subject):
 	return render(request, 'detailTag.html', context)
 
 @login_required
+def editTag(request, subject):
+	jumbo = 'Editar Etiqueta'
+	tag = get_object_or_404(Tag, subject=subject)
+	if request.method == 'POST':
+		form = TagForm(request.POST, instance=tag)
+
+		if form.is_valid():
+			form.save()
+			return redirect('tags')
+	else:
+		form = TagForm(instance=tag)
+	
+	context = {
+		"form": form,
+		"jumbo": jumbo
+	}
+	return render(request, 'form.html', context)
+
+@login_required
 def addTag(request):
 	jumbo = 'Nueva Etiqueta'
 	if request.method == 'POST':
@@ -160,7 +179,6 @@ def addTag(request):
 		"form": form,
 		"jumbo": jumbo
 	}
-	return render(request, 'form.html', context)
 
 @login_required
 def deleteTag(request, pk):

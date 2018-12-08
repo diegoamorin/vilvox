@@ -23,7 +23,7 @@
 				<a href="{% url 'detailTag' subject=tag.subject %}" class="btn btn-dark btn-block mt-5">Ver Articulos</a>
 
 				{% if user.is_superuser %}
-				<a href="#" class="btn btn-success btn-block">Editar</a>
+				<a href="{% url 'editTag' subject=tag.subject %}" class="btn btn-success btn-block">Editar</a>
 				<a href="{% url 'deleteTag' pk=tag.pk %}" class="btn btn-danger btn-block">Eliminar</a>
 				{% endif %}
 			</div>
