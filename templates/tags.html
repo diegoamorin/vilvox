@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ site_name }} - Tags
+{{ site_name }} - Temas
 {% endblock %}
 
 {% block jumbo %}
-<h1 class="lead">Etiquetas</h1>
+<h1 class="lead">Temas</h1>
 
 {% if user.is_superuser %}
 	<a href="{% url 'addTag' %}" class="btn btn-outline-dark">Nueva Etiqueta</a>

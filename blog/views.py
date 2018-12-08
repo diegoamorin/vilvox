@@ -179,6 +179,7 @@ def addTag(request):
 		"form": form,
 		"jumbo": jumbo
 	}
+	return render(request, "form.html", context)
 
 @login_required
 def deleteTag(request, pk):
