@@ -8,7 +8,7 @@ from .models import Post, Tag, List
 from .forms import PostForm, SerieForm, TagForm
 
 def index(request):
-	posts = Post.objects.all().order_by('-created_at')
+	posts = Post.objects.all().order_by('-pk')
 	
 	query_search = request.GET.get("q")
 	if query_search:
