@@ -55,6 +55,17 @@ def deletePost(request, pk):
 	post.delete()
 	return redirect("index")
 
+def detailPost(request, slug):
+	post = get_object_or_404(Post, slug=slug)
+
+	context = {
+		"title": post.title,
+		"img": post.img,
+		"content": post.content
+	}
+	
+	return render(request, "detailPost.html", context)
+
 # Seccion de Series
 
 def series(request):

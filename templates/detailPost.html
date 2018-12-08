@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block jumbo %}
+	<h1 class="display-4">{{title}}</h1>
+{% endblock %}
+
+{% block content %}
+	<img class="card-img my-5" src="{% get_media_prefix %}{{ img }}" alt="">
+	<div class="lead">{{ content }}</div>
+{% endblock %}

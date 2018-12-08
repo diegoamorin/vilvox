@@ -18,7 +18,7 @@
 				<p class="card-text">{{ post.content|truncatechars:300 }}</p>
 				<label>{{ post.created_at }}</label>
 				<img class="card-img" src="{% get_media_prefix %}{{ post.img }}">
-				<a href="#" class="btn btn-dark mt-5">Seguir Leyendo</a>
+				<a href="{% url 'detailPost' slug=post.slug %}" class="btn btn-dark mt-5">Seguir Leyendo</a>
 				{% if user.is_superuser %}
 				<div class="ml-5 d-inline">
 					<a href="#" class="btn btn-success mt-5">Editar</a>

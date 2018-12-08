@@ -4,6 +4,7 @@ from .views import (
     index, series, about, tags, 
     addPost, addSerie, addTag,
     deletePost, deleteSerie, deleteTag,
+    detailPost
 )
 
 urlpatterns = [
@@ -19,4 +20,6 @@ urlpatterns = [
     path('deletePost/<int:pk>', deletePost, name="deletePost"),
     path('deleteSerie/<int:pk>', deleteSerie, name="deleteSerie"),
     path('deleteTag/<int:pk>', deleteTag, name="deleteTag"),
+
+    path('detail/<slug:slug>', detailPost, name="detailPost"),
 ]
