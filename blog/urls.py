@@ -6,6 +6,7 @@ from .views import (
     deletePost, deleteSerie, deleteTag,
     editPost, editTag,
     detailPost, detailTag,
+    confirmDeletePost, cancelDeletePost,
 )
 
 urlpatterns = [
@@ -21,6 +22,9 @@ urlpatterns = [
     path('post/delete/<int:pk>/', deletePost, name="deletePost"),
     path('serie/delete/<int:pk>/', deleteSerie, name="deleteSerie"),
     path('tag/delete/<int:pk>/', deleteTag, name="deleteTag"),
+
+    path('post/delete/confirm/<int:pk>', confirmDeletePost, name="confirmDeletePost"),
+    path('post/delete/cancel/<slug:slug>', cancelDeletePost, name="cancelDeletePost"),
 
     path('post/<slug:slug>/', detailPost, name="detailPost"),
     path('tag/<str:subject>/', detailTag, name="detailTag"),

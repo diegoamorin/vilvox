@@ -68,8 +68,22 @@ def editPost(request, pk):
 @login_required
 def deletePost(request, pk):
 	post = get_object_or_404(Post, pk=pk)
+	# post.delete()
+	context = {
+		"post": post
+	}
+	return render(request, "confirm_delete.html", context)
+
+@login_required
+def confirmDeletePost(request, pk):
+	post = get_object_or_404(Post, pk=pk)
 	post.delete()
 	return redirect("index")
+
+@login_required
+def cancelDeletePost(request, slug):
+	post = get_object_or_404(Post, slug=slug)
+	return redirect("detailPost", slug=post.slug)
 
 def detailPost(request, slug):
 	post = get_object_or_404(Post, slug=slug)
