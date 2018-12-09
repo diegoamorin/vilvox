@@ -18,13 +18,13 @@ urlpatterns = [
     path('serie/new/', addSerie, name="addSerie"),
     path('tag/new/', addTag, name="addTag"),
 
-    path('post/delete/<int:pk>', deletePost, name="deletePost"),
-    path('serie/delete/<int:pk>', deleteSerie, name="deleteSerie"),
-    path('tag/delete/<int:pk>', deleteTag, name="deleteTag"),
+    path('post/delete/<int:pk>/', deletePost, name="deletePost"),
+    path('serie/delete/<int:pk>/', deleteSerie, name="deleteSerie"),
+    path('tag/delete/<int:pk>/', deleteTag, name="deleteTag"),
 
-    path('post/<slug:slug>', detailPost, name="detailPost"),
-    path('tag/<str:subject>', detailTag, name="detailTag"),
+    path('post/<slug:slug>/', detailPost, name="detailPost"),
+    path('tag/<str:subject>/', detailTag, name="detailTag"),
 
-    path('post/edit/<int:pk>', editPost, name="editPost"),
-    path('tag/edit/<str:subject>', editTag, name="editTag"),
+    path('post/edit/<int:pk>/', editPost, name="editPost"),
+    path('tag/edit/<str:subject>/', editTag, name="editTag"),
 ]
