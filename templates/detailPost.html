@@ -11,8 +11,8 @@
 	
 	<div class="lead">{{ content }}</div>
 	
-	{% for tag in tags %}
-		<div class="tag">{{ tag }}</div>
+	{% for subject in tags %}
+		<a href="{% url 'detailTag' subject=subject %}"><div class="tag">{{ subject }}</div></a>
 	{% endfor %}
 
 {% endblock %}
