@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block jumbo %}
-<h1 class="display-4">Esta Seguro de eliminar {{ post.title }}</h1>
+<p class="lead">Esta Seguro de eliminar:</p> <h1 class="display-4">"{{ post.title }}"</h1>
 {% endblock %}
 
 {% block content %}
-<div>
+<div class="my-5 text-center">
 	<a href="{% url 'confirmDeletePost' pk=post.pk %}" class="btn btn-outline-danger">Si, eliminar</a>
 	<a href="{% url 'cancelDeletePost' slug=post.slug %}" class="btn btn-success">Cancelar</a>
 </div>
