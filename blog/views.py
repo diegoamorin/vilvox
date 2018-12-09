@@ -81,12 +81,8 @@ def detailPost(request, slug):
 		tags.append(query_tags[i][1])
 
 	context = {
-		"title": post.title,
-		"img": post.img,
-		"content": post.content,
-		"created_at": post.created_at,
-		"updated_at": post.updated_at,
-		"tags": tags
+		"post": post,
+		"tags": tags,
 	}
 	
 	return render(request, "detailPost.html", context)
