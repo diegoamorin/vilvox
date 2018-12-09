@@ -9,6 +9,7 @@
 	width: 100%;
 	background-color: rgb(53, 53, 53);
 	color: white;
+	float: left;
 }
 .footer-item {
 	display: inline;
@@ -21,4 +22,13 @@
 	width: 150px;
     height: 150px;
 	border-radius: 50%;
+}
+
+.tag {
+	background-color: rgb(48, 47, 47);
+	color: #fff;
+	float: left;
+	margin: 50px 10px 50px 0px;
+	padding: 10px 20px 10px 20px;
+	border-radius: 50px;
 }
