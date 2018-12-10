@@ -15,7 +15,7 @@
 		<div class="card mt-5">
 			<div class="card-body">
 				<h3 class="card-title text-center">{{ post.title }}</h3>
-				<p class="card-text">{{ post.content|truncatechars:300 }}</p>
+				<p class="card-text">{{ post.content|truncatechars:200 }}</p>
 				<label>{{ post.created_at }}</label>
 				<img class="card-img" src="{% get_media_prefix %}{{ post.img }}">
 				<a href="{% url 'detailPost' slug=post.slug %}" class="btn btn-dark mt-5">Seguir Leyendo</a>
