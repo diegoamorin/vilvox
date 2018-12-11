@@ -28,6 +28,8 @@ class Post(models.Model):
 		List, 
 		related_name='posts',
 		on_delete=models.CASCADE,
+		blank=True,
+		null=True,
 	)
 	tags = models.ManyToManyField(
 		Tag,
