@@ -32,12 +32,3 @@
 	padding: 10px 20px 10px 20px;
 	border-radius: 50px;
 }
-
-/* Codigo para que los post funcionen como links en el index.html */
-.postLink {
-	color: rgb(56, 56, 56);
-}
-.postLink:hover {
-	color: rgb(56,56,56);
-	text-decoration:none;
-}
