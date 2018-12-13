@@ -20,7 +20,6 @@
 		<div class="card mt-5">
 			<div class="card-body">
 				<h3 class="card-title text-center">{{ serie.title }}</h3>
-				<p class="card-text">{{ serie.description|truncatewords:14 }}</p>
 				<label>Articulos: {{ serie.posts.all|length }}</label>
 				<label>Updated: {{ serie.last_update }}</label>
 				<img class="card-img" src="{% get_media_prefix %}{{ serie.img }}">
