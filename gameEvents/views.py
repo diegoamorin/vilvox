@@ -7,7 +7,7 @@ def eventIndex(request):
 	events = Event.objects.all()
 
 	context = {
-		"events": events
+		"events": events,
 	}
-
-	return render(request, "events_templates/event_index.html")
+	
+	return render(request, "events_templates/event_index.html", context)
