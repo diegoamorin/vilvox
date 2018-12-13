@@ -10,5 +10,4 @@ class EventForm(forms.ModelForm):
 class GameForm(forms.ModelForm):
 	class Meta:
 		model = Game
-		fields = ['']
-
+		fields = ['name', 'day', 'events']
