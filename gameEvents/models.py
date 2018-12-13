@@ -5,6 +5,7 @@ class Event(models.Model):
 	description = models.TextField()
 	start_day = models.DateField()
 	end_day = models.DateField()
+	img = models.ImageField(upload_to='images/events/')
 
 	def __str__(self):
 		return self.name
