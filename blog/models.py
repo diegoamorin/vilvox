@@ -12,7 +12,7 @@ class List(models.Model):
 	slug = models.SlugField(max_length=120,unique=True)
 	description = models.TextField()
 	last_update = models.DateTimeField(auto_now_add=True)
-	img = models.ImageField(upload_to='images/')
+	img = models.ImageField(upload_to='images/list/')
 
 	def __str__(self):
 		return self.title
@@ -23,7 +23,7 @@ class Post(models.Model):
 	content = models.TextField()
 	created_at = models.DateTimeField(auto_now=True)
 	updated_at = models.DateTimeField(auto_now_add=True)
-	img = models.ImageField(upload_to='images/')
+	img = models.ImageField(upload_to='images/post/')
 	series = models.ForeignKey(
 		List, 
 		related_name='posts',
