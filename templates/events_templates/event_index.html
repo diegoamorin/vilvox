@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 	{{ site_name }} - Eventos
 {% endblock %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/events_styles/event_index.css' %}">
+{% endblock %}
+
 {% block jumbo %}
-<h1 class="lead">Eventos</h1>
+	<h1 class="lead">Eventos</h1>
+
+	{% if user.is_superuser %}
+
+	{% endif %}
 {% endblock %}
 
 {% block content %}
-	{% for event in events %}
-		{{ event }}
-	{% endfor %}
+	<div class="event-section">
+		{% for event in events %}
+			<div class="event-wrapper">
+				<img class="event-img" src="{% get_media_prefix %}{{ event.img }}" alt="" width="280" height="160">
+				<div class="event-info">
+					<h1 class="display-4 event-title">{{ event.name }}</h1>
+					<p class="lead">{{ event.start_day }} - {{ event.end_day }}</p>
+					<p class="lead">{{ event.description|truncatechars:150 }}</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}

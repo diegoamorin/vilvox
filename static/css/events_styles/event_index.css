@@ -1,0 +1,25 @@
+.event-section {
+	margin-top: 56px;
+}
+
+.event-wrapper {
+	border: 1px solid rgb(214, 213, 213);
+	border-radius: 5px;
+	margin-top: 20px;
+	clear:both;
+	position: relative;
+	padding: 20px;
+	height: 200px;
+}
+
+.event-title {
+	font-size: 30px;
+}
+.event-img {
+	float:left;
+}
+
+.event-info {
+	margin-left: 300px;
+}
+
