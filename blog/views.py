@@ -22,7 +22,7 @@ def index(request):
 	context = {
 		"posts": posts
 	}
-	return render(request, 'index.html', context)
+	return render(request, 'blog_templates/index.html', context)
 
 # Seccion de Articulos
 
@@ -42,7 +42,7 @@ def addPost(request):
 		"form": form,
 		"jumbo": jumbo
 	}
-	return render(request, "form.html", context)
+	return render(request, "blog_templates/form.html", context)
 
 @login_required
 def editPost(request, pk):
@@ -63,7 +63,7 @@ def editPost(request, pk):
 		"jumbo": jumbo
 	}
 
-	return render(request, "form.html", context)
+	return render(request, "blog_templates/form.html", context)
 
 @login_required
 def deletePost(request, pk):
@@ -72,7 +72,7 @@ def deletePost(request, pk):
 	context = {
 		"post": post
 	}
-	return render(request, "confirm_delete.html", context)
+	return render(request, "blog_templates/confirm_delete.html", context)
 
 @login_required
 def confirmDeletePost(request, pk):
@@ -99,7 +99,7 @@ def detailPost(request, slug):
 		"tags": tags,
 	}
 	
-	return render(request, "detailPost.html", context)
+	return render(request, "blog_templates/detailPost.html", context)
 
 # Seccion de Series
 
@@ -109,7 +109,7 @@ def series(request):
 	series = {
 		"series": series
 	}
-	return render(request, 'series.html', series)
+	return render(request, 'blog_templates/series.html', series)
 
 @login_required
 def addSerie(request):
@@ -126,7 +126,7 @@ def addSerie(request):
 		"form": form,
 		"jumbo": jumbo
 	}
-	return render(request, "form.html", context)
+	return render(request, "blog_templates/form.html", context)
 
 @login_required
 def deleteSerie(request, pk):
@@ -142,7 +142,7 @@ def tags(request):
 	context = {
 		"tags": tags
 	}
-	return render(request, 'tags.html', context)
+	return render(request, 'blog_templates/tags.html', context)
 
 def detailTag(request, subject):
 	tag = Tag.objects.get(subject=subject)
@@ -151,7 +151,7 @@ def detailTag(request, subject):
 		"posts": tag.posts.values,
 		"subject": tag.subject,
 	}
-	return render(request, 'detailTag.html', context)
+	return render(request, 'blog_templates/detailTag.html', context)
 
 @login_required
 def editTag(request, subject):
@@ -170,7 +170,7 @@ def editTag(request, subject):
 		"form": form,
 		"jumbo": jumbo
 	}
-	return render(request, 'form.html', context)
+	return render(request, 'blog_templates/form.html', context)
 
 @login_required
 def addTag(request):
@@ -189,7 +189,7 @@ def addTag(request):
 		"form": form,
 		"jumbo": jumbo
 	}
-	return render(request, "form.html", context)
+	return render(request, "blog_templates/form.html", context)
 
 @login_required
 def deleteTag(request, pk):
@@ -200,5 +200,5 @@ def deleteTag(request, pk):
 # Otras Seccciones
 
 def about(request):
-	return render(request, 'about.html')
+	return render(request, 'blog_templates/about.html')
 
