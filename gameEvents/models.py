@@ -17,14 +17,14 @@ class Game(models.Model):
 	day = models.DateTimeField()
 
 	STATE_CHOICES = (
-		('EN_ESPERA', 'En Espera'),
-		('EN_JUEGO', 'En Juego'),
-		('TERMINADO','Terminado'),
+		('En Espera','EN_ESPERA'),
+		('En Juego','EN_JUEGO'),
+		('Terminado','TERMINADO'),
 	)
 	state = models.CharField(
 		max_length=30, 
 		choices=STATE_CHOICES, 
-		default='EN_ESPERA',
+		default='En Espera',
 	)
 
 	events = models.ForeignKey(
