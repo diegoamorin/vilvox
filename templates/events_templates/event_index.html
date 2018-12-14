@@ -20,6 +20,7 @@
 {% block content %}
 	<div class="event-section">
 		{% for event in events %}
+		<a href="{% url 'eventDetail' slug=event.slug %}" class="eventLink">
 			<div class="event-wrapper">
 				<img class="event-img" src="{% get_media_prefix %}{{ event.img }}" alt="" width="280" height="160">
 				<div class="event-info">
@@ -28,6 +29,8 @@
 					<p class="lead">{{ event.description|truncatechars:150 }}</p>
 				</div>
 			</div>
+		</a>
+			
 		{% endfor %}
 	</div>
 {% endblock %}

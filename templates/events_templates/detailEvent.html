@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ site_name }} - {{ event.name }}
+{% endblock %}
+
+{% block jumbo %}
+<h1 class="lead">{{ event.name }}</h1>
+{% endblock %}
+
+{% block content %}
+	{% for game in games %}
+		<div>
+			<p>{{ game.name }}</p>
+		</div>
+	{% endfor %}
+{% endblock %}
