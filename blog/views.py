@@ -62,7 +62,6 @@ def editPost(request, pk):
 		"form": form,
 		"jumbo": jumbo
 	}
-
 	return render(request, "blog_templates/form.html", context)
 
 @login_required
