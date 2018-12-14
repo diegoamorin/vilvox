@@ -22,9 +22,11 @@
 
 .event-title {
 	font-size: 30px;
+	font-weight: 10;
 }
 .event-img {
 	float:left;
+	border-radius: 3px;
 }
 
 .event-info {
