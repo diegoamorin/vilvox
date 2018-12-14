@@ -1,0 +1,36 @@
+.game-section {
+	margin-top: 50px;
+}
+
+.game-wrapper {
+	border: 1px solid rgb(214, 213, 213);
+	border-radius: 5px;
+	margin-top: 10px;
+	position: relative;
+	padding: 10px;
+	height: 100px;
+	text-align: right;
+}
+
+.game-name {
+	float:left;
+	font-size: 30px;
+	text-align: left;
+}
+.game-day{
+	clear: both;
+	text-align: left;
+	margin-top:0px;
+}
+
+.game-state {
+	display: inline-block;
+	text-align: center;
+	padding: 1px;
+	margin-right: 10px;
+	border-radius: 10px;
+	width: 150px;
+	margin: 20px 20px 0 0;
+	background-color: rgb(56, 56, 56);
+	color: #fff;
+}

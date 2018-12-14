@@ -1,17 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 {{ site_name }} - {{ event.name }}
 {% endblock %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/events_styles/detail_event.css' %} ">
+{% endblock %}
+
 {% block jumbo %}
-<h1 class="lead">{{ event.name }}</h1>
+<h1 class="display-4">{{ event.name }}</h1>
+<p class="lead">{{ event.description|truncatechars:250 }}</p>
 {% endblock %}
 
 {% block content %}
-	{% for game in games %}
-		<div>
-			<p>{{ game.name }}</p>
-		</div>
-	{% endfor %}
+	<div class="game-section">
+		{% for game in games %}
+			<div class="game-wrapper">
+				<h1 class="game-name display-4">{{ game.name }}</h1>
+				<p class="game-state lead">{{ game.state }}</p>
+				<p class="game-day lead">{{ game.day }}</p>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
