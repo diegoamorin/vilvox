@@ -16,14 +16,14 @@
 
 {% block content %}
 	{% for post in posts %}
+	<a href="{% url 'detailPost' slug=post.slug %}" class="postLink">
 		<div class="card mt-5">
 			<div class="card-body">
-				<a href="{% url 'detailPost' slug=post.slug %}" class="postLink">
-					<h3 class="card-title text-center">{{ post.title }}</h3>
-					<p class="card-text">{{ post.content|truncatechars:200 }}</p>
-					<label>{{ post.created_at }}</label>
-					<img class="card-img" src="{% get_media_prefix %}{{ post.img }}">
-				</a>
+				<h3 class="card-title text-center">{{ post.title }}</h3>
+				<p class="card-text">{{ post.content|truncatechars:200 }}</p>
+				<label>{{ post.created_at }}</label>
+				<img class="card-img" src="{% get_media_prefix %}{{ post.img }}">
+		
 				<a href="{% url 'detailPost' slug=post.slug %}" class="btn btn-dark mt-5">Seguir Leyendo</a>
 				{% if user.is_superuser %}
 				<div class="ml-5 d-inline">
@@ -33,6 +33,7 @@
 				{% endif %}
 			</div>
 		</div>
+	</a>
 	{% endfor %}
 
 	<div class="pagination my-5 justify-content-center">
