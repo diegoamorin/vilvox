@@ -2,6 +2,14 @@
 	margin-top: 56px;
 }
 
+.eventLink {
+	color: rgb(56, 56, 56);
+}
+.eventLink:hover {
+	color: rgb(56,56,56);
+	text-decoration:none;
+}
+
 .event-wrapper {
 	border: 1px solid rgb(214, 213, 213);
 	border-radius: 5px;
