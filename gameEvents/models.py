@@ -15,6 +15,18 @@ class Game(models.Model):
 	name = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=120, unique=True)
 	day = models.DateTimeField()
+
+	STATE_CHOICES = (
+		('EN_ESPERA', 'En Espera'),
+		('EN_JUEGO', 'En Juego'),
+		('TERMINADO','Terminado'),
+	)
+	state = models.CharField(
+		max_length=30, 
+		choices=STATE_CHOICES, 
+		default='EN_ESPERA',
+	)
+
 	events = models.ForeignKey(
 		Event,
 		related_name="games",
