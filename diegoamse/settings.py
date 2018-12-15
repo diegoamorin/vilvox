@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.blog',
     'apps.gameEvents',
+    'apps.wiki',
 
     #External
     'crispy_forms',
