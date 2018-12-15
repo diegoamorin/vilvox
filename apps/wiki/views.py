@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def wikiIndex(request):
+	
+	return render(request, 'wikiIndex.html', {})
