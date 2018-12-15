@@ -9,7 +9,7 @@ def eventIndex(request):
 	context = {
 		"events": events,
 	}
-	return render(request, "events_templates/event_index.html", context)
+	return render(request, "event_index.html", context)
 
 def eventDetail(request, slug):
 	event = Event.objects.get(slug=slug)
@@ -19,4 +19,4 @@ def eventDetail(request, slug):
 		"event": event,
 		"games": games,
 	}
-	return render(request, "events_templates/detailEvent.html", context)
+	return render(request, "detailEvent.html", context)
