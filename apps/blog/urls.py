@@ -9,6 +9,7 @@ from .views import (
     confirmDeletePost, cancelDeletePost,
 )
 
+# app_name = "blog"
 urlpatterns = [
     path('', index, name='index'),
     path('series/', series, name='series'),
