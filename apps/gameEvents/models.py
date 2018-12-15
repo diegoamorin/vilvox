@@ -14,7 +14,6 @@ class Event(models.Model):
 		return self.name
 
 class Game(models.Model):
-	name = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=120, unique=True)
 	day = models.DateTimeField()
 
@@ -42,7 +41,7 @@ class Game(models.Model):
 		default='En Espera',
 	)
 
-	events = models.ForeignKey(
+	event = models.ForeignKey(
 		Event,
 		related_name="games",
 		on_delete=models.CASCADE,

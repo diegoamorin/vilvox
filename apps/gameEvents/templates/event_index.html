@@ -24,7 +24,7 @@
 			<div class="event-wrapper">
 				<img class="event-img" src="{% get_media_prefix %}{{ event.img }}" alt="" width="280" height="160">
 				<div class="event-info">
-					<h1 class="display-4 event-title">{{ event.name }}</h1>
+					<h1 class="display-4 event-title">{{ event }}</h1>
 					<p class="lead">{{ event.start_day }} - {{ event.end_day }}</p>
 					<p class="lead">{{ event.description|truncatechars:150 }}</p>
 				</div>

@@ -22,7 +22,6 @@ class Team(models.Model):
 		VideoGame,
 		related_name='teams',
 	)
-
 	def __str__(self):
 		return self.name
 

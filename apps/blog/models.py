@@ -24,12 +24,10 @@ class Post(models.Model):
 	created_at = models.DateTimeField(auto_now=True)
 	updated_at = models.DateTimeField(auto_now_add=True)
 	img = models.ImageField(upload_to='images/post/')
-	series = models.ForeignKey(
+	series = models.ManyToManyField(
 		List, 
 		related_name='posts',
-		on_delete=models.CASCADE,
 		blank=True,
-		null=True,
 	)
 	tags = models.ManyToManyField(
 		Tag,
