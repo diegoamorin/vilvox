@@ -18,7 +18,13 @@
 	<div class="game-section">
 		{% for game in games %}
 			<div class="game-wrapper">
-				<h1 class="game-name display-4">{{ game }}</h1>
+				<h1 class="game-name display-4">
+					{% for team_vs_team in game.teams.get_queryset %}
+						<img class="img-team" src="{% get_media_prefix %}{{ team_vs_team.img }}" alt="" height="40" width="40">
+						{{ team_vs_team }}
+						{% cycle 'vs' '' %}
+					{% endfor %}
+				</h1>
 				<p class="game-state lead">{{ game.state }}</p>
 				<p class="game-day lead">{{ game.day }}</p>
 			</div>
