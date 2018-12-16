@@ -19,9 +19,11 @@
 		{% for game in games %}
 			<div class="game-wrapper">
 				<h1 class="game-name display-4">
-					{% for team_vs_team in game.teams.get_queryset %}
-						<img class="img-team" src="{% get_media_prefix %}{{ team_vs_team.img }}" alt="" height="40" width="40">
-						{{ team_vs_team }}
+					{% for team in game.teams.get_queryset %}
+						<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
+							<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
+							{{ team }}
+						</a>
 						{% cycle 'vs' '' %}
 					{% endfor %}
 				</h1>

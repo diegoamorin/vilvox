@@ -37,4 +37,14 @@
 
 .img-team {
 	border-radius: 50px;
+	height: 40px;
+	width: 40px;
+}
+.link-team {
+	color: rgb(56, 56, 56);
+}
+
+.link-team:hover {
+	text-decoration: none;
+	color: rgb(56,56,56);
 }
