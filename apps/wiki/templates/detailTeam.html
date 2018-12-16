@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ site_name }} - {{team}}
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_team.css' %}">
+{% endblock %}
+
+{% block jumbo %}
+<h1 class="display-4">{{ team }}</h1>
+<img class="img-team" src="{% get_media_prefix %}{{team.img}}" alt="">
+{% endblock %}
+
+{% block content %}
+
+<ul class="lead">
+	<li>Website: <a href="{{ team.website }}">{{ team.website }}</a></li>
+	<li>
+		Videogames:
+		{% for vgame in team.videogames.get_queryset %}
+			<a href="#">{{ vgame }}</a>
+			{% cycle ',' '' %}
+		{% endfor %}.
+	</li>
+</ul>
+
+<h1 class="lead">Miembros:</h1>
+
+<div class="block-members">
+	{% for member in team.members.get_queryset %}
+		<div class="block-member">
+			<img class="img-gamer" src="{% get_media_prefix %}{{ member.img }}" alt="">
+			<span class="lead">{{ member.nickname }}</span>
+		</div>
+	{% endfor %}
+</div>
+
+<p class="lead">{{ team.description }}</p>
+
+{% endblock %}
