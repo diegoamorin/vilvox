@@ -71,7 +71,7 @@ def deletePost(request, pk):
 	context = {
 		"post": post
 	}
-	return render(request, "confirm_delete.html", context)
+	return render(request, "confirm_delPost.html", context)
 
 @login_required
 def confirmDeletePost(request, pk):
