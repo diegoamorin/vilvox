@@ -23,7 +23,9 @@
 	</ul>
 	<h1>Teams:</h1>
 	{% for team in videogame.teams.get_queryset %}
-		<p class="lead">{{ team }}</p>
+		<p class="lead">
+			<a href="{% url 'detailTeam' slug=team.slug %}">{{ team }}</a>
+		</p>
 	{% endfor %}
 	<h1>Gamers:</h1>
 	{% for gamer in videogame.gamers.get_queryset %}

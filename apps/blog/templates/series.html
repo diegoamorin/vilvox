@@ -20,8 +20,8 @@
 		<div class="card mt-5">
 			<div class="card-body">
 				<h3 class="card-title text-center">{{ serie.title }}</h3>
-				<label>Articulos: {{ serie.posts.all|length }}</label>
-				<label>Updated: {{ serie.last_update }}</label>
+				<p>Articulos: {{ serie.posts.all|length }}</p>
+				<p>Updated: {{ serie.last_update|date:" d M, Y" }}</p>
 				<img class="card-img" src="{% get_media_prefix %}{{ serie.img }}">
 				<a href="#" class="btn btn-dark btn-block mt-5">Ver la serie</a>
 				{% if user.is_superuser %}
