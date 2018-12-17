@@ -7,6 +7,7 @@ from .views import (
     editPost, editTag,
     detailPost, detailTag,
     confirmDeletePost, cancelDeletePost,
+    confirmDeleteSerie, cancelDeleteSerie,
 )
 
 # app_name = "blog"
@@ -21,11 +22,15 @@ urlpatterns = [
     path('tag/new/', addTag, name="addTag"),
 
     path('post/delete/<int:pk>/', deletePost, name="deletePost"),
-    path('serie/delete/<int:pk>/', deleteSerie, name="deleteSerie"),
-    path('tag/delete/<int:pk>/', deleteTag, name="deleteTag"),
-
     path('post/delete/confirm/<int:pk>', confirmDeletePost, name="confirmDeletePost"),
     path('post/delete/cancel/<slug:slug>', cancelDeletePost, name="cancelDeletePost"),
+
+    path('serie/delete/<int:pk>/', deleteSerie, name="deleteSerie"),
+    path('serie/delete/confirm/<int:pk>', confirmDeleteSerie, name="confirmDeleteSerie"),
+    path('serie/delete/cancel/<slug:slug>', cancelDeleteSerie, name="cancelDeleteSerie"),
+
+    path('tag/delete/<int:pk>/', deleteTag, name="deleteTag"),
+
 
     path('post/<slug:slug>/', detailPost, name="detailPost"),
     path('tag/<str:subject>/', detailTag, name="detailTag"),

@@ -130,7 +130,20 @@ def addSerie(request):
 @login_required
 def deleteSerie(request, pk):
 	serie = get_object_or_404(List, pk=pk)
+	context = {
+		"serie": serie,
+	}
+	return render(request, "confirm_delSerie.html", context)
+
+@login_required
+def confirmDeleteSerie(request, pk):
+	serie = get_object_or_404(List, pk=pk)
 	serie.delete()
+	return redirect('series')
+
+@login_required
+def cancelDeleteSerie(request, slug):
+	serie = get_object_or_404(List, slug=slug)
 	return redirect('series')
 
 # Seccion de Etiquetas
