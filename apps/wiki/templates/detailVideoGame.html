@@ -27,6 +27,8 @@
 	{% endfor %}
 	<h1>Gamers:</h1>
 	{% for gamer in videogame.gamers.get_queryset %}
-		<p class="lead">{{ gamer }}</p>
+		<p class="lead">
+			<a href="{% url 'detailGamer' slug=gamer.slug %}">{{ gamer }}</a>
+		</p>
 	{% endfor %}
 {% endblock %}

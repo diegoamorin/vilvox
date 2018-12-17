@@ -26,7 +26,8 @@ class Team(models.Model):
 		return self.name
 
 class Gamer(models.Model):
-	nickname = models.CharField(max_length=30, unique=True)
+	nickname = models.CharField(max_length=30)
+	slug = models.SlugField(max_length=50, unique=True)
 	name = models.CharField(max_length=50)
 	birth = models.DateField()
 	img = models.ImageField(upload_to='images/gamers/')

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	{{ site_name }} - {{ gamer }}
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_gamer.css' %}">
+{% endblock %}
+
+{% block jumbo %}
+<h1 class="lead">{{ gamer }}</h1>
+<img class="img-gamer" src="{% get_media_prefix %}{{ gamer.img }}" alt="img">
+{% endblock %}
+
+{% block content %}
+<ul class="lead">
+	<li>{{ gamer.name }}</li>
+	<li>{{ gamer.birth }}</li>
+	<li>{{ gamer.country }}</li>
+	<li><a href="{% url 'detailTeam' slug=gamer.team.slug %}">{{ gamer.team }}</a></li>
+	<li>{{ gamer.description }}</li>
+	<li>
+		{% for vgame in gamer.videogames.get_queryset %}
+			<span><a href="{% url 'detailVideoGame' slug=vgame.slug %}">{{ vgame }}</a></span>
+		{% endfor %}
+	</li>
+</ul>
+{% endblock %}

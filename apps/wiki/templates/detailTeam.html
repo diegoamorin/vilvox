@@ -33,7 +33,7 @@
 	{% for member in team.members.get_queryset %}
 		<div class="block-member">
 			<img class="img-gamer" src="{% get_media_prefix %}{{ member.img }}" alt="">
-			<span class="lead">{{ member.nickname }}</span>
+			<span class="lead"><a href="{% url 'detailGamer' slug=member.slug %}">{{ member.nickname }}</a></span>
 		</div>
 	{% endfor %}
 </div>
