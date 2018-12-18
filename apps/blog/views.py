@@ -128,6 +128,26 @@ def addSerie(request):
 	return render(request, "form.html", context)
 
 @login_required
+def editSerie(request, pk):
+	jumbo = "Editar Serie"
+	serie = get_object_or_404(List, pk=pk)
+
+	if request.method == 'POST':
+		form = SerieForm(request.POST, request.FILES, instance=serie)
+
+		if form.is_valid():
+			form.save()
+			return redirect("series")
+	else:
+		form = SerieForm(instance=serie)
+	
+	context = {
+		"form": form,
+		"jumbo": jumbo,
+	}
+	return render(request, "form.html", context)
+
+@login_required
 def deleteSerie(request, pk):
 	serie = get_object_or_404(List, pk=pk)
 	context = {

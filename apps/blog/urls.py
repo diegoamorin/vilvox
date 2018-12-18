@@ -4,7 +4,7 @@ from .views import (
     index, series, about, tags, 
     addPost, addSerie, addTag,
     deletePost, deleteSerie, deleteTag,
-    editPost, editTag,
+    editPost, editSerie,editTag,
     detailPost, detailTag,
     confirmDeletePost, cancelDeletePost,
     confirmDeleteSerie, cancelDeleteSerie,
@@ -36,5 +36,6 @@ urlpatterns = [
     path('tag/<str:subject>/', detailTag, name="detailTag"),
 
     path('post/edit/<int:pk>/', editPost, name="editPost"),
+    path('serie/edit/<int:pk>/', editSerie, name="editSerie"),
     path('tag/edit/<str:subject>/', editTag, name="editTag"),
 ]
