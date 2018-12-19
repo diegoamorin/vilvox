@@ -1,11 +1,61 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
+{{ site_name }} - Wiki
 {% endblock %}
 
 {% block jumbo %}
+<h1 class="lead">Wiki</h1>
 {% endblock %}
 
 {% block content %}
+<div class="row d-flex flex-nowrap justify-content-center mt-5">
 
+	<div class="card col-md-4 mx-2">
+		<div class="card-header text-center">
+			<h4>Videojuegos</h4>
+			({{ videogames_count }})
+		</div>
+		<div class="card-body">
+			<img src="{% static 'img/wiki_images/videogames.jpg' %}" alt="" class="card-img">
+			<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente voluptatibus laudantium.</p>
+			<a href="" class="btn btn-dark btn-block">Ver</a>
+			{% if user.is_superuser %}
+				<a href="" class="btn btn-outline-dark btn-block">Agregar</a>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="card col-md-4 mx-2">
+		<div class="card-header text-center">
+			<h4>Equipos</h4>
+			({{ teams_count }})
+		</div>
+		<div class="card-body">
+			<img src="{% static 'img/wiki_images/teams.jpg' %}" alt="" class="card-img">
+			<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente voluptatibus laudantium.</p>
+			<a href="" class="btn btn-dark btn-block">Ver</a>
+			{% if user.is_superuser %}
+				<a href="" class="btn btn-outline-dark btn-block">Agregar</a>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="card col-md-4 mx-2">
+		<div class="card-header text-center">
+			<h4>Jugadores</h4>
+			({{ gamers_count }})
+		</div>
+		<div class="card-body">
+			<img src="{% static 'img/wiki_images/gamers.jpg' %}" alt="" class="card-img">
+			<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente voluptatibus laudantium.</p>
+			<a href="" class="btn btn-dark btn-block">Ver</a>
+			{% if user.is_superuser %}
+				<a href="" class="btn btn-outline-dark btn-block">Agregar</a>
+			{% endif %}
+		</div>
+	</div>
+
+</div>
 {% endblock %}

@@ -3,8 +3,16 @@ from django.shortcuts import render
 from .models import Team, VideoGame, Gamer
 
 def wikiIndex(request):
-	
-	return render(request, 'wikiIndex.html', {})
+	teams_count = Team.objects.all().count()
+	videogames_count = VideoGame.objects.all().count()
+	gamers_count = Gamer.objects.all().count()
+
+	context = {
+		"teams_count": teams_count,
+		"videogames_count": videogames_count,
+		"gamers_count": gamers_count,
+	}
+	return render(request, 'wikiIndex.html', context)
 
 def detailTeam(request, slug):
 	team = Team.objects.get(slug=slug)
