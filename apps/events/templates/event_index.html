@@ -26,7 +26,9 @@
 				<div class="event-info">
 					<h1 class="display-4 event-title">{{ event }}</h1>
 					<p class="lead">
-						{{ event.start_day|date:"d F, Y" }} - {{ event.end_day|date:"d F, Y" }}
+						<strong>
+							{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}
+						</strong>
 					</p>
 					<p class="lead">{{ event.description|truncatechars:150 }}</p>
 				</div>

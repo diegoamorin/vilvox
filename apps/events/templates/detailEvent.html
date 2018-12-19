@@ -22,13 +22,13 @@
 					{% for team in game.teams.get_queryset %}
 						<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
 							<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
-							{{ team }}
+							<strong>{{ team }}</strong>
 						</a>
-						{% cycle 'vs' '' %}
+						{% cycle '<strong>vs</strong>' '' %}
 					{% endfor %}
 				</h1>
 				<p class="game-state lead">{{ game.state }}</p>
-				<p class="game-day lead">{{ game.day }}</p>
+				<p class="game-day lead">{{ game.day|date:"D d F • P" }}</p>
 			</div>
 		{% endfor %}
 	</div>
