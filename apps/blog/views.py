@@ -14,7 +14,7 @@ def index(request):
 	if query_search:
 		posts = posts.filter(title__icontains=query_search)
 
-	paginator = Paginator(posts, 5) # Show 5 pages per page
+	paginator = Paginator(posts, 8) # Show 8 pages per page
 
 	page = request.GET.get('page')
 	posts = paginator.get_page(page)

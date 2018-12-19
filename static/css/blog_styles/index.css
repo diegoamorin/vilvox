@@ -1,8 +1,45 @@
-/* Codigo para ocultar la funcion de link en los posts */
+.post-wrapper {
+	border-radius: 3px;
+	background: #fff;
+	border: 1px solid rgb(214, 213, 213);
+	margin: 20px 0 0 0;
+}
+
 .postLink {
 	color: rgb(56, 56, 56);
 }
 .postLink:hover {
 	color: rgb(56,56,56);
 	text-decoration:none;
+}
+
+.post-wrapper-top {
+	clear:both;
+	position: relative;
+	padding: 20px;
+	height: 200px;
+}
+
+.post-title{
+	font-size: 30px;
+	font-weight: 10;
+}
+
+.post-img {
+	float:left;
+	border-radius: 3px;
+}
+
+.post-info {
+	margin-left: 300px;
+}
+
+.post-wrapper-bot {
+	padding: 10px 10px 20px 10px;
+}
+.btn-infinity {
+	margin-left: 10px;
+}
+.btn-edit {
+	display: inline;
 }
