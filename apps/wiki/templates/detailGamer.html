@@ -24,7 +24,8 @@
 	<li>
 		{% for vgame in gamer.videogames.get_queryset %}
 			<span><a href="{% url 'detailVideoGame' slug=vgame.slug %}">{{ vgame }}</a></span>
-		{% endfor %}
+			{% if vgame != gamer.videogames.get_queryset.last %},{% endif %}
+		{% endfor %}.
 	</li>
 </ul>
 {% endblock %}

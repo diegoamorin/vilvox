@@ -22,7 +22,7 @@
 		Videogames:
 		{% for vgame in team.videogames.get_queryset %}
 			<a href="{% url 'detailVideoGame' slug=vgame.slug %}">{{ vgame }}</a>
-			{% cycle ',' '' %}
+			{% if vgame != team.videogames.get_queryset.last %},{% endif %}
 		{% endfor %}.
 	</li>
 </ul>
