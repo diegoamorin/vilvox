@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import eventIndex, eventDetail
+from .views import eventIndex, eventDetail, addEvent
 
-# app_name = "gameEvents"
 urlpatterns = [
 	path("events/", eventIndex, name="eventIndex"),
+	path("event/new/", addEvent, name="addEvent"),
 	path("event/<slug:slug>/", eventDetail, name="eventDetail"),
 ]

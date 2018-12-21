@@ -17,6 +17,9 @@
 		<h1 class="display-3 event-name">{{ event.name }}</h1>
 		<h4 class="event-date">{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}</h4>
 		<p class="lead">{{ event.description|truncatechars:250 }}</p>
+		{% if user.is_superuser %}
+			<a href="#" class="btn btn-outline-dark mt-4">Agregar Juego</a>
+		{% endif %}
 	</div>
 
 	<div class="game-section">
