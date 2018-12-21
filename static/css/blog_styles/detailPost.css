@@ -1,3 +1,26 @@
 .post-content {
 	text-align: justify;
 }
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: 300px 200px;
+	grid-gap: 20px;
+}
+/* Referencia para el sistema de grillas */
+/* .post-sidebar-top {
+	border: 1px solid rgb(56,56,56);
+	border-radius: 3px;
+}
+.post-sidebar-bot {
+	border: 1px solid rgb(56,56,56);
+	border-radius: 3px;
+} */
+
+.post-section {
+	grid-row: 1 / 4;
+}
+.post-sidebar-top {
+	grid-row: 1 / 3;
+}

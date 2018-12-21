@@ -14,19 +14,46 @@
 	
 	{% if user.is_superuser %}
 		<div>
-			<a href="{% url 'editPost' pk=post.pk %}" class="btn btn-success mt-5">Editar</a>
-			<a href="{% url 'deletePost' pk=post.pk %}" class="btn btn-danger mt-5">Eliminar</a>
+			<a href="{% url 'editPost' pk=post.pk %}" class="btn btn-success">Editar</a>
+			<a href="{% url 'deletePost' pk=post.pk %}" class="btn btn-danger">Eliminar</a>
 		</div>
 	{% endif %}
+	<div class="lead mb-5">{{post.created_at|date:"D d \d\e F, Y"}}</div>
 {% endblock %}
 
 {% block content %}
-	<div class="lead">{{post.created_at|date:"D d \d\e F, Y"}}</div>
-	<img class="card-img my-5" src="{% get_media_prefix %}{{ post.img }}" alt="">
-	<div class="lead post-content">{{ post.content|safe|linebreaks }}</div>
-	
-	{% for subject in tags %}
-		<a href="{% url 'detailTag' subject=subject %}"><div class="tag">{{ subject }}</div></a>
-	{% endfor %}
+<div class="wrapper">
+
+	<div class="post-section">
+		<img class="card-img mb-4" src="{% get_media_prefix %}{{ post.img }}" alt="">
+		<div class="lead post-content">{{ post.content|safe|linebreaks }}</div>
+
+		{% for subject in tags %}
+			<a href="{% url 'detailTag' subject=subject %}"><div class="tag">{{ subject }}</div></a>
+		{% endfor %}
+	</div>
+
+	<div class="post-sidebar-top">
+		<div class="ad">
+			<div class="card">
+				<h3 class="card-header text-center">Area de Publicidad</h3>
+				<p class="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. A necessitatibus odio ipsa repudiandae molestias, tempore voluptatibus incidunt porro eos quas, iure eius cupiditate consequatur molestiae magni harum rerum. Cum, perspiciatis.</p>
+			</div>
+		</div>
+		<div class="card mt-4">
+			<h3 class="card-header text-center">Suscribirse</h3>
+			<form action="" method="POST" class="card-body">
+				<p class="lead">Suscríbete para enterarte de los post y eventos más recientes.</p>
+				{% csrf_token %}
+				<input class="form-control"type="text" placeholder="example@mail.com">
+				<input type="submit" class="btn btn-dark btn-block mt-3">
+			</form>
+		</div>
+	</div>
+	<div class="post-sidebar-bot">
+		{# Aun no hay nada #}
+	</div>
+
+</div>
 
 {% endblock %}
