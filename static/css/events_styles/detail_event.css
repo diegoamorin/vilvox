@@ -1,3 +1,14 @@
+.event-head {
+	text-align: center;
+}
+.img-event {
+	width: 280px;
+	height: 160px;
+}
+.event-date {
+	margin: 20px 0 20px 0;
+}
+
 .game-section {
 	margin-top: 50px;
 }

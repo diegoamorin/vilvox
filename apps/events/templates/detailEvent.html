@@ -10,11 +10,15 @@
 {% endblock %}
 
 {% block jumbo %}
-<h1 class="display-4">{{ event.name }}</h1>
-<p class="lead">{{ event.description|truncatechars:250 }}</p>
 {% endblock %}
 
 {% block content %}
+	<div class="event-head">
+		<h1 class="display-3 event-name">{{ event.name }}</h1>
+		<h4 class="event-date">{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}</h4>
+		<p class="lead">{{ event.description|truncatechars:250 }}</p>
+	</div>
+
 	<div class="game-section">
 		{% for game in games %}
 			<div class="game-wrapper">
