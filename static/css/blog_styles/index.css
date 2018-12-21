@@ -36,10 +36,42 @@
 
 .post-wrapper-bot {
 	padding: 10px 10px 20px 10px;
+	position: relative;
 }
 .btn-infinity {
 	margin-left: 10px;
 }
 .btn-edit {
 	display: inline;
+}
+/* De pequeño a mediano */
+@media (max-width: 770px) {
+	.post-section {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.post-wrapper {
+		width: 320px;
+		height: 350px;
+	}
+	.post-info {
+		/* clear: both; */
+		height: 500px;
+		margin-left: 0px;
+	}
+}
+
+/* De mediano a grande */
+@media (max-width: 1000px) {
+	.post-wrapper-top {
+		height: 210px;
+		font-size: 13px;
+	}
+	.post-date {
+		font-size:25px;
+	}
+	.post-desc {
+		font-size: 0px;
+	}
 }
