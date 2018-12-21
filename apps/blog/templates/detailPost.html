@@ -5,6 +5,10 @@
 	{{ post.title }}
 {% endblock %}
 
+{% block style %}
+	<link rel="stylesheet" href="{% static 'css/blog_styles/detailPost.css' %}">
+{% endblock %}
+
 {% block jumbo %}
 	<h1 class="display-4">{{post.title}}</h1>
 	
@@ -17,9 +21,9 @@
 {% endblock %}
 
 {% block content %}
-	<div class="lead">{{post.created_at}}</div>
+	<div class="lead">{{post.created_at|date:"D d \d\e F, Y"}}</div>
 	<img class="card-img my-5" src="{% get_media_prefix %}{{ post.img }}" alt="">
-	<div class="lead">{{ post.content|safe|linebreaks }}</div>
+	<div class="lead post-content">{{ post.content|safe|linebreaks }}</div>
 	
 	{% for subject in tags %}
 		<a href="{% url 'detailTag' subject=subject %}"><div class="tag">{{ subject }}</div></a>
