@@ -38,3 +38,22 @@ def addEvent(request):
 		"jumbo": jumbo,
 	}
 	return render(request, "form.html", context)
+
+@login_required
+def addGame(request, slug):
+	jumbo = 'Nuevo Juego'
+	event = get_object_or_404(Event, slug=slug)
+
+	if request.method == 'POST':
+		form = GameForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			return redirect('eventDetail', slug=event.slug)
+	else:
+		form = GameForm()
+
+	context = {
+		"form": form,
+		"jumbo": jumbo,
+	}
+	return render(request, "form.html", context)
