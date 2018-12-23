@@ -9,7 +9,7 @@ from .forms import PostForm, SerieForm, TagForm
 
 def index(request):
 	posts = Post.objects.all().order_by('-pk')
-	
+
 	query_search = request.GET.get("q")
 	if query_search:
 		posts = posts.filter(title__icontains=query_search)
@@ -87,6 +87,10 @@ def cancelDeletePost(request, slug):
 def detailPost(request, slug):
 	post = get_object_or_404(Post, slug=slug)
 
+	recent_post = Post.objects.last()
+	if post == recent_post:
+		recent_post = None
+
 	query_tags = post.tags.values_list()
 	tags = []
 
@@ -96,6 +100,7 @@ def detailPost(request, slug):
 	context = {
 		"post": post,
 		"tags": tags,
+		"recent_post": recent_post,
 	}
 	
 	return render(request, "detailPost.html", context)
