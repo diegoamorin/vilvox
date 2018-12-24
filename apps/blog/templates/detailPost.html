@@ -67,8 +67,18 @@
 		{# Espacio Vertical Libre del Blog #}
 	</div>
 
-	<div class="post-recommend">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus adipisci aliquam at optio ab saepe eligendi, veritatis vitae perferendis, debitis voluptatum! Dolore maiores tenetur dolorum odio repellat voluptatibus cum impedit.
+	<div class="post-recommend-section">
+		<h3 class="lead post-section-title">Artículos Relacionados</h3>
+		<div class="post-recommend-wrapper">
+		{% for post_recommend in post_selects %}
+			<a href="{% url 'detailPost' slug=post_recommend.slug %}" class="postLink">
+				<div class="post-recommend-item">
+					<img class="post-recommend-img" src="{% get_media_prefix %}{{ post_recommend.img }}" alt="">
+					<h3 class="lead post-recommend-title">{{ post_recommend.title|truncatechars:50 }}</h3>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
 	</div>
 
 </div>

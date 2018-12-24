@@ -97,12 +97,59 @@ def detailPost(request, slug):
 	for i in range(query_tags.count()):
 		tags.append(query_tags[i][1])
 
+	'''Seccion para articulos relacionados'''
+	# Conseguimos las pk de todos los posts
+	pks_posts = []
+	for i in range(Post.objects.values_list('pk').count()):
+		pks_posts.append(Post.objects.values_list('pk')[i][0])
+
+	# Quitamos la pk del post actual para que no se vuelva a repetir
+	pks_posts.remove(post.pk)
+
+	# Buscamos que solo nos de 3 posts como max
+
+	''' creamos una lista de [1, ..., numero_tags_el_post]
+		y la volteamos [numero_tags_el_post, 1]
+		funcionaran como el num de similitudes de max a min que debe de tener 
+		el post relacionado para que siempre se llege a tres.
+	'''
+	num_tags_list = [i for i in range(1, len(tags) + 1)]
+	num_tags_reverse = list(reversed(num_tags_list))
+
+	# Buscamos las similitudes
+	post_selects = []
+	for num_tags in num_tags_reverse:
+		for pk in pks_posts:
+			# print("Numero de similitudes:", num_tags)
+			# print("Post PK:", pk)
+
+			similitudes = 0
+			post_tags = get_object_or_404(Post, pk=pk).tags.values_list()
+
+			tag_post_sim = []
+			for i in range(post_tags.count()):
+				tag_post_sim.append(post_tags[i][1])
+
+			for tag_super in tags:
+				if tag_super in tag_post_sim:
+					similitudes += 1
+
+			if similitudes == num_tags:
+				post_sim = get_object_or_404(Post, pk=pk)
+				post_selects.append(post_sim)
+
+			if len(post_selects) == 3:
+				break
+		if len(post_selects) == 3:
+			# print("Pots seleccionados:", post_selects)
+			break
+
 	context = {
 		"post": post,
 		"tags": tags,
 		"recent_post": recent_post,
+		"post_selects": post_selects,
 	}
-	
 	return render(request, "detailPost.html", context)
 
 # Seccion de Series
