@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-{{ site_name }} - {{ event.name }}
+	{{ event.name }}
 {% endblock %}
 
 {% block style %}
@@ -26,16 +26,28 @@
 		{% for game in games %}
 			<div class="game-wrapper">
 				<h1 class="game-name display-4">
-					{% for team in game.teams.get_queryset %}
-						<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
-							<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
-							<strong>{{ team }}</strong>
-						</a>
-						{% cycle '<strong>vs</strong>' '' %}
-					{% endfor %}
+					<div class="resultados">
+						{% for team in game.teams.get_queryset %}
+							<div class="{% cycle 'team1' 'team2' %}"">
+								<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
+									{% if team == game.teams.get_queryset.first %}
+										<strong>{{ team }}</strong>
+										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
+									{% else %}
+										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
+										<strong>{{ team }}</strong>
+									{% endif %}
+								</a>
+							</div>
+							{% if team != game.teams.get_queryset.last %}
+								<div class="versus">vs</div>
+							{% endif %}
+						{% endfor %}
+					</div>
 				</h1>
-				<p class="game-state lead">{{ game.state }}</p>
-				<p class="game-day lead">{{ game.day|date:"D d F • P" }}</p>
+				<div class="game-footer">
+					<p class="game-day lead">{{ game.day|date:"D d F • P" }}</p>
+				</div>
 			</div>
 		{% endfor %}
 	</div>
