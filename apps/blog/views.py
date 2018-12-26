@@ -222,6 +222,14 @@ def cancelDeleteSerie(request, slug):
 	serie = get_object_or_404(List, slug=slug)
 	return redirect('series')
 
+def detailSerie(request, slug):
+	serie = get_object_or_404(List, slug=slug)
+
+	context = {
+		"serie": serie
+	}
+	return render(request, "detailSerie.html", context)
+
 # Seccion de Etiquetas
 
 def tags(request):

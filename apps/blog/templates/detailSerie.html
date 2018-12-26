@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	{{ serie.title }}
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="{% static 'css/blog_styles/detailSerie.css' %}">
+	<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}">
+{% endblock %}
+
+{% block jumbo %}
+{% endblock %}
+
+{% block content %}
+	<div class="wrapper-main">
+		<div class="serie-description card">
+			<div class="card-header text-center">
+				<h1>{{ serie.title }}</h1>
+				<p class="lead">Actualizado: {{ serie.last_update|date:"d M Y" }}</p>
+			</div>
+			<div class="card-body">
+				<img class="serie-img card-img" src="{% get_media_prefix %}{{ serie.img }}" alt="">
+				<p class="serie-desc mt-3">{{ serie.description|truncatechars:200 }}</p>
+			</div>
+		</div>
+		<div class="serie-loop">
+			{% for post in serie.posts.get_queryset %}
+				<a class="postLink" href="{% url 'detailPost' slug=post.slug %}">
+					<div class="post">
+						<img class="serie-post-img" src="{% get_media_prefix %}{{ post.img }}" alt="">
+						<h3 class="post-title">{{ post.title }}</h3>
+						<p>{{ post.created_at }}</p>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

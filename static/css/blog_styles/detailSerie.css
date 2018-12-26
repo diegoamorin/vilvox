@@ -1,0 +1,14 @@
+.wrapper-main {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-gap: 5em;
+}
+.serie-img {
+	width: 300px;
+}
+.serie-desc {
+	text-align: justify;
+}
+.serie-post-img {
+	width: 200px;
+}
