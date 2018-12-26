@@ -4,13 +4,12 @@ from .views import (
     index, series, about, tags, 
     addPost, addSerie, addTag,
     deletePost, deleteSerie, deleteTag,
-    editPost, editSerie,editTag,
-    detailPost, detailTag,
+    editPost, editSerie, editTag,
+    detailPost,
     confirmDeletePost, cancelDeletePost,
     confirmDeleteSerie, cancelDeleteSerie,
 )
 
-# app_name = "blog"
 urlpatterns = [
     path('', index, name='index'),
     path('series/', series, name='series'),
@@ -31,9 +30,7 @@ urlpatterns = [
 
     path('tag/delete/<int:pk>/', deleteTag, name="deleteTag"),
 
-
     path('post/<slug:slug>/', detailPost, name="detailPost"),
-    path('tag/<str:subject>/', detailTag, name="detailTag"),
 
     path('post/edit/<int:pk>/', editPost, name="editPost"),
     path('serie/edit/<int:pk>/', editSerie, name="editSerie"),

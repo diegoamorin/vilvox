@@ -30,7 +30,7 @@
 		<div class="lead post-content">{{ post.content|safe|linebreaks }}</div>
 
 		{% for subject in tags %}
-			<a href="{% url 'detailTag' subject=subject %}"><div class="tag">{{ subject }}</div></a>
+			<a href="{% url 'index' %}?tag={{ subject }}"><div class="tag">{{ subject }}</div></a>
 		{% endfor %}
 	</div>
 

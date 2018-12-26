@@ -14,6 +14,10 @@ def index(request):
 	if query_search:
 		posts = posts.filter(title__icontains=query_search)
 
+	query_tag = request.GET.get("tag")
+	if query_tag:
+		posts = posts.filter(tags__subject=query_tag)
+
 	paginator = Paginator(posts, 8) # Show 8 pages per page
 
 	page = request.GET.get('page')
@@ -227,15 +231,6 @@ def tags(request):
 		"tags": tags
 	}
 	return render(request, 'tags.html', context)
-
-def detailTag(request, subject):
-	tag = Tag.objects.get(subject=subject)
-
-	context = {
-		"posts": tag.posts.values,
-		"subject": tag.subject,
-	}
-	return render(request, 'detailTag.html', context)
 
 @login_required
 def editTag(request, subject):
