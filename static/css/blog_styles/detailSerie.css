@@ -1,14 +1,24 @@
 .wrapper-main {
 	display: grid;
 	grid-template-columns: 1fr 2fr;
-	grid-gap: 5em;
+	grid-gap: 3em;
 }
-.serie-img {
-	width: 300px;
-}
+
 .serie-desc {
 	text-align: justify;
 }
+
+.serie-post {
+	border: 1px solid rgb(213, 213, 213);
+	border-radius: 3px;
+	margin-bottom: 1em;
+	padding: 1em;
+	height: 9em;
+}
+
 .serie-post-img {
 	width: 200px;
+	height: 110px;
+	float: left;
+	margin-right: 1.5em;
 }
