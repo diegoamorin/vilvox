@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (
-    index, series, about, tags, 
+    index, series, about, tags,
     addPost, addSerie, addTag,
     deletePost, deleteSerie, deleteTag,
     editPost, editSerie, editTag,

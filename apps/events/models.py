@@ -36,8 +36,8 @@ class Game(models.Model):
 		('Terminado','TERMINADO'),
 	)
 	state = models.CharField(
-		max_length=30, 
-		choices=STATE_CHOICES, 
+		max_length=30,
+		choices=STATE_CHOICES,
 		default='En Espera',
 	)
 

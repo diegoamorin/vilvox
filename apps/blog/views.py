@@ -196,7 +196,7 @@ def editSerie(request, pk):
 			return redirect("series")
 	else:
 		form = SerieForm(instance=serie)
-	
+
 	context = {
 		"form": form,
 		"jumbo": jumbo,
@@ -252,7 +252,7 @@ def editTag(request, subject):
 			return redirect('tags')
 	else:
 		form = TagForm(instance=tag)
-	
+
 	context = {
 		"form": form,
 		"jumbo": jumbo
@@ -271,7 +271,7 @@ def addTag(request):
 
 	else:
 		form = TagForm()
-	
+
 	context = {
 		"form": form,
 		"jumbo": jumbo

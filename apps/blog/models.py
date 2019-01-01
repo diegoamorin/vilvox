@@ -25,7 +25,7 @@ class Post(models.Model):
 	updated_at = models.DateTimeField(auto_now_add=True)
 	img = models.ImageField(upload_to='images/post/')
 	series = models.ManyToManyField(
-		List, 
+		List,
 		related_name='posts',
 		blank=True,
 	)

@@ -32,7 +32,7 @@ def addEvent(request):
 			return redirect("eventIndex")
 	else:
 		form = EventForm()
-	
+
 	context = {
 		"form": form,
 		"jumbo": jumbo,

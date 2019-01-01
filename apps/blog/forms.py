@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
 
 class SerieForm(forms.ModelForm):
 	class Meta:
-		model = List 
+		model = List
 		fields = ['title', 'slug', 'description', 'img']
 
 class TagForm(forms.ModelForm):
