@@ -30,11 +30,6 @@
 				<li class="nav-item active">
 					<a class="nav-link mx-2" href="{% url 'tags' %}">Temas</a>
 				</li>
-				{% if user.is_authenticated %}
-				<li class="nav-item active">
-					<a class="nav-link mx-2" href="#">Salir</a>
-				</li>
-				{% endif %}
 			</ul>
 
 			<form class="form-inline" method="GET" action="{% url 'index' %}">

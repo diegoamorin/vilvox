@@ -1,4 +1,5 @@
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -132,4 +133,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 
 # LOGIN SETTINGS
-LOGIN_URL = 'index' # Pro mientras
+LOGIN_REDIRECT_URL = reverse_lazy('index') # Redireccion CLICK LOGIN
+LOGIN_URL = 'index' # Redireccion al salir CLICK LOGOUT
