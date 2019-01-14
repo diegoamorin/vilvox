@@ -16,7 +16,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link mx-2" href="{% url 'index' %}">Artículos</a>
+					<a class="nav-link mx-2" href="{% url 'posts' %}">Artículos</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link mx-2" href="{% url 'series' %}">Series</a>
@@ -32,7 +32,7 @@
 				</li>
 			</ul>
 
-			<form class="form-inline" method="GET" action="{% url 'index' %}">
+			<form class="form-inline" method="GET" action="{% url 'posts' %}">
 				<input class="form-control mr-sm-2 search-bar" name="q" type="search" placeholder="Buscar" aria-label="Search">
 				<button class="btn btn-light my-2 my-sm-0 search-btn" type="submit">
 					<img src="{% static 'img/search.svg' %}" alt="nose">
