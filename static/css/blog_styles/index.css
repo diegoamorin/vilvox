@@ -1,3 +1,9 @@
+
+.card-carousel {
+	width: 50%;
+	margin: auto;
+}
+
 .post-wrapper {
 	border-radius: 3px;
 	background: #fff;
