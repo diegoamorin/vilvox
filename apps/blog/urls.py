@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (
-    index, series, about, tags,
+    index, series, about, tags, posts,
     addPost, addSerie, addTag,
     deletePost, deleteSerie, deleteTag,
     editPost, editSerie, editTag,
@@ -12,6 +12,7 @@ from .views import (
 
 urlpatterns = [
     path('', index, name='index'),
+    path('posts/', posts, name='posts'),
     path('series/', series, name='series'),
     path('about/', about, name='about'),
     path('tags/', tags, name='tags'),

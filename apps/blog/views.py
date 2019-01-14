@@ -10,6 +10,21 @@ from .forms import PostForm, SerieForm, TagForm
 def index(request):
 	posts = Post.objects.all().order_by('-pk')
 
+	paginator = Paginator(posts, 8) # Show 8 pages per page
+
+	page = request.GET.get('page')
+	posts = paginator.get_page(page)
+
+	context = {
+		"posts": posts
+	}
+	return render(request, 'index.html', context)
+
+# Seccion de Articulos
+
+def posts(request):
+	posts = Post.objects.all().order_by('-pk')
+
 	query_search = request.GET.get("q")
 	if query_search:
 		posts = posts.filter(title__icontains=query_search)
@@ -26,9 +41,7 @@ def index(request):
 	context = {
 		"posts": posts
 	}
-	return render(request, 'index.html', context)
-
-# Seccion de Articulos
+	return render(request, "posts.html", context)
 
 @login_required
 def addPost(request):
