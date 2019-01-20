@@ -7,7 +7,7 @@ class Event(models.Model):
 	slug = models.SlugField(max_length=120, unique=True)
 	description = models.TextField()
 	start_day = models.DateField()
-	end_day = models.DateField()
+	end_day = models.DateField(blank=True, null=True)
 	img = models.ImageField(upload_to='images/events/')
 
 	def __str__(self):

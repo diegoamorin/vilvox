@@ -27,7 +27,11 @@
 					<h1 class="display-4 event-title">{{ event }}</h1>
 					<p class="lead">
 						<strong>
-							{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}
+							{% if event.end_day %}
+								{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}
+							{% else %}
+								Inicia el {{ event.start_day|date:"d F" }}
+							{% endif %}
 						</strong>
 					</p>
 					<p class="lead">{{ event.description|truncatechars:150 }}</p>
