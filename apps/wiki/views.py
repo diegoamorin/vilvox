@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from .models import Team, VideoGame, Gamer
 from .forms import TeamForm, VideogameForm, GamerForm
@@ -31,6 +32,7 @@ def detailGamer(request, slug):
 	}
 	return render(request, 'detailGamer.html', context)
 
+@login_required
 def addGamer(request):
 	jumbo = 'Nuevo Gamer'
 	if request.method == 'POST':
@@ -63,6 +65,7 @@ def detailTeam(request, slug):
 	}
 	return render(request, 'detailTeam.html', context)
 
+@login_required
 def addTeam(request):
 	jumbo = 'Agregar Team'
 	if request.method == 'POST':
@@ -81,6 +84,12 @@ def addTeam(request):
 
 # Seccion Videogame
 
+def videogamesIndex(request):
+	videogames = VideoGame.objects.all()
+	return render(request, 'videogamesIndex.html', {
+		'videogames': videogames,
+	})
+
 def detailVideoGame(request, slug):
 	videogame = VideoGame.objects.get(slug=slug)
 
@@ -89,3 +98,19 @@ def detailVideoGame(request, slug):
 	}
 	return render(request, 'detailVideoGame.html', context)
 
+@login_required
+def addVideogame(request):
+	jumbo = 'Agregar VideoJuego'
+	if request.method == 'POST':
+		form = VideogameForm(request.POST, request.FILES)
+
+		if form.is_valid():
+			form.save()
+			return redirect('index')
+	else:
+		form = VideogameForm()
+
+	return render(request, 'form.html', {
+		'jumbo': jumbo,
+		'form': form,
+	})

@@ -20,9 +20,9 @@
 		<div class="card-body">
 			<img src="{% static 'img/wiki_images/videogames.jpg' %}" alt="" class="card-img">
 			<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente voluptatibus laudantium.</p>
-			<a href="" class="btn btn-dark btn-block">Ver</a>
+			<a href="{% url 'videogamesIndex' %}" class="btn btn-dark btn-block">Ver</a>
 			{% if user.is_superuser %}
-				<a href="" class="btn btn-outline-dark btn-block">Agregar</a>
+				<a href="{% url 'addVideogame' %}" class="btn btn-outline-dark btn-block">Agregar</a>
 			{% endif %}
 		</div>
 	</div>

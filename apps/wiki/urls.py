@@ -4,7 +4,7 @@ from .views import (
 	wikiIndex,
 	gamersIndex, detailGamer, addGamer,
 	teamsIndex, detailTeam, addTeam,
-	detailVideoGame,
+	videogamesIndex, detailVideoGame, addVideogame
 )
 
 urlpatterns = [
@@ -18,5 +18,7 @@ urlpatterns = [
 	path('team/new/', addTeam, name="addTeam"),
 	path('team/<slug:slug>/', detailTeam, name="detailTeam"),
 	
+	path('videogames/', videogamesIndex, name="videogamesIndex"),
+	path('videogame/new/', addVideogame, name="addVideogame"),
 	path('videogame/<slug:slug>/', detailVideoGame, name="detailVideoGame"),
 ]
