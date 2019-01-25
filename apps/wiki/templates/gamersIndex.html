@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for gamer in gamers %}
+	<h3>{{ gamer.nickname }}</h3>
+	Nombre: {{ gamer.name }}
+	Nacimiento: {{ gamer.birth }}
+	<img src="{% get_media_prefix %}{{ gamer.img }}" alt="img">
+{% endfor %}
+
+{% endblock %}

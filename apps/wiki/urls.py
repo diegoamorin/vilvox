@@ -2,12 +2,19 @@ from django.urls import path
 
 from .views import (
 	wikiIndex,
-	detailTeam, detailVideoGame, detailGamer,
+	gamersIndex, detailGamer, addGamer,
+	detailTeam,
+	detailVideoGame,
 )
 
 urlpatterns = [
 	path('', wikiIndex, name="wikiIndex"),
-	path('team/<slug:slug>/', detailTeam, name="detailTeam"),
-	path('videogame/<slug:slug>/', detailVideoGame, name="detailVideoGame"),
+
+	path('gamers/', gamersIndex, name="gamersIndex"),
+	path('gamer/new/', addGamer, name="addGamer"),
 	path('gamer/<slug:slug>', detailGamer, name="detailGamer"),
+
+	path('team/<slug:slug>/', detailTeam, name="detailTeam"),
+	
+	path('videogame/<slug:slug>/', detailVideoGame, name="detailVideoGame"),
 ]
