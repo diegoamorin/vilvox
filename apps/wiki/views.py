@@ -49,6 +49,12 @@ def addGamer(request):
 
 # Seccion Team
 
+def teamsIndex(request):
+	teams = Team.objects.all()
+	return render(request, 'teamsIndex.html', {
+		'teams': teams,
+	})
+
 def detailTeam(request, slug):
 	team = Team.objects.get(slug=slug)
 
@@ -56,6 +62,22 @@ def detailTeam(request, slug):
 		"team": team,
 	}
 	return render(request, 'detailTeam.html', context)
+
+def addTeam(request):
+	jumbo = 'Agregar Team'
+	if request.method == 'POST':
+		form = TeamForm(request.POST, request.FILES)
+
+		if form.is_valid():
+			form.save()
+			return redirect('index')
+	else:
+		form = TeamForm()
+
+	return render(request, 'form.html', {
+		'jumbo': jumbo,
+		'form': form,
+	})
 
 # Seccion Videogame
 
