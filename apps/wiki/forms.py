@@ -23,5 +23,5 @@ class GamerForm(forms.ModelForm):
 		model = Gamer
 		fields = (
 			'nickname', 'slug', 'name', 'birth', 'img',
-			'country', 'description', 'country', 'team'
+			'country', 'description', 'country', 'team', 'videogames',
 		)
