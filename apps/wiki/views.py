@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
@@ -9,12 +11,11 @@ def wikiIndex(request):
 	videogames_count = VideoGame.objects.all().count()
 	gamers_count = Gamer.objects.all().count()
 
-	context = {
+	return render(request, 'wikiIndex.html', {
 		"teams_count": teams_count,
 		"videogames_count": videogames_count,
 		"gamers_count": gamers_count,
-	}
-	return render(request, 'wikiIndex.html', context)
+	})
 
 # Seccion Gamer
 
@@ -27,10 +28,15 @@ def gamersIndex(request):
 def detailGamer(request, slug):
 	gamer = Gamer.objects.get(slug=slug)
 
-	context = {
+	def calculate_age(born):
+		today = date.today()
+		return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+	edad_gamer = calculate_age(gamer.birth)
+
+	return render(request, 'detailGamer.html', {
 		"gamer": gamer,
-	}
-	return render(request, 'detailGamer.html', context)
+		"edad_gamer": edad_gamer,
+	})
 
 @login_required
 def addGamer(request):
@@ -60,10 +66,9 @@ def teamsIndex(request):
 def detailTeam(request, slug):
 	team = Team.objects.get(slug=slug)
 
-	context = {
+	return render(request, 'detailTeam.html', {
 		"team": team,
-	}
-	return render(request, 'detailTeam.html', context)
+	})
 
 @login_required
 def addTeam(request):
@@ -93,10 +98,9 @@ def videogamesIndex(request):
 def detailVideoGame(request, slug):
 	videogame = VideoGame.objects.get(slug=slug)
 
-	context = {
+	return render(request, 'detailVideoGame.html', {
 		"videogame": videogame,
-	}
-	return render(request, 'detailVideoGame.html', context)
+	})
 
 @login_required
 def addVideogame(request):
