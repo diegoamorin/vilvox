@@ -12,7 +12,7 @@ a:hover {
 	grid-gap: 2em;
 }
 
-.gamer-wrapper {
+.perfil-wrapper {
 	padding: .3em;
 	border: solid 1px rgb(213,213,213);
 	border-radius: 5px;
@@ -22,7 +22,7 @@ a:hover {
 	align-items: center;
 }
 
-.img-gamer {
+.img-index {
 	height: 100px;
 	width: 100px;
 	float: left;

@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block style %}
+	<link rel="stylesheet" href="{% static 'css/wiki_styles/index_inWIKI.css' %}">
+{% endblock %}
+
+{% block jumbo %}
+	<h1 class="display-4">Videojuegos</h1>
+	{% if user.is_superuser %}
+		<a href="{% url 'addVideogame' %}" class="btn btn-outline-dark">Agregar Videojuego</a>
+	{% endif %}
+{% endblock %}
+
 {% block content %}
 
-{% for videogame in videogames %}
-	<h3>{{ videogame.name }}</h3>
-	<img src="{% get_media_prefix %}{{ videogame.img }}" alt="img" height="200px" width="200px">
-	website: <a href="{{ videogame.website }}">{{ videogame.website }}</a>
-{% endfor %}
+<div class="wrapper-main mt-5">
+	{% for videogame in videogames %}
+		<a href="{% url 'detailVideoGame' slug=videogame.slug %}">
+			<div class="perfil-wrapper">
+				<img class="img-index" src="{% get_media_prefix %}{{ videogame.img }}" alt="img">
+				<div class="content-mini">
+						<h3>{{ videogame.name }}</h3>
+						<p>{{ videogame.category }}</p>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>
 
 {% endblock %}
