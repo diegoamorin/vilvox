@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_gamer.css' %}">
+<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_inWIKI.css' %}">
 {% endblock %}
 
 {% block jumbo %}
@@ -27,9 +27,9 @@
 
 	<div class="perfil-wrapper">
 		<div class="section-header">
-			<div><h1 class="lead section-info">{{ gamer }}</h1></div>
-			<div class="caja-gamer">
-				<img class="img-gamer" src="{% get_media_prefix %}{{ gamer.img }}" alt="img">
+			<div><h1 class="lead section-info">{{ gamer.nickname }}</h1></div>
+			<div class="caja-img">
+				<img class="img-info" src="{% get_media_prefix %}{{ gamer.img }}" alt="img">
 			</div>
 		</div>
 
