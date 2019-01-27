@@ -27,7 +27,7 @@
 
 	<div class="perfil-wrapper">
 		<div class="section-header">
-			<div><h1 class="lead section-info">{{ gamer.nickname }}</h1></div>
+			<h1 class="lead section-info">{{ gamer.nickname }}</h1>
 			<div class="caja-img">
 				<img class="img-info" src="{% get_media_prefix %}{{ gamer.img }}" alt="img">
 			</div>
@@ -54,9 +54,9 @@
 			</table>
 
 			<h3 class="lead section-info">Videogames</h3>
-			<ul class="videogame-list">
+			<ul class="list-info">
 			{% for vgame in gamer.videogames.get_queryset %}
-				<li class="videogame-item">
+				<li class="item-info">
 					<a href="{% url 'detailVideoGame' slug=vgame.slug %}">{{ vgame }}</a>
 				</li>
 			{% endfor %}

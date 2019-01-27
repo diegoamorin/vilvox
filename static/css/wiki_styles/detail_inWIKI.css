@@ -37,12 +37,12 @@
 	margin: 0;
 }
 
-.videogame-list {
+.list-info {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-.videogame-item{
+.item-info{
 	padding: .5em;
 }

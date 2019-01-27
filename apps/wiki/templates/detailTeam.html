@@ -45,9 +45,9 @@
 
 			<h3 class="lead section-info">Videogames</h3>
 
-			<ul class="videogame-list">
+			<ul class="list-info">
 				{% for vgame in team.videogames.get_queryset %}
-					<li class="videogame-item">
+					<li class="item-info">
 						<a href="{% url 'detailVideoGame' slug=vgame.slug %}">{{ vgame }}</a>
 					</li>
 				{% endfor %}
@@ -55,9 +55,9 @@
 			
 			<h1 class="lead section-info">Miembros</h1>
 			
-			<ul class="videogame-list">
+			<ul class="list-info">
 				{% for member in team.members.get_queryset %}
-					<li class="videogame-item">
+					<li class="item-info">
 						<a href="{% url 'detailGamer' slug=member.slug %}">
 							<img class="img-gamer-info" src="{% get_media_prefix %}{{ member.img }}" alt="">
 							{{ member.nickname }}

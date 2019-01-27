@@ -6,31 +6,75 @@
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_videogame.css' %}">
+<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_inWIKI.css' %}">
 {% endblock %}
 
 {% block jumbo %}
-<h1 class="lead">{{ videogame }}</h1>
-<img class="img-videogame" src="{% get_media_prefix %}{{ videogame.img }}" alt="image">
+<div class="display-4 mb-4">{{ videogame.name }}</div>
+{% if user.is_superuser %}
+	<a href="" class="btn btn-success">Editar</a>
+	<a href="" class="btn btn-danger">Eliminar</a>
+{% endif %}
+<hr>
 {% endblock %}
 
 {% block content %}
-	<ul class="lead">
-		<li>{{ videogame.category }}</li>
-		<li>{{ videogame.launch }}</li>
-		<li>Website: <a href="{{ videogame.website }}" >{{ videogame.website }}</a></li>
-		<li>{{ videogame.description }}</li>
-	</ul>
-	<h1>Teams:</h1>
-	{% for team in videogame.teams.get_queryset %}
-		<p class="lead">
-			<a href="{% url 'detailTeam' slug=team.slug %}">{{ team }}</a>
-		</p>
-	{% endfor %}
-	<h1>Gamers:</h1>
-	{% for gamer in videogame.gamers.get_queryset %}
-		<p class="lead">
-			<a href="{% url 'detailGamer' slug=gamer.slug %}">{{ gamer }}</a>
-		</p>
-	{% endfor %}
+
+<div class="wrapper-main">
+
+	<div class="content-wrapper">
+		<p>{{ videogame.description|safe }}</p>
+	</div>
+
+	<div class="perfil-wrapper">
+
+		<div class="section-header">
+			<h1 class="lead section-info">{{ videogame.name }}</h1>
+			<div class="caja-img">
+				<img class="img-info" src="{% get_media_prefix %}{{ videogame.img }}" alt="img">
+			</div>
+		</div>
+
+		<div class="section-information">
+			<table class="table">
+				<tr>
+					<th>Genero:</th>
+					<th>{{ videogame.category }}</th>
+				</tr>
+				<tr>
+					<th>Lanzamiento:</th>
+					<th>{{ videogame.launch }}</th>
+				</tr>
+				<tr>
+					<th>Website:</th>
+					<th><a href="{{ videogame.website }}">{{ videogame.website }}</a></th>
+				</tr>
+			</table>
+		</div>
+
+		<h3 class="lead section-info">Teams</h3>
+		<ul class="list-info">
+			{% for team in videogame.teams.get_queryset %}
+				<li class="item-info">
+					<a href="{% url 'detailTeam' slug=team.slug %}">{{ team }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		<h3 class="lead section-info">Gamers</h3>
+
+		<ul class="list-info">
+			{% for gamer in videogame.gamers.get_queryset %}
+				<li class="item-info">
+					<a href="{% url 'detailGamer' slug=gamer.slug %}">
+						<img class="img-gamer-info" src="{% get_media_prefix %}{{ gamer.img }}" alt="">
+						{{ gamer }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+
+	</div>
+
+</div>
+
 {% endblock %}
