@@ -55,6 +55,24 @@ def addGamer(request):
 		"jumbo": jumbo,
 	})
 
+@login_required
+def editGamer(request, pk):
+	jumbo = "Editar Jugador"
+	gamer = get_object_or_404(Gamer, pk=pk)
+
+	if request.method == 'POST':
+		form = GamerForm(request.POST, request.FILES, instance=gamer)
+		if form.is_valid():
+			form.save()
+			return redirect("detailGamer", slug=gamer.slug)
+	else:
+		form = GamerForm(instance=gamer)
+
+	return render(request, 'form.html', {
+		"form": form,
+		"jumbo": jumbo,
+	})
+
 # Seccion Team
 
 def teamsIndex(request):
