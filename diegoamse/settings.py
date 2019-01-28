@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     #External
     'crispy_forms',
+    'markdownx',
 ]
 
 # Settings External Apps
