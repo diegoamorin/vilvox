@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load markdown_extras %}
 
 {% block title %}
 	{{ post.title }}
@@ -27,7 +28,7 @@
 
 	<div class="post-section">
 		<img class="card-img mb-4" src="{% get_media_prefix %}{{ post.img }}" alt="">
-		<div class="lead post-content">{{ post.content|safe|linebreaks }}</div>
+		<div class="lead post-content">{{ post.content|markdown|safe }}</div>
 
 		{% for subject in tags %}
 			<a href="{% url 'index' %}?tag={{ subject }}"><div class="tag">{{ subject }}</div></a>

@@ -7,6 +7,7 @@ from django.contrib.auth.views import login, logout_then_login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('markdownx/', include('markdownx.urls')),
     path('', include('apps.blog.urls')),
     path('', include('apps.events.urls')),
     path('wiki/', include('apps.wiki.urls')),
