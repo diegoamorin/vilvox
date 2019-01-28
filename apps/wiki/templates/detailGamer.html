@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load markdown_extras %}
 
 {% block title %}
 	{{ site_name }} - {{ gamer }}
@@ -22,7 +23,7 @@
 <div class="wrapper-main">
 
 	<div class="content-wrapper">
-		<p>{{ gamer.description|safe }}</p>
+		<p>{{ gamer.description|markdown|safe }}</p>
 	</div>
 
 	<div class="perfil-wrapper">
