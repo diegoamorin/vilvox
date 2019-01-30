@@ -46,7 +46,7 @@ def addGamer(request):
 
 		if form.is_valid():
 			form.save()
-			return redirect('index')
+			return redirect('gamersIndex')
 	else:
 		form = GamerForm()
 
@@ -73,6 +73,24 @@ def editGamer(request, pk):
 		"jumbo": jumbo,
 	})
 
+@login_required
+def deleteGamer(request, pk):
+	gamer = get_object_or_404(Gamer, pk=pk)
+	return render(request, "confirm_delGamer.html", {
+		'gamer': gamer,
+	})
+
+@login_required
+def confirmDeleteGamer(request, pk):
+	gamer = get_object_or_404(Gamer, pk=pk)
+	gamer.delete()
+	return redirect("gamersIndex")
+
+@login_required
+def cancelDeleteGamer(request, slug):
+	gamer = get_object_or_404(Gamer, slug=slug)
+	return redirect("detailGamer", slug=gamer.slug)
+
 # Seccion Team
 
 def teamsIndex(request):
@@ -96,7 +114,7 @@ def addTeam(request):
 
 		if form.is_valid():
 			form.save()
-			return redirect('index')
+			return redirect('teamsIndex')
 	else:
 		form = TeamForm()
 
@@ -146,7 +164,7 @@ def addVideogame(request):
 
 		if form.is_valid():
 			form.save()
-			return redirect('index')
+			return redirect('videogamesIndex')
 	else:
 		form = VideogameForm()
 

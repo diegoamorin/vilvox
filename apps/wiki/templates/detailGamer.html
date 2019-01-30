@@ -14,7 +14,7 @@
 <div class="display-4 mb-4">{{ gamer.nickname }}</div>
 {% if user.is_superuser %}
 	<a href="{% url 'editGamer' pk=gamer.pk %}" class="btn btn-success">Editar</a>
-	<a href="" class="btn btn-danger">Eliminar</a>
+	<a href="{% url 'deleteGamer' pk=gamer.pk%}" class="btn btn-danger">Eliminar</a>
 {% endif %}
 <hr>
 {% endblock %}

@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
 	wikiIndex,
 	gamersIndex, detailGamer, addGamer, editGamer,
+	deleteGamer, confirmDeleteGamer, cancelDeleteGamer,
 	teamsIndex, detailTeam, addTeam, editTeam,
 	videogamesIndex, detailVideoGame, addVideogame, editVideogame,
 )
@@ -14,6 +15,9 @@ urlpatterns = [
 	path('gamer/new/', addGamer, name="addGamer"),
 	path('gamer/<slug:slug>', detailGamer, name="detailGamer"),
 	path('gamer/edit/<int:pk>', editGamer, name="editGamer"),
+	path('gamer/delete/<int:pk>', deleteGamer, name="deleteGamer"),
+	path('gamer/delete/confirm/<int:pk>', confirmDeleteGamer, name="confirmDeleteGamer"),
+	path('gamer/delete/cancel/<slug:slug>', cancelDeleteGamer, name="cancelDeleteGamer"),
 
 	path('teams/', teamsIndex, name="teamsIndex"),
 	path('team/new/', addTeam, name="addTeam"),

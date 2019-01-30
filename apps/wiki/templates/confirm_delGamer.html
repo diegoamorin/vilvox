@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block jumbo %}
+	<p class="lead">Esta seguro de eliminar:</p>
+	<h1 class="display-4">{{ gamer.nickname }}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="my-5 text-center">
+	<a href="{% url 'confirmDeleteGamer' pk=gamer.pk %}" class="btn btn-outline-danger">Si, eliminar</a>
+	<a href="{% url 'cancelDeleteGamer' slug=gamer.slug %}" class="btn btn-success">Cancelar</a>
+</div>
+{% endblock %}
