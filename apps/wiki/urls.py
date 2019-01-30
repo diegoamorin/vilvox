@@ -7,6 +7,7 @@ from .views import (
 	teamsIndex, detailTeam, addTeam, editTeam,
 	deleteTeam, confirmDeleteTeam, cancelDeleteTeam,
 	videogamesIndex, detailVideoGame, addVideogame, editVideogame,
+	deleteVideogame, confirmDeleteVideogame, cancelDeleteVideogame,
 )
 
 urlpatterns = [
@@ -32,4 +33,7 @@ urlpatterns = [
 	path('videogame/new/', addVideogame, name="addVideogame"),
 	path('videogame/<slug:slug>/', detailVideoGame, name="detailVideoGame"),
 	path('videogame/edit/<int:pk>', editVideogame, name="editVideogame"),
+	path('videogame/delete/<int:pk>', deleteVideogame, name="deleteVideogame"),
+	path('videogame/delete/confirm/<int:pk>', confirmDeleteVideogame, name="confirmDeleteVideogame"),
+	path('videogame/delete/cancel/<slug:slug>', cancelDeleteVideogame, name="cancelDeleteVideogame"),
 ]

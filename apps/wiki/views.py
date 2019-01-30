@@ -208,3 +208,21 @@ def editVideogame(request, pk):
 		'form': form,
 		'jumbo': jumbo,
 	})
+
+@login_required
+def deleteVideogame(request, pk):
+	videogame = get_object_or_404(VideoGame, pk=pk)
+	return render(request, "confirm_delVideogame.html", {
+		'videogame': videogame,
+	})
+
+@login_required
+def confirmDeleteVideogame(request, pk):
+	videogame = get_object_or_404(VideoGame, pk=pk)
+	videogame.delete()
+	return redirect("videogamesIndex")
+
+@login_required
+def cancelDeleteVideogame(request, slug):
+	videogame = get_object_or_404(VideoGame, slug=slug)
+	return redirect("detailVideoGame", slug=videogame.slug)
