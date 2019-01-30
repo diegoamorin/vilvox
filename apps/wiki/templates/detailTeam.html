@@ -14,7 +14,7 @@
 	<h1 class="display-4 mb-4">{{ team.name }}</h1>
 	{% if user.is_superuser %}
 		<a href="{% url 'editTeam' pk=team.pk %}" class="btn btn-success">Editar</a>
-		<a href="" class="btn btn-danger">Eliminar</a>
+		<a href="{% url 'deleteTeam' pk=team.pk %}" class="btn btn-danger">Eliminar</a>
 	{% endif %}
 	<hr>
 {% endblock %}

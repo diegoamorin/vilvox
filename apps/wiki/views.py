@@ -141,6 +141,24 @@ def editTeam(request, pk):
 		"jumbo": jumbo,
 	})
 
+@login_required
+def deleteTeam(request, pk):
+	team = get_object_or_404(Team, pk=pk)
+	return render(request, "confirm_delTeam.html", {
+		'team': team,
+	})
+
+@login_required
+def confirmDeleteTeam(request, pk):
+	team = get_object_or_404(Team, pk=pk)
+	team.delete()
+	return redirect("teamsIndex")
+
+@login_required
+def cancelDeleteTeam(request, slug):
+	team = get_object_or_404(Team, slug=slug)
+	return redirect("detailTeam", slug=team.slug)
+
 # Seccion Videogame
 
 def videogamesIndex(request):
