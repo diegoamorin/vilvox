@@ -105,6 +105,24 @@ def addTeam(request):
 		'form': form,
 	})
 
+@login_required
+def editTeam(request, pk):
+	jumbo = "Editar Team"
+	team = get_object_or_404(Team, pk=pk)
+
+	if request.method == 'POST':
+		form = TeamForm(request.POST, request.FILES, instance=team)
+		if form.is_valid():
+			form.save()
+			return redirect("detailTeam", slug=team.slug)
+	else:
+		form = TeamForm(instance=team)
+	
+	return render(request, "form.html", {
+		"form": form,
+		"jumbo": jumbo,
+	})
+
 # Seccion Videogame
 
 def videogamesIndex(request):
@@ -135,4 +153,22 @@ def addVideogame(request):
 	return render(request, 'form.html', {
 		'jumbo': jumbo,
 		'form': form,
+	})
+
+@login_required
+def editVideogame(request, pk):
+	jumbo = "editar Videojuego"
+	videogame = get_object_or_404(VideoGame, pk=pk)
+	
+	if request.method == 'POST':
+		form = VideogameForm(request.POST, request.FILES, instance=videogame)
+		if form.is_valid():
+			form.save()
+			return redirect("detailVideoGame", slug=videogam.slug)
+	else:
+		form = VideogameForm(instance=videogame)
+	
+	return render(request, 'form.html', {
+		'form': form,
+		'jumbo': jumbo,
 	})
