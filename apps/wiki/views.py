@@ -46,7 +46,7 @@ def addGamer(request):
 
 		if form.is_valid():
 			form.save()
-			return redirect('index')
+			return redirect('gamersIndex')
 	else:
 		form = GamerForm()
 
@@ -73,6 +73,24 @@ def editGamer(request, pk):
 		"jumbo": jumbo,
 	})
 
+@login_required
+def deleteGamer(request, pk):
+	gamer = get_object_or_404(Gamer, pk=pk)
+	return render(request, "confirm_delGamer.html", {
+		'gamer': gamer,
+	})
+
+@login_required
+def confirmDeleteGamer(request, pk):
+	gamer = get_object_or_404(Gamer, pk=pk)
+	gamer.delete()
+	return redirect("gamersIndex")
+
+@login_required
+def cancelDeleteGamer(request, slug):
+	gamer = get_object_or_404(Gamer, slug=slug)
+	return redirect("detailGamer", slug=gamer.slug)
+
 # Seccion Team
 
 def teamsIndex(request):
@@ -96,7 +114,7 @@ def addTeam(request):
 
 		if form.is_valid():
 			form.save()
-			return redirect('index')
+			return redirect('teamsIndex')
 	else:
 		form = TeamForm()
 
@@ -104,6 +122,42 @@ def addTeam(request):
 		'jumbo': jumbo,
 		'form': form,
 	})
+
+@login_required
+def editTeam(request, pk):
+	jumbo = "Editar Team"
+	team = get_object_or_404(Team, pk=pk)
+
+	if request.method == 'POST':
+		form = TeamForm(request.POST, request.FILES, instance=team)
+		if form.is_valid():
+			form.save()
+			return redirect("detailTeam", slug=team.slug)
+	else:
+		form = TeamForm(instance=team)
+	
+	return render(request, "form.html", {
+		"form": form,
+		"jumbo": jumbo,
+	})
+
+@login_required
+def deleteTeam(request, pk):
+	team = get_object_or_404(Team, pk=pk)
+	return render(request, "confirm_delTeam.html", {
+		'team': team,
+	})
+
+@login_required
+def confirmDeleteTeam(request, pk):
+	team = get_object_or_404(Team, pk=pk)
+	team.delete()
+	return redirect("teamsIndex")
+
+@login_required
+def cancelDeleteTeam(request, slug):
+	team = get_object_or_404(Team, slug=slug)
+	return redirect("detailTeam", slug=team.slug)
 
 # Seccion Videogame
 
@@ -128,7 +182,7 @@ def addVideogame(request):
 
 		if form.is_valid():
 			form.save()
-			return redirect('index')
+			return redirect('videogamesIndex')
 	else:
 		form = VideogameForm()
 
@@ -136,3 +190,39 @@ def addVideogame(request):
 		'jumbo': jumbo,
 		'form': form,
 	})
+
+@login_required
+def editVideogame(request, pk):
+	jumbo = "editar Videojuego"
+	videogame = get_object_or_404(VideoGame, pk=pk)
+	
+	if request.method == 'POST':
+		form = VideogameForm(request.POST, request.FILES, instance=videogame)
+		if form.is_valid():
+			form.save()
+			return redirect("detailVideoGame", slug=videogam.slug)
+	else:
+		form = VideogameForm(instance=videogame)
+	
+	return render(request, 'form.html', {
+		'form': form,
+		'jumbo': jumbo,
+	})
+
+@login_required
+def deleteVideogame(request, pk):
+	videogame = get_object_or_404(VideoGame, pk=pk)
+	return render(request, "confirm_delVideogame.html", {
+		'videogame': videogame,
+	})
+
+@login_required
+def confirmDeleteVideogame(request, pk):
+	videogame = get_object_or_404(VideoGame, pk=pk)
+	videogame.delete()
+	return redirect("videogamesIndex")
+
+@login_required
+def cancelDeleteVideogame(request, slug):
+	videogame = get_object_or_404(VideoGame, slug=slug)
+	return redirect("detailVideoGame", slug=videogame.slug)

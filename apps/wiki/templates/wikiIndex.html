@@ -5,57 +5,45 @@
 {{ site_name }} - Wiki
 {% endblock %}
 
+{% block style %}
+	<link rel="stylesheet" href="{% static 'css/wiki_styles/wikiIndex.css' %}">
+{% endblock %}
+
 {% block jumbo %}
 <h1 class="lead">WIKI</h1>
 {% endblock %}
 
 {% block content %}
-<div class="row d-flex flex-nowrap justify-content-center mt-5">
 
-	<div class="card col-md-4 mx-2">
-		<div class="card-header text-center">
-			<h4>Videogames</h4>
-			({{ videogames_count }})
-		</div>
-		<div class="card-body">
-			<img src="{% static 'img/wiki_images/videogames.jpg' %}" alt="" class="card-img">
-			<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente voluptatibus laudantium.</p>
-			<a href="{% url 'videogamesIndex' %}" class="btn btn-dark btn-block">Ver</a>
-			{% if user.is_superuser %}
-				<a href="{% url 'addVideogame' %}" class="btn btn-outline-dark btn-block">Agregar</a>
-			{% endif %}
-		</div>
-	</div>
+<div class="container-wiki">
 
-	<div class="card col-md-4 mx-2">
-		<div class="card-header text-center">
-			<h4>Teams</h4>
-			({{ teams_count }})
+	<a href="{% url 'videogamesIndex' %}">
+		<div class="block block-videogames">
+			<div class="content">
+				<h2>Videojuegos</h2>
+				<p class="number">{{ videogames_count }} elementos</p>
+			</div>
 		</div>
-		<div class="card-body">
-			<img src="{% static 'img/wiki_images/teams.jpg' %}" alt="" class="card-img">
-			<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente voluptatibus laudantium.</p>
-			<a href="{% url 'teamsIndex' %}" class="btn btn-dark btn-block">Ver</a>
-			{% if user.is_superuser %}
-				<a href="{% url 'addTeam' %}" class="btn btn-outline-dark btn-block">Agregar</a>
-			{% endif %}
-		</div>
-	</div>
+	</a>
 
-	<div class="card col-md-4 mx-2">
-		<div class="card-header text-center">
-			<h4>Gamers</h4>
-			({{ gamers_count }})
+	<a href="{% url 'teamsIndex' %}">
+		<div class="block block-teams">
+			<div class="content">
+				<h2>Teams</h2>
+				<p class="number">{{ teams_count }} elementos</p>
+			</div>
 		</div>
-		<div class="card-body">
-			<img src="{% static 'img/wiki_images/gamers.jpg' %}" alt="" class="card-img">
-			<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente voluptatibus laudantium.</p>
-			<a href="{% url 'gamersIndex' %}" class="btn btn-dark btn-block">Ver</a>
-			{% if user.is_superuser %}
-				<a href="{% url 'addGamer' %}" class="btn btn-outline-dark btn-block">Agregar</a>
-			{% endif %}
+	</a>
+
+	<a href="{% url 'gamersIndex' %}">
+		<div class="block block-gamers">
+			<div class="content">
+				<h2>Gamers</h2>
+				<p class="number">{{ gamers_count }} elementos</p>
+			</div>
 		</div>
-	</div>
+	</a>
 
 </div>
+
 {% endblock %}
