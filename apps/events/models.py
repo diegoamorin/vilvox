@@ -30,17 +30,6 @@ class Game(models.Model):
 		related_name='games',
 	)
 
-	STATE_CHOICES = (
-		('En Espera','EN_ESPERA'),
-		('En Juego','EN_JUEGO'),
-		('Terminado','TERMINADO'),
-	)
-	state = models.CharField(
-		max_length=30,
-		choices=STATE_CHOICES,
-		default='En Espera',
-	)
-
 	event = models.ForeignKey(
 		Event,
 		related_name="games",
