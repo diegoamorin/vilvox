@@ -200,7 +200,7 @@ def editVideogame(request, pk):
 		form = VideogameForm(request.POST, request.FILES, instance=videogame)
 		if form.is_valid():
 			form.save()
-			return redirect("detailVideoGame", slug=videogam.slug)
+			return redirect("detailVideoGame", slug=videogame.slug)
 	else:
 		form = VideogameForm(instance=videogame)
 	
