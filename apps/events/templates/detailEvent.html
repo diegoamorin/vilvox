@@ -33,14 +33,16 @@
 				<h1 class="game-name display-4">
 					<div class="resultados">
 						{% for team in game.teams.get_queryset %}
-							<div class="{% cycle 'team1' 'team2' %}"">
+							<div class="{% cycle 'team1' 'team2' %}">
 								<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
 									{% if team == game.teams.get_queryset.first %}
-										<strong>{{ team }}</strong>
+										<strong class="name-claro">{{ team.name }}</strong>
+										<strong class="name-oscuro">{{ team.short_name }}</strong>
 										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
 									{% else %}
 										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
-										<strong>{{ team }}</strong>
+										<strong class="name-claro">{{ team.name }}</strong>
+										<strong class="name-oscuro">{{ team.short_name }}</strong>
 									{% endif %}
 								</a>
 							</div>
