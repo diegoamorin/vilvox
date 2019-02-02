@@ -14,7 +14,7 @@ class TeamForm(forms.ModelForm):
 	class Meta:
 		model = Team
 		fields = (
-			'name', 'slug', 'img', 'website',
+			'name', 'short_name', 'slug', 'img', 'website',
 			'description', 'videogames'
 		)
 

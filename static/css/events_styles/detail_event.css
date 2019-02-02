@@ -56,8 +56,32 @@
 	text-align: left;
 }
 .versus {
-	width: 5%;
+	width: 8%;
 	text-align: center;
+}
+.name-oscuro {
+	font-size: 0;
+}
+
+@media (max-width: 800px) {
+	.name-claro {
+		font-size : 0;
+	}
+	.name-oscuro {
+		font-size: 30px;
+	}
+}
+@media (max-width: 600px) {
+	.versus {
+		width: 10%;
+		text-align: center;
+	}
+	.name-claro {
+		font-size : 0;
+	}
+	.name-oscuro {
+		font-size: 20px;
+	}
 }
 
 /* Otros elementos */

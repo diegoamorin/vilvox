@@ -14,6 +14,7 @@ class VideoGame(models.Model):
 
 class Team(models.Model):
 	name = models.CharField(max_length=30)
+	short_name = models.CharField(max_length=10, blank=True, null=True)
 	slug = models.SlugField(max_length=40, unique=True)
 	img = models.ImageField(upload_to='images/teams/')
 	website = models.URLField(blank=True, null=True)
