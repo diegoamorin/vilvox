@@ -15,10 +15,11 @@ def eventIndex(request):
 def eventDetail(request, slug):
 	event = get_object_or_404(Event, slug=slug)
 	games = get_object_or_404(Event, slug=slug).games.get_queryset()
+	lista = [list(game.teams.get_queryset()) for game in games]
 
 	context = {
 		"event": event,
-		"games": games,
+		"games": lista,
 	}
 	return render(request, "detailEvent.html", context)
 
