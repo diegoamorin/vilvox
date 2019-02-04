@@ -32,21 +32,22 @@
 			<div class="game-wrapper">
 				<h1 class="game-name display-4">
 					<div class="resultados">
-						{% for team in game %}
+
+						{% for team in game.teams %}
 							<div class="{% cycle 'team1' 'team2' %}">
 								<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
-									{% if team == game.0 %}
+									{% if team == game.teams.0 %}
 										<strong class="name-claro">{{ team.name }}</strong>
 										<strong class="name-oscuro">{{ team.short_name }}</strong>
 										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
-									{% elif team == game.1 %}
+									{% elif team == game.teams.1 %}
 										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
 										<strong class="name-claro">{{ team.name }}</strong>
 										<strong class="name-oscuro">{{ team.short_name }}</strong>
 									{% endif %}
 								</a>
 							</div>
-							{% if team != game.1 %}
+							{% if team != game.teams.1 %}
 								<div class="versus">vs</div>
 							{% endif %}
 						{% endfor %}
