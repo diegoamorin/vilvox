@@ -1,9 +1,48 @@
+/* Seccion "Proximos Encuentros" */
 
-.card-carousel {
-	width: 50%;
-	margin: auto;
+.wrapper-games {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-column-gap: 2em;
 }
 
+.card-game {
+	border: 1px solid rgb(213,213,213);
+	border-radius: 5px;
+	text-align: center;
+}
+.block-total{
+	margin-top: .3em;
+	margin-bottom: .3em;
+}
+.block-name {
+	overflow: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.img-team {
+	height: 30px;
+	width: 30px;
+}
+
+.block-team {
+	float: left;
+}
+.block-vs {
+	float: left;
+	margin: 0 1em;
+}
+.block-date {
+	clear: both;
+}
+
+hr {
+	margin: 0;
+}
+
+/* Seccion Articulos */
 .post-wrapper {
 	border-radius: 3px;
 	background: #fff;
