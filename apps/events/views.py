@@ -14,11 +14,14 @@ def eventIndex(request):
 
 def eventDetail(request, slug):
 	event = get_object_or_404(Event, slug=slug)
-	games = get_object_or_404(Event, slug=slug).games.get_queryset()
+	games = get_object_or_404(Event, slug=slug).games.get_queryset().order_by('day')
 
 	lista = [list(game.teams.get_queryset()) for game in games]
 	lista2 = [game.day for game in games]
-	lista_total = [{'teams':i[0], 'day':i[1]} for i in zip(lista, lista2)]
+	lista3 = [game.pk for game in games]
+	lista_total = [
+		{'teams':i[0], 'day':i[1], 'pk':i[2]} for i in zip(lista, lista2, lista3)
+	]
 
 	context = {
 		"event": event,
@@ -61,3 +64,42 @@ def addGame(request, slug):
 		"jumbo": jumbo,
 	}
 	return render(request, "form.html", context)
+
+@login_required
+def editGame(request, pk):
+	jumbo = "Editar Juego"
+	game = get_object_or_404(Game, pk=pk)
+	event = Event.objects.filter(games__slug=game.slug)
+
+	if request.method == 'POST':
+		form = GameForm(request.POST, request.FILES, instance=game)
+
+		if form.is_valid():
+			form.save()
+			return redirect("eventDetail", slug=event[0].slug)
+	else:
+		form = GameForm(instance=game)
+
+	return render(request, 'form.html',{
+		'jumbo':jumbo,
+		'form': form,
+	})
+
+@login_required
+def deleteGame(request, pk):
+	game = get_object_or_404(Game, pk=pk)
+	return render(request, "confirm_delGame.html", {
+		"game": game,
+	})
+
+@login_required
+def confirmDeleteGame(request, slug):
+	game = get_object_or_404(Game, slug=slug)
+	game.delete()
+	return redirect("eventIndex")
+
+@login_required
+def cancelDeleteGame(request, slug):
+	game = get_object_or_404(Game, slug=slug)
+	event = Event.objects.filter(games__slug=game.slug)
+	return redirect("eventDetail", slug=event[0].slug)
