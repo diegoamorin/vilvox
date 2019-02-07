@@ -14,7 +14,7 @@ def eventIndex(request):
 
 def eventDetail(request, slug):
 	event = get_object_or_404(Event, slug=slug)
-	games = get_object_or_404(Event, slug=slug).games.get_queryset()
+	games = get_object_or_404(Event, slug=slug).games.get_queryset().order_by('day')
 
 	lista = [list(game.teams.get_queryset()) for game in games]
 	lista2 = [game.day for game in games]
