@@ -56,10 +56,12 @@
 				<div class="game-footer">
 					<p class="game-day lead">{{ game.day|date:"H:i • D d F" }}</p>
 				</div>
-				<div class="options-user">
-					<a href="{% url 'editGame' pk=game.pk %}" class="btn btn-success">Editar</a>
-					<a href="{% url 'deleteGame' pk=game.pk %}" class="btn btn-outline-danger">Eliminar</a>
-				</div>
+				{% if user.is_superuser %}
+					<div class="options-user">
+						<a href="{% url 'editGame' pk=game.pk %}" class="btn btn-success">Editar</a>
+						<a href="{% url 'deleteGame' pk=game.pk %}" class="btn btn-outline-danger">Eliminar</a>
+					</div>
+				{% endif %}
 			</div>
 		{% endfor %}
 	</div>
