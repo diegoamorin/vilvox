@@ -16,15 +16,19 @@ def index(request):
 	now = timezone.now()
 	
 	games_index = Game.objects.all().order_by("day")
+
 	games_result = []
 	for game in games_index:
 		if game.day > now:
 			games_result.append(game)
 
-	games_five = []
-	for game in games_result:
-		if len(games_five) < 5:
-			games_five.append(game)
+	if len(games_result) >= 5:
+		games_five = []
+		for game in games_result:
+			if len(games_five) < 5:
+				games_five.append(game)
+	else:
+		games_five = []
 
 	""" Seccion Paginacion """
 	paginator = Paginator(posts, 8) # Show 8 pages per page
