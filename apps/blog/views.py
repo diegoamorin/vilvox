@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
@@ -7,18 +8,38 @@ from django.shortcuts import render
 from .models import Post, Tag, List
 from .forms import PostForm, SerieForm, TagForm
 
+from apps.events.models import Game
+
 def index(request):
 	posts = Post.objects.all().order_by('-pk')
 
-	paginator = Paginator(posts, 8) # Show 8 pages per page
+	now = timezone.now()
+	
+	games_index = Game.objects.all().order_by("day")
 
+	games_result = []
+	for game in games_index:
+		if game.day > now:
+			games_result.append(game)
+
+	if len(games_result) >= 5:
+		games_five = []
+		for game in games_result:
+			if len(games_five) < 5:
+				games_five.append(game)
+	else:
+		games_five = []
+
+	""" Seccion Paginacion """
+	paginator = Paginator(posts, 8) # Show 8 pages per page
 	page = request.GET.get('page')
 	posts = paginator.get_page(page)
+	""" Fin de Seccion"""
 
-	context = {
-		"posts": posts
-	}
-	return render(request, 'index.html', context)
+	return render(request, 'index.html', {
+		"posts": posts,
+		"games_index": games_five,
+	})
 
 # Seccion de Articulos
 
