@@ -1,3 +1,8 @@
+.nav-cont {
+	display: flex;
+	align-items: center;
+}
+
 .search-bar {
 	border-radius: 3em;
 	border: none;
