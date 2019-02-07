@@ -54,7 +54,7 @@
 					</div>
 				</h1>
 				<div class="game-footer">
-					<p class="game-day lead">{{ game.day|date:"D d F • P" }}</p>
+					<p class="game-day lead">{{ game.day|date:"H:i • D d F" }}</p>
 				</div>
 				<div class="options-user">
 					<a href="{% url 'editGame' pk=game.pk %}" class="btn btn-success">Editar</a>
