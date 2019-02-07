@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block jumbo %}
+	<h1 class="lead">Esta seguro que desea eliminar:</h1>
+	<h1 class="display-4">"{{ game.slug }}"</h1>
+
+	<a href="{% url 'confirmDeleteGame' slug=game.slug %}" class="btn btn-outline-danger">Si, Eliminar</a>
+	<a href="{% url 'cancelDeleteGame' slug=game.slug %}" class="btn btn-success">Cancelar</a>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

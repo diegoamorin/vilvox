@@ -84,3 +84,22 @@ def editGame(request, pk):
 		'jumbo':jumbo,
 		'form': form,
 	})
+
+@login_required
+def deleteGame(request, pk):
+	game = get_object_or_404(Game, pk=pk)
+	return render(request, "confirm_delGame.html", {
+		"game": game,
+	})
+
+@login_required
+def confirmDeleteGame(request, slug):
+	game = get_object_or_404(Game, slug=slug)
+	game.delete()
+	return redirect("eventIndex")
+
+@login_required
+def cancelDeleteGame(request, slug):
+	game = get_object_or_404(Game, slug=slug)
+	event = Event.objects.filter(games__slug=game.slug)
+	return redirect("eventDetail", slug=event[0].slug)
