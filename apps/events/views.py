@@ -18,7 +18,10 @@ def eventDetail(request, slug):
 
 	lista = [list(game.teams.get_queryset()) for game in games]
 	lista2 = [game.day for game in games]
-	lista_total = [{'teams':i[0], 'day':i[1]} for i in zip(lista, lista2)]
+	lista3 = [game.pk for game in games]
+	lista_total = [
+		{'teams':i[0], 'day':i[1], 'pk':i[2]} for i in zip(lista, lista2, lista3)
+	]
 
 	context = {
 		"event": event,
@@ -61,3 +64,23 @@ def addGame(request, slug):
 		"jumbo": jumbo,
 	}
 	return render(request, "form.html", context)
+
+@login_required
+def editGame(request, pk):
+	jumbo = "Editar Juego"
+	game = get_object_or_404(Game, pk=pk)
+	event = Event.objects.filter(games__slug=game.slug)
+
+	if request.method == 'POST':
+		form = GameForm(request.POST, request.FILES, instance=game)
+
+		if form.is_valid():
+			form.save()
+			return redirect("eventDetail", slug=event[0].slug)
+	else:
+		form = GameForm(instance=game)
+
+	return render(request, 'form.html',{
+		'jumbo':jumbo,
+		'form': form,
+	})

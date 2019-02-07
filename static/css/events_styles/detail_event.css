@@ -63,6 +63,12 @@
 	font-size: 0;
 }
 
+/* Centrado de las Opciones de Administrador */
+.options-user {
+	margin-top: 1em;
+	text-align: center;
+}
+
 @media (max-width: 800px) {
 	.name-claro {
 		font-size : 0;

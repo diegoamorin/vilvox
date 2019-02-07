@@ -56,6 +56,11 @@
 				<div class="game-footer">
 					<p class="game-day lead">{{ game.day|date:"D d F • P" }}</p>
 				</div>
+				<div class="options-user">
+					<a href="{% url 'editGame' pk=game.pk %}" class="btn btn-success">Editar</a>
+
+					<a href="#" class="btn btn-outline-danger">Eliminar</a>
+				</div>
 			</div>
 		{% endfor %}
 	</div>
