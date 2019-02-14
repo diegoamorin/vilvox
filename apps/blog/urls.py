@@ -1,7 +1,8 @@
 from django.urls import path
 
 from .views import (
-    index, series, about, tags, posts,
+    index, series, about, tags, posts, 
+    upload_image, gallery,
     addPost, addSerie, addTag,
     deletePost, deleteSerie, deleteTag,
     editPost, editSerie, editTag,
@@ -16,6 +17,9 @@ urlpatterns = [
     path('series/', series, name='series'),
     path('about/', about, name='about'),
     path('tags/', tags, name='tags'),
+
+    path('gallery/', gallery, name="gallery"),
+    path('upload/', upload_image, name="upload_image"),
 
     path('post/new/', addPost, name="addPost"),
     path('serie/new/', addSerie, name="addSerie"),
