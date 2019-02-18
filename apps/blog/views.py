@@ -22,14 +22,6 @@ def index(request):
 		if game.day > now:
 			games_result.append(game)
 
-	if len(games_result) >= 5:
-		games_five = []
-		for game in games_result:
-			if len(games_five) < 5:
-				games_five.append(game)
-	else:
-		games_five = []
-
 	""" Seccion Paginacion """
 	paginator = Paginator(posts, 8) # Show 8 pages per page
 	page = request.GET.get('page')
@@ -38,7 +30,7 @@ def index(request):
 
 	return render(request, 'index.html', {
 		"posts": posts,
-		"games_index": games_five,
+		"games_index": games_result,
 	})
 
 # Seccion de Articulos
