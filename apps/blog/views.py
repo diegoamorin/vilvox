@@ -5,8 +5,8 @@ from django.utils import timezone
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
 
-from .models import Post, Tag, List
-from .forms import PostForm, SerieForm, TagForm
+from .models import Post, Tag, List, CDNImage
+from .forms import PostForm, SerieForm, TagForm, CDNImageForm
 
 from apps.events.models import Game
 
@@ -14,7 +14,7 @@ def index(request):
 	posts = Post.objects.all().order_by('-pk')
 
 	now = timezone.now()
-	
+
 	games_index = Game.objects.all().order_by("day")
 
 	games_result = []
@@ -22,13 +22,8 @@ def index(request):
 		if game.day > now:
 			games_result.append(game)
 
-	if len(games_result) >= 5:
-		games_five = []
-		for game in games_result:
-			if len(games_five) < 5:
-				games_five.append(game)
-	else:
-		games_five = []
+	if len(games_result) < 6:
+		games_result = []
 
 	""" Seccion Paginacion """
 	paginator = Paginator(posts, 8) # Show 8 pages per page
@@ -38,7 +33,7 @@ def index(request):
 
 	return render(request, 'index.html', {
 		"posts": posts,
-		"games_index": games_five,
+		"games_index": games_result,
 	})
 
 # Seccion de Articulos
@@ -323,3 +318,27 @@ def deleteTag(request, pk):
 def about(request):
 	return render(request, 'about.html')
 
+@login_required
+def gallery(request):
+	cdn_images = CDNImage.objects.all()
+	return render(request, "gallery.html", {
+		"cdn_images": cdn_images,
+	})
+
+@login_required
+def upload_image(request):
+	jumbo = 'Nueva Imagen'
+	if request.method == 'POST':
+		form = CDNImageForm(request.POST, request.FILES)
+
+		if form.is_valid():
+			form.save()
+			return redirect('gallery')
+
+	else:
+		form = CDNImageForm()
+
+	return render(request, "form.html", {
+		"form": form,
+		"jumbo": jumbo
+	})

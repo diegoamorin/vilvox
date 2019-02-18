@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post, List, Tag
+from .models import Post, List, Tag, CDNImage
 
 class PostForm(forms.ModelForm):
 	class Meta:
@@ -16,3 +16,8 @@ class TagForm(forms.ModelForm):
 	class Meta:
 		model = Tag
 		fields = ['subject']
+
+class CDNImageForm(forms.ModelForm):
+	class Meta:
+		model = CDNImage
+		fields = ['img']

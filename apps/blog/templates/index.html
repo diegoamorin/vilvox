@@ -3,6 +3,7 @@
 
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 {% endblock %}
 
 {% block jumbo %}
@@ -11,7 +12,7 @@
 {% block content %}
 
 {% if games_index %}
-	<div class="wrapper-games">
+	<div class="wrapper-games owl-nome owl-carousel owl-theme">
 		{% for game in games_index %}
 			<div class="card-game">
 				<div class="block-total">

@@ -38,3 +38,6 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class CDNImage(models.Model):
+	img = models.ImageField(upload_to='images/CDNImages/')

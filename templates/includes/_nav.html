@@ -30,6 +30,11 @@
 				<li class="nav-item active">
 					<a class="nav-link mx-2" href="{% url 'tags' %}">TEMAS</a>
 				</li>
+				{% if user.is_superuser %}
+				<li class="nav-item active">
+					<a class="nav-link mx-2" href="{% url 'gallery' %}">GALERIA</a>
+				</li>
+				{% endif %}
 			</ul>
 
 			<form class="form-inline" method="GET" action="{% url 'posts' %}">
