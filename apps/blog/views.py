@@ -22,6 +22,9 @@ def index(request):
 		if game.day > now:
 			games_result.append(game)
 
+	if len(games_result) < 6:
+		games_result = []
+
 	""" Seccion Paginacion """
 	paginator = Paginator(posts, 8) # Show 8 pages per page
 	page = request.GET.get('page')
