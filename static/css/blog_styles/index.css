@@ -42,6 +42,31 @@ hr {
 	margin: 0;
 }
 
+/* Carrousel styles */
+/* 
+.owl-carousel .owl-item img{
+	width: 40px;
+	background: #000;
+} */
+
+.owl-nome .owl-nav {
+	position: absolute;
+	width: 100%;
+	top: 20%;
+	background:blue;
+	height:0px;
+}
+  
+.owl-nome .owl-next{
+	position:absolute;
+	right:1%;
+}
+
+.owl-nome .owl-prev{
+	position:absolute;
+	left:1%;
+}
+
 /* Seccion Articulos */
 .post-wrapper {
 	border-radius: 3px;
