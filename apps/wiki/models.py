@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 class VideoGame(models.Model):
 	name = models.CharField(max_length=50)
@@ -8,6 +9,10 @@ class VideoGame(models.Model):
 	launch = models.DateField()
 	website = models.URLField(blank=True, null=True)
 	description = models.TextField()
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.name)
+		super().save(*args, **kwargs)
 
 	def __str__(self):
 		return self.name
@@ -23,6 +28,11 @@ class Team(models.Model):
 		VideoGame,
 		related_name='teams',
 	)
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.name)
+		super().save(*args, **kwargs)
+
 	def __str__(self):
 		return self.name
 
@@ -45,5 +55,10 @@ class Gamer(models.Model):
 		VideoGame,
 		related_name='gamers',
 	)
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.name)
+		super().save(*args, **kwargs)
+
 	def __str__(self):
 		return self.nickname

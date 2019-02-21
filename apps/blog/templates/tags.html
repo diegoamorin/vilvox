@@ -19,7 +19,7 @@
 			<div class="card-body">
 				<h3 class="card-title text-center">{{ tag.subject }}</h3>
 				<p>Articulos: {{ tag.posts.all|length }}</p>
-				<a href="{% url 'posts' %}?tag={{ tag.subject }}" class="btn btn-dark btn-block mt-5">Ver Articulos</a>
+				<a href="{% url 'posts' %}?tag={{ tag.slug }}" class="btn btn-dark btn-block mt-5">Ver Articulos</a>
 				{% if user.is_superuser %}
 					<a href="{% url 'editTag' subject=tag.subject %}" class="btn btn-success btn-block">Editar</a>
 					<a href="{% url 'deleteTag' pk=tag.pk %}" class="btn btn-danger btn-block">Eliminar</a>

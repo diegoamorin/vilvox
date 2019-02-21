@@ -6,7 +6,7 @@ class VideogameForm(forms.ModelForm):
 	class Meta:
 		model = VideoGame
 		fields = (
-			'name', 'slug', 'img', 'category',
+			'name', 'img', 'category',
 			'launch', 'website', 'description'
 		)
 
@@ -14,7 +14,7 @@ class TeamForm(forms.ModelForm):
 	class Meta:
 		model = Team
 		fields = (
-			'name', 'short_name', 'slug', 'img', 'website',
+			'name', 'short_name', 'img', 'website',
 			'description', 'videogames'
 		)
 
@@ -22,6 +22,6 @@ class GamerForm(forms.ModelForm):
 	class Meta:
 		model = Gamer
 		fields = (
-			'nickname', 'slug', 'name', 'birth', 'img',
+			'nickname', 'name', 'birth', 'img',
 			'country', 'description', 'country', 'team', 'videogames',
 		)
