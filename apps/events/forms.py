@@ -7,7 +7,6 @@ class EventForm(forms.ModelForm):
 		model = Event
 		fields = [
 			'name',
-			'slug',
 			'description',
 			'start_day',
 			'end_day',
@@ -18,7 +17,6 @@ class GameForm(forms.ModelForm):
 	class Meta:
 		model = Game
 		fields = [
-			'slug',
 			'day',
 			'videogame',
 			'teams',

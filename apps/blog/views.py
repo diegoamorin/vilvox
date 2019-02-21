@@ -47,7 +47,7 @@ def posts(request):
 
 	query_tag = request.GET.get("tag")
 	if query_tag:
-		posts = posts.filter(tags__subject=query_tag)
+		posts = posts.filter(tags__slug=query_tag)
 
 	paginator = Paginator(posts, 8) # Show 8 pages per page
 
