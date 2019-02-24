@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import Tag, List, Post
+from .models import Tag, List, Post, Profile
 
-admin.site.register([Tag, List, Post])
+admin.site.register([Profile, Tag, List, Post])

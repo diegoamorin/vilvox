@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
 
-from .models import Post, Tag, List, CDNImage
+from .models import Post, Tag, List, CDNImage, Profile
 from .forms import PostForm, SerieForm, TagForm, CDNImageForm
 
 from apps.events.models import Game
@@ -66,7 +66,9 @@ def addPost(request):
 		form = PostForm(request.POST, request.FILES)
 
 		if form.is_valid():
-			form.save()
+			articulo = form.save(commit=False)
+			articulo.author = Profile.objects.get(user=request.user)
+			articulo.save()
 			return redirect("index")
 	else:
 		form = PostForm()
@@ -201,7 +203,9 @@ def addSerie(request):
 	if request.method == 'POST':
 		form = SerieForm(request.POST, request.FILES)
 		if form.is_valid():
-			form.save()
+			lista = form.save(commit=False)
+			lista.author = Profile.objects.get(user=request.user)
+			lista.save()
 			return redirect("series")
 	else:
 		form = SerieForm()
