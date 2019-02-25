@@ -6,12 +6,36 @@ from django.dispatch import receiver
 
 from markdownx.models import MarkdownxField
 
+class socialWeb(models.Model):
+	name = models.CharField(max_length=20)
+	img_icon = models.FileField(upload_to="images/social_icons/")
+
+	def __str__(self):
+		return self.name
+
+class socialURL(models.Model):
+	social_web = models.ForeignKey(
+		socialWeb, 
+		on_delete=models.CASCADE,
+		related_name="+",
+	)
+	url = models.URLField()
+
+	def __str__(self):
+		return f"{self.social_web.name}: {self.url}"
+
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	fullname = models.CharField(max_length=40, blank=True, null=True)
 	img_perfil = models.ImageField('images/profiles/')
-	bio = models.TextField(max_length=500, blank=True)
+	bio = models.TextField(max_length=500, blank=True, null=True)
 	location = models.CharField(max_length=30, blank=True)
 	birth_date = models.DateField(null=True, blank=True)
+	social_urls = models.ManyToManyField(
+		socialURL,
+		related_name="+",
+		blank=True,
+	)
 
 	@receiver(post_save, sender=User)
 	def create_user_profile(sender, instance, created, **kwargs):
