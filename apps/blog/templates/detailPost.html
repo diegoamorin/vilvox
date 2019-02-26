@@ -12,18 +12,27 @@
 {% endblock %}
 
 {% block jumbo %}
-	<h1 class="display-4">{{post.title}}</h1>
-	
 	{% if user.is_superuser %}
 		<div>
 			<a href="{% url 'editPost' pk=post.pk %}" class="btn btn-success">Editar</a>
 			<a href="{% url 'deletePost' pk=post.pk %}" class="btn btn-danger">Eliminar</a>
 		</div>
 	{% endif %}
-	<div class="lead mb-5">{{post.created_at|date:"D d \d\e F, Y"}}</div>
 {% endblock %}
-
+	
 {% block content %}
+	<div class="wrapper-title">
+		<h1 class="display-4">{{post.title}}</h1>
+	</div>
+
+	<div class="wrapper-author lead">
+		<div class="author-item">
+			<a href="{% url 'profile_page' username=post.author.user.username %}">{{ post.author }}</a>
+		</div>
+		<div class="dot-item">•</div>
+		<div class="date-item">{{post.created_at|date:"d M, Y"}}</div>
+	</div>
+
 <div class="wrapper">
 
 	<div class="post-section">

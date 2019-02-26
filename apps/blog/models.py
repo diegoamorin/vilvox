@@ -1,15 +1,53 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from markdownx.models import MarkdownxField
 
-# class UserProfile(models.Model):
-# 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-# 	avatar = models.ImageField('images/profiles/')
-# 	bio = models.TextField(max_length=500, blank=True)
-# 	location = models.CharField(max_length=30, blank=True)
-# 	birth_date = models.DateField(null=True, blank=True)
+class socialWeb(models.Model):
+	name = models.CharField(max_length=20)
+	img_icon = models.FileField(upload_to="images/social_icons/")
+
+	def __str__(self):
+		return self.name
+
+class socialURL(models.Model):
+	social_web = models.ForeignKey(
+		socialWeb, 
+		on_delete=models.CASCADE,
+		related_name="+",
+	)
+	url = models.URLField()
+
+	def __str__(self):
+		return f"{self.social_web.name}: {self.url}"
+
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	fullname = models.CharField(max_length=40, blank=True, null=True)
+	img_perfil = models.ImageField('images/profiles/')
+	bio = models.TextField(max_length=500, blank=True, null=True)
+	location = models.CharField(max_length=30, blank=True)
+	birth_date = models.DateField(null=True, blank=True)
+	social_urls = models.ManyToManyField(
+		socialURL,
+		related_name="+",
+		blank=True,
+	)
+
+	@receiver(post_save, sender=User)
+	def create_user_profile(sender, instance, created, **kwargs):
+		if created:
+			Profile.objects.create(user=instance)
+
+	@receiver(post_save, sender=User)
+	def save_user_profile(sender, instance, **kwargs):
+		instance.profile.save()
+	
+	def __str__(self):
+		return self.user.username
 
 class Tag(models.Model):
 	subject = models.CharField(max_length=20, unique=True)
@@ -25,6 +63,13 @@ class Tag(models.Model):
 class List(models.Model):
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=120, unique=True)
+	author = models.ForeignKey(
+		Profile, 
+		related_name='listas',
+		blank=True,
+		null=True,
+		on_delete=models.CASCADE,
+	)
 	description = models.TextField()
 	last_update = models.DateTimeField(auto_now_add=True)
 	img = models.ImageField(upload_to='images/list/')
@@ -38,8 +83,14 @@ class List(models.Model):
 
 class Post(models.Model):
 	title = models.CharField(max_length=100)
-	# author = models.ForeignKey(UserProfile, related_name='posts')
 	slug = models.SlugField(max_length=120, unique=True)
+	author = models.ForeignKey(
+		Profile, 
+		related_name='posts',
+		blank=True,
+		null=True,
+		on_delete=models.SET_NULL,
+	)
 	content = MarkdownxField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(null=True)

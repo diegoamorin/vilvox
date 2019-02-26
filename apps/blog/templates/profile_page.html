@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/blog_styles/profile_page.css' %}">
+{% endblock %}
+
+{% block jumbo %}
+{% endblock %}
+
+{% block content %}
+	<div class="header-profile">
+		<img
+			src="{% get_media_prefix %}{{ author.img_perfil }}"
+			alt="img-user"
+			class="img-profile"
+		>
+		<div class="profile-desc">
+			<h1>{{ author.user }}</h1>
+			<h3>{{ author.fullname }}</h3>
+			<p>{{ author.bio }}</p>
+			<p>{{ author.location }}</p>
+			{% for social_url in author.social_urls.all %}
+				<a href="{{ social_url.url }}" target="_blank">
+					<img
+					src="{% get_media_prefix %}{{ social_url.social_web.img_icon }}"
+					alt="img-social"
+					class="social-icon"
+					>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+
+	<hr>
+	<div class="articles-section">
+		<h3>Artículos</h3>
+		{% for post in author.posts.all %}
+			<a href="{% url 'detailPost' slug=post.slug %}">
+				<div class="article-wrapper">
+					{{ post.title }}
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+
+{% endblock %}

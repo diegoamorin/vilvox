@@ -1,7 +1,6 @@
 .post-content {
 	text-align: justify;
 }
-
 .wrapper {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
@@ -21,6 +20,41 @@
 .post-section-title {
 	font-size: 2em;
 }
+/* estilos para el titulo del Post */
+
+.wrapper-title {
+	text-align: center;
+}
+
+/* fin de los estilos del titulo del Post */
+
+
+/* estilos de author del Post */
+.wrapper-author {
+	margin: .4em 0 2em 0;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	padding: .3em;
+}
+.author-item {
+	font-size: .8em;
+	font-weight: 400;
+}
+.author-item a {
+	text-decoration: none;
+	color: rgb(59, 59, 59);
+}
+.dot-item {
+	color: rgb(80, 80, 80);
+	margin: 0 .6em 0 .6em;
+}
+.date-item {
+	font-size: .7em;
+	color: rgb(105, 105, 105);
+}
+
+/* final de estilos del author */
 
 .post-recommend-wrapper {
 	margin-top: 2em;

@@ -6,6 +6,7 @@ from ..wiki.models import VideoGame, Team
 class Event(models.Model):
 	name = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=120, unique=True)
+	short_name = models.CharField(max_length=20)
 	description = models.TextField()
 	start_day = models.DateField()
 	end_day = models.DateField(blank=True, null=True)
