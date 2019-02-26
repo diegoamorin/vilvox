@@ -22,7 +22,7 @@ class socialURL(models.Model):
 	url = models.URLField()
 
 	def __str__(self):
-		return f"{self.social_web.name}: {self.url}"
+		return "%s: %s"%(self.social_web.name, self.url)
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
