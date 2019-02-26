@@ -27,7 +27,7 @@
 
 	<div class="wrapper-author lead">
 		<div class="author-item">
-			<a href="#">{{ post.author }}</a>
+			<a href="{% url 'profile_page' username=post.author.user.username %}">{{ post.author }}</a>
 		</div>
 		<div class="dot-item">•</div>
 		<div class="date-item">{{post.created_at|date:"d M, Y"}}</div>

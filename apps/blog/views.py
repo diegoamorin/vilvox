@@ -317,6 +317,14 @@ def deleteTag(request, pk):
 	tag.delete()
 	return redirect("tags")
 
+
+# Seccion Perfil
+def profile_page(request, username):
+	author = Profile.objects.get(user__username=username)
+	return render(request, "profile_page.html", {
+		"author": author,
+	})
+
 # Otras Seccciones
 
 def about(request):

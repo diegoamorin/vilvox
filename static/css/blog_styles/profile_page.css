@@ -1,0 +1,42 @@
+/* Seccion del Perfil imagen y descripcion */
+
+.header-profile {
+	display: grid;
+	grid-template-columns: 2fr 7fr;
+	grid-gap: 1em;
+}
+
+.img-profile {
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	float:left;
+	margin-right: 2em;
+}
+
+.profile-desc h1 {
+	font-size: 3em;
+	font-weight: 100;
+}
+.profile-desc h3 {
+	font-size: 1.2em;
+	margin: .6em 0 .6em 0;
+}
+
+.social-icon {
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 50px;
+	margin-right: 1em;
+}
+
+.articles-section {
+	clear: both;
+}
+
+/* Seccion de articulos del autor */
+
+.article-wrapper {
+	border: 1px solid rgb(226,226,226);
+}
+
