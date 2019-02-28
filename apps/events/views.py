@@ -54,7 +54,10 @@ def addGame(request, slug):
 	if request.method == 'POST':
 		form = GameForm(request.POST, request.FILES)
 		if form.is_valid():
-			form.save()
+			game = form.save(commit=False)
+			game.event = event
+			game.save()
+			form.save_m2m()
 			return redirect('eventDetail', slug=event.slug)
 	else:
 		form = GameForm()

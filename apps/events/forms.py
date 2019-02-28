@@ -21,5 +21,4 @@ class GameForm(forms.ModelForm):
 			'day',
 			'videogame',
 			'teams',
-			'event',
 		]
