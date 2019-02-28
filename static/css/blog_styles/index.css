@@ -43,12 +43,6 @@ hr {
 }
 
 /* Carrousel styles */
-/* 
-.owl-carousel .owl-item img{
-	width: 40px;
-	background: #000;
-} */
-
 .owl-nome .owl-nav {
 	position: absolute;
 	width: 100%;
@@ -68,13 +62,6 @@ hr {
 }
 
 /* Seccion Articulos */
-.post-wrapper {
-	border-radius: 3px;
-	background: #fff;
-	border: 1px solid rgb(214, 213, 213);
-	margin: 20px 0 0 0;
-}
-
 .postLink {
 	color: rgb(56, 56, 56);
 }
@@ -113,23 +100,17 @@ hr {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	border-radius: 3px;
 }
 
 .post-info {
 	margin-left: 300px;
 }
 
-.post-wrapper-bot {
-	padding: 10px 10px 20px 10px;
-	position: relative;
+.post-author {
+	font-weight: 500;
+	margin-right: .8em;
 }
-.btn-infinity {
-	margin-left: 10px;
-}
-.btn-edit {
-	display: inline;
-}
+
 /* De pequeño a mediano */
 @media (max-width: 770px) {
 	.post-section {
