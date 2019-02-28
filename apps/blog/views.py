@@ -69,6 +69,7 @@ def addPost(request):
 			articulo = form.save(commit=False)
 			articulo.author = Profile.objects.get(user=request.user)
 			articulo.save()
+			form.save_m2m()
 			return redirect("index")
 	else:
 		form = PostForm()
