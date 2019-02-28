@@ -69,17 +69,16 @@ def addGame(request, slug):
 	return render(request, "form.html", context)
 
 @login_required
-def editGame(request, pk):
+def editGame(request, pk, slug_event):
 	jumbo = "Editar Juego"
 	game = get_object_or_404(Game, pk=pk)
-	event = Event.objects.filter(games__slug=game.slug)
 
 	if request.method == 'POST':
 		form = GameForm(request.POST, request.FILES, instance=game)
 
 		if form.is_valid():
 			form.save()
-			return redirect("eventDetail", slug=event[0].slug)
+			return redirect("eventDetail", slug=slug_event)
 	else:
 		form = GameForm(instance=game)
 
