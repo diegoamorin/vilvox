@@ -39,7 +39,10 @@
 	color: rgb(56,56,56);
 }
 
-/* Centrado Avanzado */
+/* Centrado Avanzado 
+       g2 esports vs fnatic
+    team vitality vs cloud 9
+*/
 .resultados {
 	display: flex;
 	justify-content: center;
@@ -76,11 +79,27 @@
 	.name-oscuro {
 		font-size: 30px;
 	}
+	.event-name {
+		font-size: 3em;
+	}
+	.event-date {
+		font-size: 1em;
+	}
+	.event-desc {
+		font-size: 0;
+	}
+	.game-section {
+		margin-top: 0;
+	}
 }
 @media (max-width: 600px) {
 	.versus {
-		width: 10%;
+		width: 15%;
 		text-align: center;
+		font-size: 1em;
+	}
+	.event-name {
+		font-size: 2em;
 	}
 	.name-claro {
 		font-size : 0;
