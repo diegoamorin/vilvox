@@ -24,8 +24,9 @@
 			<div class="event-wrapper">
 				<img class="event-img" src="{% get_media_prefix %}{{ event.img }}" alt="" width="280" height="160">
 				<div class="event-info">
-					<h1 class="display-4 event-title">{{ event }}</h1>
-					<p class="lead">
+					<h1 class="display-4 event-title">{{ event.name }}</h1>
+					<h1 class="display-4 event-title-hidden">{{ event.short_name }}</h1>
+					<p class="lead event-day">
 						<strong>
 							{% if event.end_day %}
 								{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}
@@ -34,10 +35,11 @@
 							{% endif %}
 						</strong>
 					</p>
-					<p class="lead">{{ event.description|truncatechars:150 }}</p>
+					<p class="lead event-desc">{{ event.description|truncatechars:150 }}</p>
 				</div>
 			</div>
 		</a>
+		<hr class="separator" />
 		{% endfor %}
 	</div>
 {% endblock %}

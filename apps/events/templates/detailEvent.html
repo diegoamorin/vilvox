@@ -21,7 +21,7 @@
 			<h4 class="event-date">Inicia el {{ event.start_day|date:"d F" }}</h4>
 		{% endif %}
 
-		<p class="lead">{{ event.description|truncatechars:250 }}</p>
+		<p class="lead event-desc">{{ event.description|truncatechars:250 }}</p>
 		{% if user.is_superuser %}
 			<a href="{% url 'addGame' slug=event.slug %}" class="btn btn-outline-dark mt-4">Agregar Juego</a>
 		{% endif %}
