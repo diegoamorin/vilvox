@@ -7,27 +7,28 @@ from .forms import EventForm, GameForm
 def eventIndex(request):
 	events = Event.objects.all()
 
-	context = {
+	return render(request, "event_index.html", {
 		"events": events,
-	}
-	return render(request, "event_index.html", context)
+	})
 
 def eventDetail(request, slug):
 	event = get_object_or_404(Event, slug=slug)
-	games = get_object_or_404(Event, slug=slug).games.get_queryset().order_by('day')
-
+	games = (
+		get_object_or_404(Event, slug=slug)
+		.games
+		.get_queryset()
+		.order_by('day')
+	)
 	lista = [list(game.teams.get_queryset()) for game in games]
 	lista2 = [game.day for game in games]
 	lista3 = [game.pk for game in games]
 	lista_total = [
 		{'teams':i[0], 'day':i[1], 'pk':i[2]} for i in zip(lista, lista2, lista3)
 	]
-
-	context = {
+	return render(request, "detailEvent.html", {
 		"event": event,
 		"games": lista_total,
-	}
-	return render(request, "detailEvent.html", context)
+	})
 
 @login_required
 def addEvent(request):
@@ -40,11 +41,10 @@ def addEvent(request):
 	else:
 		form = EventForm()
 
-	context = {
+	return render(request, "form.html", {
 		"form": form,
 		"jumbo": jumbo,
-	}
-	return render(request, "form.html", context)
+	})
 
 @login_required
 def addGame(request, slug):
@@ -62,11 +62,10 @@ def addGame(request, slug):
 	else:
 		form = GameForm()
 
-	context = {
+	return render(request, "form.html", {
 		"form": form,
 		"jumbo": jumbo,
-	}
-	return render(request, "form.html", context)
+	})
 
 @login_required
 def editGame(request, pk, slug_event):
