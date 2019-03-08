@@ -5,8 +5,6 @@ from .models import Event, Game
 from .forms import EventForm, GameForm
 from ..utils.date_spanish import get_month, get_weekday
 
-import pprint
-
 def eventIndex(request):
 	events = Event.objects.all()
 
@@ -34,10 +32,10 @@ def eventDetail(request, slug):
 		day = game.get("day")
 		# day_format = Sábado 25 Mayo
 		days_format.append(
-			get_weekday(day.strftime("%A")) + " " + str(day.day) + " " + get_month(day.month)
+			get_weekday(day.strftime("%A")) +
+			" " + str(day.day) +
+			" " + get_month(day.month)
 		)
-
-	print(days_format)
 
 	days_formats_and_games = [
 		{"format_day":i[0], "game":i[1]} for i in zip(days_format, total_games)
@@ -48,8 +46,7 @@ def eventDetail(request, slug):
 		if not day_format in days_format_only:
 			days_format_only.append(day_format)
 
-	print(days_format_only)
-	bucle = []
+	date_and_games_full = []
 	for day_format in days_format_only:
 
 		games_list = []
@@ -61,15 +58,11 @@ def eventDetail(request, slug):
 
 		result = {"format_day": day_format, "games": games_list}
 
-		bucle.append(result)
-
-	print("")
-	pprint.pprint(bucle)
-	print("")
+		date_and_games_full.append(result)
 
 	return render(request, "detailEvent.html", {
 		"event": event,
-		"games": total_games,
+		"date_and_games_full": date_and_games_full,
 	})
 
 @login_required
