@@ -39,6 +39,15 @@
 	color: rgb(56,56,56);
 }
 
+/* Seccion Dia de Encuentros-Fecha */
+.full-date-game {
+	background-color: rgb(56, 56, 56);
+	color: #fff;
+	text-align: center;
+	padding: .4em;
+	margin: 2em 0 1em 0;
+}
+
 /* Centrado Avanzado
        g2 esports vs fnatic
     team vitality vs cloud 9
