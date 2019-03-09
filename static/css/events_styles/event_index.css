@@ -33,6 +33,16 @@
 	margin-left: 300px;
 }
 
+@media(max-width: 1200px) {
+	.event-desc {
+		font-size: 0;
+	}
+	.event-day {
+		font-size: 1em;
+	}
+}
+
+
 @media(max-width: 800px) {
 	.event-title-hidden {
 		font-size: 2em;

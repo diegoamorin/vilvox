@@ -15,7 +15,7 @@ class socialWeb(models.Model):
 
 class socialURL(models.Model):
 	social_web = models.ForeignKey(
-		socialWeb, 
+		socialWeb,
 		on_delete=models.CASCADE,
 		related_name="+",
 	)
@@ -45,7 +45,7 @@ class Profile(models.Model):
 	@receiver(post_save, sender=User)
 	def save_user_profile(sender, instance, **kwargs):
 		instance.profile.save()
-	
+
 	def __str__(self):
 		return self.user.username
 
@@ -64,7 +64,7 @@ class List(models.Model):
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=120, unique=True)
 	author = models.ForeignKey(
-		Profile, 
+		Profile,
 		related_name='listas',
 		blank=True,
 		null=True,
@@ -85,7 +85,7 @@ class Post(models.Model):
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=120, unique=True)
 	author = models.ForeignKey(
-		Profile, 
+		Profile,
 		related_name='posts',
 		blank=True,
 		null=True,

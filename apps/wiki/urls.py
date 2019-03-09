@@ -28,7 +28,7 @@ urlpatterns = [
 	path('team/delete/<int:pk>', deleteTeam, name="deleteTeam"),
 	path('team/delete/confirm/<int:pk>', confirmDeleteTeam, name="confirmDeleteTeam"),
 	path('team/delete/cancel/<slug:slug>', cancelDeleteTeam, name="cancelDeleteTeam"),
-	
+
 	path('videogames/', videogamesIndex, name="videogamesIndex"),
 	path('videogame/new/', addVideogame, name="addVideogame"),
 	path('videogame/<slug:slug>/', detailVideoGame, name="detailVideoGame"),

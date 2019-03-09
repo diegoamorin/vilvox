@@ -146,7 +146,7 @@ def detailPost(request, slug):
 
 	''' creamos una lista de [1, ..., numero_tags_el_post]
 		y la volteamos [numero_tags_el_post, 1]
-		funcionaran como el num de similitudes de max a min que debe de tener 
+		funcionaran como el num de similitudes de max a min que debe de tener
 		el post relacionado para que siempre se llege a tres.
 	'''
 	num_tags_list = [i for i in range(1, len(tags) + 1)]

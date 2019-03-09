@@ -135,7 +135,7 @@ def editTeam(request, pk):
 			return redirect("detailTeam", slug=team.slug)
 	else:
 		form = TeamForm(instance=team)
-	
+
 	return render(request, "form.html", {
 		"form": form,
 		"jumbo": jumbo,
@@ -195,7 +195,7 @@ def addVideogame(request):
 def editVideogame(request, pk):
 	jumbo = "editar Videojuego"
 	videogame = get_object_or_404(VideoGame, pk=pk)
-	
+
 	if request.method == 'POST':
 		form = VideogameForm(request.POST, request.FILES, instance=videogame)
 		if form.is_valid():
@@ -203,7 +203,7 @@ def editVideogame(request, pk):
 			return redirect("detailVideoGame", slug=videogame.slug)
 	else:
 		form = VideogameForm(instance=videogame)
-	
+
 	return render(request, 'form.html', {
 		'form': form,
 		'jumbo': jumbo,

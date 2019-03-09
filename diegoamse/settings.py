@@ -17,8 +17,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '104.248.214.94', 
-    'vilvox.com', 
+    '104.248.214.94',
+    'vilvox.com',
     'www.vilvox.com',
 ]
 
