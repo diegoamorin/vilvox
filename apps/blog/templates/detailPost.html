@@ -8,7 +8,6 @@
 
 {% block style %}
 	<link rel="stylesheet" href="{% static 'css/blog_styles/detailPost.css' %}">
-	<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}">
 {% endblock %}
 
 {% block jumbo %}
@@ -35,8 +34,8 @@
 
 <div class="wrapper">
 
-	<div class="post-section">
-		<img class="card-img mb-4" src="{% get_media_prefix %}{{ post.img }}" alt="">
+	<div class="post-content">
+		<img class="img-article mb-4" src="{% get_media_prefix %}{{ post.img }}" alt="">
 		<div class="lead post-content">{{ post.content|markdown|safe }}</div>
 
 		{% for subject in tags %}
@@ -44,31 +43,38 @@
 		{% endfor %}
 	</div>
 
-	<div class="ad-section card">
-		<h3 class="card-header text-center lead"><strong>Área de Publicidad</strong></h3>
-		<p class="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. A necessitatibus odio ipsa repudiandae molestias, tempore voluptatibus incidunt porro eos quas, iure eius cupiditate consequatur molestiae magni harum rerum. Cum, perspiciatis.</p>
+	<div class="ad-section">
+		<h3 class="text-center lead">Área de Publicidad</h3>
 	</div>
 
-	<div class="card suscribe-section ">
-		<h3 class="card-header text-center lead"><strong>Suscribirse</strong></h3>
-		<form action="" method="POST" class="card-body">
-			<p class="lead">Suscríbete para enterarte de los post y eventos más recientes.</p>
+	<div class="suscribe-section">
+		<h3 class="lead sec-title">SUSCRÍBETE A {{ site_name }}</h3>
+		<form action="" method="POST">
 			{% csrf_token %}
-			<input class="form-control" type="text" placeholder="example@mail.com">
-			<input type="submit" class="btn btn-dark btn-block mt-3">
+			<input class="form-control" type="text" placeholder="Escribe tu correo electrónico">
+			<input
+				type="submit"
+				class="btn btn-light btn-block mt-3"
+				value="SUSCRIBIRSE"
+			>
 		</form>
 	</div>
 
 	{% if recent_post != None %}
 		<a href="{% url 'detailPost' slug=recent_post.slug %}" class="postLink">
-			<div class="post-ultimate card">
-				<h3 class="card-header text-center lead">
-					<strong>Último Artículo</strong><hr>
-					{{ recent_post.title }}
-				</h3>
-				<div class="card-body">
-					<img src="{% get_media_prefix %}{{ recent_post.img }}" alt="" class="card-img">
+			<div class="post-ultimate-wrapper">
+				<h3 class="lead mb-3 sec-title">ÚLTIMO ARTÍCULO</h3>
+				<div class="post-ultimate">
+					<div>
+						<img src="{% get_media_prefix %}{{ recent_post.img }}" alt="" class="post-recommend-img">
+						<div class="lead post-ultimate-title">{{ recent_post.title }}</div>
+						<div>
+							<span class="post-recommend-author">{{ recent_post.author }}</span>
+							<span class="post-recommend-day">{{ recent_post.created_at|timesince }}</span>
+						</div>
+					</div>
 				</div>
+
 			</div>
 		</a>
 	{% endif %}
@@ -85,6 +91,8 @@
 				<div class="post-recommend-item">
 					<img class="post-recommend-img" src="{% get_media_prefix %}{{ post_recommend.img }}" alt="">
 					<h3 class="lead post-recommend-title">{{ post_recommend.title|truncatechars:50 }}</h3>
+					<span class="post-recommend-author">{{ post_recommend.author }}</span>
+					<span class="post-recommend-day">{{ post_recommend.created_at|timesince }}</span>
 				</div>
 			</a>
 		{% endfor %}

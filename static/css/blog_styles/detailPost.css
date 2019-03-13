@@ -1,14 +1,12 @@
-.post-content {
-	text-align: justify;
-}
+/* Estilos Generales */
 .wrapper {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
-	grid-template-rows: 300px 280px 350px;
+	grid-template-rows: 300px 150px 350px;
 	grid-gap: 30px;
 }
 
-.post-section {
+.post-content {
 	grid-row: 1 / 5 ;
 }
 .post-sidebar-top {
@@ -20,14 +18,27 @@
 .post-section-title {
 	font-size: 2em;
 }
+
+a {
+	color: rgb(59, 59, 59);
+}
+a:hover {
+	text-decoration: none;
+	color: rgb(59, 59, 59);
+}
+
 /* estilos para el titulo del Post */
 
 .wrapper-title {
 	text-align: center;
 }
+.post-content {
+	text-align: justify;
+}
 
-/* fin de los estilos del titulo del Post */
-
+.img-article {
+	width: 100%;
+}
 
 /* estilos de author del Post */
 .wrapper-author {
@@ -54,27 +65,62 @@
 	color: rgb(105, 105, 105);
 }
 
-/* final de estilos del author */
+/* Ad section */
+.ad-section {
+	background: rgb(243, 243, 243);
+}
 
+/* Estilos para la seccion suscribirse */
+.suscribe-section form {
+	padding: .5em;
+}
+
+/* Estilos para el ultimo articulo */
+.sec-title {
+	background: rgb(59, 59, 59);
+	color: white;
+	padding: .3em;
+	text-align: center;
+}
+.post-ultimate {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0 0 1em 0;
+}
+.post-ultimate-title {
+	font-size: 1.4em;
+	font-weight: 400;
+	clear: both;
+	width: 280px;
+}
+
+
+
+/* Estilos para los articulos Relacionados */
 .post-recommend-wrapper {
 	margin-top: 2em;
 	position: relative;
 	grid-gap: 2em;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 .post-recommend-item {
-	border: 1px solid rgb(213,213,213);
-	border-radius: 3px;
+	background: rgb(243, 243, 243);
 	width: 19.5em;
 	padding: 1em;
 }
 .post-recommend-title {
-	font-size: 1.5em;
+	font-size: 1.4em;
+	font-weight: 400;
 }
 
 .post-recommend-img {
 	width: 280px;
 	height: 160px;
-	border-radius: 3px;
+}
+
+.post-recommend-author {
+	margin: 0 2em 0 0;
 }
