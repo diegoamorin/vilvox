@@ -3,6 +3,18 @@
     background: rgba(131, 131, 131, 0.350);
 }
 
+/* Codigo del TextField de los detailPosts */
+.post-content a:hover {
+	text-decoration: none;
+}
+.post-content iframe {
+	display: block;
+	margin: 1em auto;
+}
+.twitter-tweet {
+	margin: 1em auto;
+}
+
 /* Codigo del Footer */
 
 .pie {
