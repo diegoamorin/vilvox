@@ -13,7 +13,8 @@ urlpatterns = [
     path('wiki/', include('apps.wiki.urls')),
     path('login/', login, {'template_name':'loginForm.html'}, name='login'),
     path('logout/', logout_then_login, name='logout'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
