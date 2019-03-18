@@ -46,35 +46,8 @@
 					<th>Lanzamiento:</th>
 					<th>{{ videogame.launch }}</th>
 				</tr>
-				{% if videogame.website %}
-					<tr>
-						<th>Website:</th>
-						<th><a href="{{ videogame.website }}">{{ videogame.website }}</a></th>
-					</tr>
-				{% endif %}
 			</table>
 		</div>
-
-		<h3 class="lead section-info">Teams</h3>
-		<ul class="list-info">
-			{% for team in videogame.teams.get_queryset %}
-				<li class="item-info">
-					<a href="{% url 'detailTeam' slug=team.slug %}">{{ team }}</a>
-				</li>
-			{% endfor %}
-		</ul>
-		<h3 class="lead section-info">Gamers</h3>
-
-		<ul class="list-info">
-			{% for gamer in videogame.gamers.get_queryset %}
-				<li class="item-info">
-					<a href="{% url 'detailGamer' slug=gamer.slug %}">
-						<img class="img-gamer-info" src="{% get_media_prefix %}{{ gamer.img }}" alt="">
-						{{ gamer }}
-					</a>
-				</li>
-			{% endfor %}
-		</ul>
 
 	</div>
 

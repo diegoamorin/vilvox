@@ -18,8 +18,8 @@
 			class="img-profile"
 		>
 		<div class="profile-desc">
-			<h1>{{ author.user }}</h1>
-			<h3>{{ author.fullname }}</h3>
+			<h1>{{ author.user.username }}</h1>
+			<h3>{{ author.user.first_name }} {{ author.user.last_name }}</h3>
 			<p>{{ author.bio }}</p>
 			<p>{{ author.location }}</p>
 			{% for social_url in author.social_urls.all %}

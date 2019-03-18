@@ -22,7 +22,11 @@
 			<h4 class="event-date">Inicia el {{ event.start_day|date:"d F" }}</h4>
 		{% endif %}
 
-		<p class="lead event-desc">{{ event.description|truncatechars:250 }}</p>
+		{% if event.watch_url %}
+			<a class="btn btn-dark mb-3" href="{{ event.watch_url }}" target="_blank">VER EN VIVO</a>
+		{% endif %}
+
+		<p class="lead event-desc">{{ event.description|safe }}</p>
 		{% if user.is_superuser %}
 			<a href="{% url 'addGame' slug=event.slug %}" class="btn btn-outline-dark mt-4">Agregar Juego</a>
 		{% endif %}

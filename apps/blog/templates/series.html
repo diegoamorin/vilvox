@@ -27,7 +27,6 @@
 				<p class="lead text-center">({{ serie.posts.all|length }})</p>
 			</div>
 			<div class="card-body">
-				<p class="lead">Actualizado: {{ serie.last_update|date:"d M Y" }}</p>
 				<img class="card-img" src="{% get_media_prefix %}{{ serie.img }}">
 				<p class="lead text-justify mt-2">{{ serie.description|truncatechars:112 }}</p>
 				{% if user.is_superuser %}

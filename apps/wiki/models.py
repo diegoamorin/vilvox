@@ -1,13 +1,19 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+from ..blog.models import socialURL
+
 class VideoGame(models.Model):
 	name = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
 	img = models.ImageField(upload_to='images/videogames/')
 	category = models.CharField(max_length=50)
-	launch = models.DateField()
-	website = models.URLField(blank=True, null=True)
+	launch = models.DateField(blank=True, null=True)
+	social_urls = models.ManyToManyField(
+		socialURL,
+		related_name="+",
+		blank=True,
+	)
 	description = models.TextField()
 
 	def save(self, *args, **kwargs):
@@ -22,11 +28,15 @@ class Team(models.Model):
 	short_name = models.CharField(max_length=10, blank=True, null=True)
 	slug = models.SlugField(max_length=40, unique=True)
 	img = models.ImageField(upload_to='images/teams/')
-	website = models.URLField(blank=True, null=True)
+	social_urls = models.ManyToManyField(
+		socialURL,
+		related_name="+",
+		blank=True,
+	)
 	description = models.TextField()
 	videogames = models.ManyToManyField(
 		VideoGame,
-		related_name='teams',
+		related_name='+',
 	)
 
 	def save(self, *args, **kwargs):
@@ -44,16 +54,21 @@ class Gamer(models.Model):
 	img = models.ImageField(upload_to='images/gamers/')
 	description = models.TextField()
 	country = models.CharField(max_length=30)
+	social_urls = models.ManyToManyField(
+		socialURL,
+		related_name="+",
+		blank=True,
+	)
 	team = models.ForeignKey(
 		Team,
-		related_name='members',
+		related_name='+',
 		on_delete=models.CASCADE,
 		blank=True,
 		null=True,
 	)
 	videogames = models.ManyToManyField(
 		VideoGame,
-		related_name='gamers',
+		related_name='+',
 	)
 
 	def save(self, *args, **kwargs):
