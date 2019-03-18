@@ -70,7 +70,6 @@ class List(models.Model):
 		on_delete=models.CASCADE,
 	)
 	description = models.TextField()
-	last_update = models.DateTimeField(auto_now_add=True)
 	img = models.ImageField(upload_to='images/list/')
 
 	def save(self, *args, **kwargs):
