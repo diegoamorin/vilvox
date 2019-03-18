@@ -7,15 +7,15 @@ class VideogameForm(forms.ModelForm):
 		model = VideoGame
 		fields = (
 			'name', 'img', 'category',
-			'launch', 'website', 'description'
+			'launch', 'description',
 		)
 
 class TeamForm(forms.ModelForm):
 	class Meta:
 		model = Team
 		fields = (
-			'name', 'short_name', 'img', 'website',
-			'description', 'videogames'
+			'name', 'short_name', 'img',
+			'description', 'videogames',
 		)
 
 class GamerForm(forms.ModelForm):
