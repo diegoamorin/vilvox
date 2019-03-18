@@ -11,6 +11,7 @@ class Event(models.Model):
 	start_day = models.DateField()
 	end_day = models.DateField(blank=True, null=True)
 	img = models.ImageField(upload_to='images/events/')
+	watch_url = models.URLField(blank=True, null=True)
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.name)

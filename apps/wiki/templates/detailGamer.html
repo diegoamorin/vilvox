@@ -53,15 +53,6 @@
 					<th><a href="{% url 'detailTeam' slug=gamer.team.slug %}">{{ gamer.team }}</a></th>
 				</tr>
 			</table>
-
-			<h3 class="lead section-info">Videogames</h3>
-			<ul class="list-info">
-			{% for vgame in gamer.videogames.get_queryset %}
-				<li class="item-info">
-					<a href="{% url 'detailVideoGame' slug=vgame.slug %}">{{ vgame }}</a>
-				</li>
-			{% endfor %}
-			</ul>
 		</div>
 
 	</div>
