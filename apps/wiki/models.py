@@ -8,7 +8,7 @@ class VideoGame(models.Model):
 	slug = models.SlugField(max_length=50)
 	img = models.ImageField(upload_to='images/videogames/')
 	category = models.CharField(max_length=50)
-	launch = models.DateField()
+	launch = models.DateField(blank=True, null=True)
 	social_urls = models.ManyToManyField(
 		socialURL,
 		related_name="+",
@@ -36,7 +36,7 @@ class Team(models.Model):
 	description = models.TextField()
 	videogames = models.ManyToManyField(
 		VideoGame,
-		related_name='teams',
+		related_name='+',
 	)
 
 	def save(self, *args, **kwargs):
@@ -61,14 +61,14 @@ class Gamer(models.Model):
 	)
 	team = models.ForeignKey(
 		Team,
-		related_name='members',
+		related_name='+',
 		on_delete=models.CASCADE,
 		blank=True,
 		null=True,
 	)
 	videogames = models.ManyToManyField(
 		VideoGame,
-		related_name='gamers',
+		related_name='+',
 	)
 
 	def save(self, *args, **kwargs):
