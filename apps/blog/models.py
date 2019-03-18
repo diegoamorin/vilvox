@@ -26,7 +26,6 @@ class socialURL(models.Model):
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	fullname = models.CharField(max_length=40, blank=True, null=True)
 	img_perfil = models.ImageField('images/profiles/')
 	bio = models.TextField(max_length=500, blank=True, null=True)
 	location = models.CharField(max_length=30, blank=True)
