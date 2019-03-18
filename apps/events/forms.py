@@ -12,6 +12,7 @@ class EventForm(forms.ModelForm):
 			'start_day',
 			'end_day',
 			'img',
+			'watch_url',
 		]
 
 class GameForm(forms.ModelForm):
