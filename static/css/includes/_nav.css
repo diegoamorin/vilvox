@@ -3,7 +3,7 @@
 	align-items: center;
 }
 .img-logo {
-	margin-right: .7em;
+	margin-right: 0.7em;
 }
 
 .search-bar {
@@ -11,7 +11,7 @@
 	border: none;
 	padding-left: 1em;
 }
-.search-btn{
+.search-btn {
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
@@ -19,6 +19,6 @@
 	justify-content: center;
 }
 .search-btn img {
-	width:18px;
-	height:18px;
+	width: 18px;
+	height: 18px;
 }

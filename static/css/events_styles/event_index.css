@@ -6,19 +6,19 @@
 	color: rgb(56, 56, 56);
 }
 .eventLink:hover {
-	color: rgb(56,56,56);
-	text-decoration:none;
+	color: rgb(56, 56, 56);
+	text-decoration: none;
 }
 
 .event-wrapper {
-	clear:both;
+	clear: both;
 	position: relative;
 	padding: 20px;
 	height: 200px;
 }
 
 .separator {
-	margin:0;
+	margin: 0;
 }
 
 .event-title {
@@ -33,7 +33,7 @@
 	margin-left: 300px;
 }
 
-@media(max-width: 1200px) {
+@media (max-width: 1200px) {
 	.event-desc {
 		font-size: 0;
 	}
@@ -42,8 +42,7 @@
 	}
 }
 
-
-@media(max-width: 800px) {
+@media (max-width: 800px) {
 	.event-title-hidden {
 		font-size: 2em;
 	}
@@ -56,10 +55,10 @@
 }
 
 .event-img {
-	float:left;
+	float: left;
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
 	.event-img {
 		float: none;
 	}

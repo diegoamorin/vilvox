@@ -11,10 +11,12 @@ urlpatterns = [
     path('', include('apps.blog.urls')),
     path('', include('apps.events.urls')),
     path('wiki/', include('apps.wiki.urls')),
-    path('login/', login, {'template_name':'loginForm.html'}, name='login'),
+    path('login/', login, {'template_name': 'loginForm.html'}, name='login'),
     path('logout/', logout_then_login, name='logout'),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(
+        settings.STATIC_URL, document_root=settings.STATIC_ROOT
+    )
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

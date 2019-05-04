@@ -1,39 +1,37 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}
-	{{ serie.title }}
-{% endblock %}
-
-{% block style %}
-	<link rel="stylesheet" href="{% static 'css/blog_styles/detailSerie.css' %}">
-	<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}">
-{% endblock %}
-
-{% block jumbo %}
-{% endblock %}
-
-{% block content %}
-	<div class="wrapper-main">
-		<div class="serie-description card">
-			<div class="card-header text-center">
-				<h1>{{ serie.title }}</h1>
-			</div>
-			<div class="card-body">
-				<img class="serie-img card-img" src="{% get_media_prefix %}{{ serie.img }}" alt="">
-				<p class="serie-desc mt-3">{{ serie.description|truncatewords:30 }}</p>
-			</div>
+{% extends 'base.html' %} {% load static %} {% block title %}
+{{ serie.title }}
+{% endblock %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/blog_styles/detailSerie.css' %}" />
+<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}" />
+{% endblock %} {% block jumbo %} {% endblock %} {% block content %}
+<div class="wrapper-main">
+	<div class="serie-description card">
+		<div class="card-header text-center">
+			<h1>{{ serie.title }}</h1>
 		</div>
-		<div class="serie-loop">
-			{% for post in serie.posts.get_queryset %}
-				<a class="postLink" href="{% url 'detailPost' slug=post.slug %}">
-					<div class="serie-post">
-						<img class="serie-post-img" src="{% get_media_prefix %}{{ post.img }}" alt="">
-						<h3 class="serie-post-title">{{ post.title }}</h3>
-						<p class="serie-post-date">{{ post.created_at|date:"d M, Y" }}</p>
-					</div>
-				</a>
-			{% endfor %}
+		<div class="card-body">
+			<img
+				class="serie-img card-img"
+				src="{% get_media_prefix %}{{ serie.img }}"
+				alt=""
+			/>
+			<p class="serie-desc mt-3">{{ serie.description | truncatewords: 30 }}</p>
 		</div>
 	</div>
+	<div class="serie-loop">
+		{% for post in serie.posts.get_queryset %}
+		<a class="postLink" href="{% url 'detailPost' slug=post.slug %}">
+			<div class="serie-post">
+				<img
+					class="serie-post-img"
+					src="{% get_media_prefix %}{{ post.img }}"
+					alt=""
+				/>
+				<h3 class="serie-post-title">{{ post.title }}</h3>
+				<p class="serie-post-date">{{ post.created_at | date: "d M, Y" }}</p>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}

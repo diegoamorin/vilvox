@@ -1,38 +1,37 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load markdown_extras %}
-
-{% block title %}
-{{ site_name }} - {{ videogame }}
-{% endblock %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_inWIKI.css' %}">
-{% endblock %}
-
-{% block jumbo %}
+{% extends 'base.html' %} {% load static %} {% load markdown_extras %} {% block
+title %} {{ site_name }} - {{ videogame }}
+{% endblock %} {% block style %}
+<link
+	rel="stylesheet"
+	href="{% static 'css/wiki_styles/detail_inWIKI.css' %}"
+/>
+{% endblock %} {% block jumbo %}
 <div class="display-4 mb-4">{{ videogame.name }}</div>
 {% if user.is_superuser %}
-	<a href="{% url 'editVideogame' pk=videogame.pk %}" class="btn btn-success">Editar</a>
-	<a href="{% url 'deleteVideogame' pk=videogame.pk %}" class="btn btn-danger">Eliminar</a>
+<a href="{% url 'editVideogame' pk=videogame.pk %}" class="btn btn-success"
+	>Editar</a
+>
+<a href="{% url 'deleteVideogame' pk=videogame.pk %}" class="btn btn-danger"
+	>Eliminar</a
+>
 {% endif %}
-<hr>
-{% endblock %}
-
-{% block content %}
+<hr />
+{% endblock %} {% block content %}
 
 <div class="wrapper-main">
-
 	<div class="content-wrapper">
-		<p>{{ videogame.description|markdown|safe }}</p>
+		<p>{{ videogame.description | markdown | safe }}</p>
 	</div>
 
 	<div class="perfil-wrapper">
-
 		<div class="section-header">
 			<h1 class="lead section-info">{{ videogame.name }}</h1>
 			<div class="caja-img">
-				<img class="img-info" src="{% get_media_prefix %}{{ videogame.img }}" alt="img">
+				<img
+					class="img-info"
+					src="{% get_media_prefix %}{{ videogame.img }}"
+					alt="img"
+				/>
 			</div>
 		</div>
 
@@ -48,9 +47,7 @@
 				</tr>
 			</table>
 		</div>
-
 	</div>
-
 </div>
 
 {% endblock %}

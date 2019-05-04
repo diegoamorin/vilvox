@@ -1,81 +1,89 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block title %}
+{{ event.name }}
+{% endblock %} {% block style %}
+<link
+	rel="stylesheet"
+	href="{% static 'css/events_styles/detail_event.css' %} "
+/>
+{% endblock %} {% block jumbo %} {% endblock %} {% block content %}
 
-{% block title %}
-	{{ event.name }}
-{% endblock %}
+<div class="event-head">
+	<h1 class="display-3 event-name">{{ event.name }}</h1>
+	{% if event.end_day %}
+	<h4 class="event-date">
+		{{ event.start_day | date: "D d F" }} • {{ event.end_day | date: "D d F" }}
+	</h4>
+	{% else %}
+	<h4 class="event-date">Inicia el {{ event.start_day | date: "d F" }}</h4>
+	{% endif %} {% if event.watch_url %}
+	<a class="btn btn-dark mb-3" href="{{ event.watch_url }}" target="_blank"
+		>VER EN VIVO</a
+	>
+	{% endif %}
 
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/events_styles/detail_event.css' %} ">
-{% endblock %}
+	<p class="lead event-desc">{{ event.description | safe }}</p>
+	{% if user.is_superuser %}
+	<a
+		href="{% url 'addGame' slug=event.slug %}"
+		class="btn btn-outline-dark mt-4"
+		>Agregar Juego</a
+	>
+	{% endif %}
+</div>
 
-{% block jumbo %}
-{% endblock %}
-
-{% block content %}
-
-	<div class="event-head">
-		<h1 class="display-3 event-name">{{ event.name }}</h1>
-		{% if event.end_day %}
-			<h4 class="event-date">{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}</h4>
-			{% else %}
-			<h4 class="event-date">Inicia el {{ event.start_day|date:"d F" }}</h4>
-		{% endif %}
-
-		{% if event.watch_url %}
-			<a class="btn btn-dark mb-3" href="{{ event.watch_url }}" target="_blank">VER EN VIVO</a>
-		{% endif %}
-
-		<p class="lead event-desc">{{ event.description|safe }}</p>
-		{% if user.is_superuser %}
-			<a href="{% url 'addGame' slug=event.slug %}" class="btn btn-outline-dark mt-4">Agregar Juego</a>
-		{% endif %}
-	</div>
-
-	<div class="game-section">
-
+<div class="game-section">
 	{% for day_and_games in date_and_games_full %}
 
-		<h3 class="full-date-game">{{ day_and_games.format_day }}</h3>
+	<h3 class="full-date-game">{{ day_and_games.format_day }}</h3>
 
-		{% for game in day_and_games.games %}
-			<div class="game-wrapper">
-				<h1 class="game-name display-4">
-					<div class="resultados">
-
-						{% for team in game.teams %}
-							<div class="{% cycle 'team1' 'team2' %}">
-								<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
-									{% if team == game.teams.0 %}
-										<strong class="name-claro">{{ team.name }}</strong>
-										<strong class="name-oscuro">{{ team.short_name }}</strong>
-										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
-									{% elif team == game.teams.1 %}
-										<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="img">
-										<strong class="name-claro">{{ team.name }}</strong>
-										<strong class="name-oscuro">{{ team.short_name }}</strong>
-									{% endif %}
-								</a>
-							</div>
-							{% if team != game.teams.1 %}
-								<div class="versus">vs</div>
-							{% endif %}
-						{% endfor %}
-					</div>
-				</h1>
-				<div class="game-footer">
-					<p class="game-day lead">{{ game.day|date:"H:i • D d F" }}</p>
+	{% for game in day_and_games.games %}
+	<div class="game-wrapper">
+		<h1 class="game-name display-4">
+			<div class="resultados">
+				{% for team in game.teams %}
+				<div class="{% cycle 'team1' 'team2' %}">
+					<a class="link-team" href="{% url 'detailTeam' slug=team.slug %}">
+						{% if team == game.teams.0 %}
+						<strong class="name-claro">{{ team.name }}</strong>
+						<strong class="name-oscuro">{{ team.short_name }}</strong>
+						<img
+							class="img-team"
+							src="{% get_media_prefix %}{{ team.img }}"
+							alt="img"
+						/>
+						{% elif team == game.teams.1 %}
+						<img
+							class="img-team"
+							src="{% get_media_prefix %}{{ team.img }}"
+							alt="img"
+						/>
+						<strong class="name-claro">{{ team.name }}</strong>
+						<strong class="name-oscuro">{{ team.short_name }}</strong>
+						{% endif %}
+					</a>
 				</div>
-				{% if user.is_superuser %}
-					<div class="options-user">
-						<a href="{% url 'editGame' slug_event=event.slug pk=game.pk %}" class="btn btn-success">Editar</a>
-						<a href="{% url 'deleteGame' pk=game.pk %}" class="btn btn-outline-danger">Eliminar</a>
-					</div>
-				{% endif %}
+				{% if team != game.teams.1 %}
+				<div class="versus">vs</div>
+				{% endif %} {% endfor %}
 			</div>
-		{% endfor %}
-
-	{% endfor %}
+		</h1>
+		<div class="game-footer">
+			<p class="game-day lead">{{ game.day | date: "H:i • D d F" }}</p>
+		</div>
+		{% if user.is_superuser %}
+		<div class="options-user">
+			<a
+				href="{% url 'editGame' slug_event=event.slug pk=game.pk %}"
+				class="btn btn-success"
+				>Editar</a
+			>
+			<a href="{% url 'deleteGame' pk=game.pk %}" class="btn btn-outline-danger"
+				>Eliminar</a
+			>
+		</div>
+		{% endif %}
 	</div>
+	{% endfor %} {% endfor %}
+</div>
 
 {% endblock %}

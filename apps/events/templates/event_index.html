@@ -1,45 +1,45 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block title %} {{ site_name }} -
+eSports {% endblock %} {% block style %}
+<link
+	rel="stylesheet"
+	href="{% static 'css/events_styles/event_index.css' %}"
+/>
+{% endblock %} {% block jumbo %}
+<h1 class="lead">ESPORTS</h1>
 
-{% block title %}
-	{{ site_name }} - eSports
-{% endblock %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/events_styles/event_index.css' %}">
-{% endblock %}
-
-{% block jumbo %}
-	<h1 class="lead">ESPORTS</h1>
-
-	{% if user.is_superuser %}
-		<a href="{% url 'addEvent' %}" class="btn btn-outline-dark">Nuevo Evento</a>
-	{% endif %}
-{% endblock %}
-
-{% block content %}
-	<div class="event-section">
-		{% for event in events %}
-		<a href="{% url 'eventDetail' slug=event.slug %}" class="eventLink">
-			<div class="event-wrapper">
-				<img class="event-img" src="{% get_media_prefix %}{{ event.img }}" alt="" width="280" height="160">
-				<div class="event-info">
-					<h1 class="display-4 event-title">{{ event.name }}</h1>
-					<h1 class="display-4 event-title-hidden">{{ event.short_name }}</h1>
-					<p class="lead event-day">
-						<strong>
-							{% if event.end_day %}
-								{{ event.start_day|date:"D d F" }} • {{ event.end_day|date:"D d F" }}
-							{% else %}
-								Inicia el {{ event.start_day|date:"d F" }}
-							{% endif %}
-						</strong>
-					</p>
-					<p class="lead event-desc">{{ event.description|truncatechars:150 }}</p>
-				</div>
+{% if user.is_superuser %}
+<a href="{% url 'addEvent' %}" class="btn btn-outline-dark">Nuevo Evento</a>
+{% endif %} {% endblock %} {% block content %}
+<div class="event-section">
+	{% for event in events %}
+	<a href="{% url 'eventDetail' slug=event.slug %}" class="eventLink">
+		<div class="event-wrapper">
+			<img
+				class="event-img"
+				src="{% get_media_prefix %}{{ event.img }}"
+				alt=""
+				width="280"
+				height="160"
+			/>
+			<div class="event-info">
+				<h1 class="display-4 event-title">{{ event.name }}</h1>
+				<h1 class="display-4 event-title-hidden">{{ event.short_name }}</h1>
+				<p class="lead event-day">
+					<strong>
+						{% if event.end_day %}
+						{{ event.start_day | date: "D d F" }} •
+						{{ event.end_day | date: "D d F" }} {% else %} Inicia el
+						{{ event.start_day | date: "d F" }}
+						{% endif %}
+					</strong>
+				</p>
+				<p class="lead event-desc">
+					{{ event.description | truncatechars: 150 }}
+				</p>
 			</div>
-		</a>
-		<hr class="separator" />
-		{% endfor %}
-	</div>
+		</div>
+	</a>
+	<hr class="separator" />
+	{% endfor %}
+</div>
 {% endblock %}

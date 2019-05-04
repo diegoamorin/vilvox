@@ -1,40 +1,39 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-{% endblock %}
-
-{% block jumbo %}
-{% endblock %}
-
-{% block content %}
-
-{% if games_index %}
-	<div class="wrapper-games owl-nome owl-carousel owl-theme">
-		{% for game in games_index %}
-			<div class="card-game">
-				<div class="block-total">
-					<div class="block-name">
-						{% for team in game.teams.get_queryset %}
-							<div class="block-team">
-								<img class="img-team" src="{% get_media_prefix %}{{ team.img }}" alt="">
-								<div class="name-team">{{ team.short_name }}</div>
-							</div>
-							{% cycle '<div class="block-vs">vs</div>' '' %}
-						{% endfor %}
-					</div>
-					<hr>
-					<div class="block-date">{{ game.day|date:"H:i - d M" }}</div>
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}" />
+<link
+	rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous"
+/>
+{% endblock %} {% block jumbo %} {% endblock %} {% block content %} {% if
+games_index %}
+<div class="wrapper-games owl-nome owl-carousel owl-theme">
+	{% for game in games_index %}
+	<div class="card-game">
+		<div class="block-total">
+			<div class="block-name">
+				{% for team in game.teams.get_queryset %}
+				<div class="block-team">
+					<img
+						class="img-team"
+						src="{% get_media_prefix %}{{ team.img }}"
+						alt=""
+					/>
+					<div class="name-team">{{ team.short_name }}</div>
 				</div>
+				{% cycle '
+				<div class="block-vs">vs</div>
+				' '' %} {% endfor %}
 			</div>
-		{% endfor %}
+			<hr />
+			<div class="block-date">{{ game.day | date: "H:i - d M" }}</div>
+		</div>
 	</div>
+	{% endfor %}
+</div>
 {% else %}
-	<div class="lead text-center">Encuentra todas las novedades de los videojuegos aquí...!!</div>
-{% endif %}
-
-{% include '_posts.html'%}
-
-{% endblock %}
+<div class="lead text-center">
+	Encuentra todas las novedades de los videojuegos aquí...!!
+</div>
+{% endif %} {% include '_posts.html'%} {% endblock %}

@@ -1,22 +1,11 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}
-{{ site_name }} - Wiki
-{% endblock %}
-
-{% block style %}
-	<link rel="stylesheet" href="{% static 'css/wiki_styles/wikiIndex.css' %}">
-{% endblock %}
-
-{% block jumbo %}
+{% extends 'base.html' %} {% load static %} {% block title %} {{ site_name }} -
+Wiki {% endblock %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/wiki_styles/wikiIndex.css' %}" />
+{% endblock %} {% block jumbo %}
 <h1 class="lead">WIKI</h1>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <div class="container-wiki">
-
 	<a href="{% url 'videogamesIndex' %}">
 		<div class="block block-videogames">
 			<div class="content">
@@ -25,7 +14,7 @@
 			</div>
 		</div>
 	</a>
-	<hr>
+	<hr />
 	<a href="{% url 'teamsIndex' %}">
 		<div class="block block-teams">
 			<div class="content">
@@ -34,7 +23,7 @@
 			</div>
 		</div>
 	</a>
-	<hr>
+	<hr />
 	<a href="{% url 'gamersIndex' %}">
 		<div class="block block-gamers">
 			<div class="content">
@@ -43,7 +32,6 @@
 			</div>
 		</div>
 	</a>
-
 </div>
 
 {% endblock %}

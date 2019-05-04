@@ -1,29 +1,25 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block style %}
-	<link rel="stylesheet" href="{% static 'css/wiki_styles/index_inWIKI.css' %}">
-{% endblock %}
-
-{% block jumbo %}
-	<h1 class="display-4">Teams</h1>
-	{% if user.is_superuser %}
-		<a href="{% url 'addTeam' %}" class="btn btn-outline-dark">Agregar Team</a>
-	{% endif %}
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/wiki_styles/index_inWIKI.css' %}" />
+{% endblock %} {% block jumbo %}
+<h1 class="display-4">Teams</h1>
+{% if user.is_superuser %}
+<a href="{% url 'addTeam' %}" class="btn btn-outline-dark">Agregar Team</a>
+{% endif %} {% endblock %} {% block content %}
 
 <div class="wrapper-main mt-5">
 	{% for team in teams %}
-		<a href="{% url 'detailTeam' slug=team.slug %}">
-			<div class="perfil-wrapper">
-				<img class="img-index" src="{% get_media_prefix %}{{ team.img }}" alt="img">
-				<div class="content-mini">
-					<h3>{{ team.name }}</h3>
-				</div>
+	<a href="{% url 'detailTeam' slug=team.slug %}">
+		<div class="perfil-wrapper">
+			<img
+				class="img-index"
+				src="{% get_media_prefix %}{{ team.img }}"
+				alt="img"
+			/>
+			<div class="content-mini">
+				<h3>{{ team.name }}</h3>
 			</div>
-		</a>
+		</div>
+	</a>
 	{% endfor %}
 </div>
 

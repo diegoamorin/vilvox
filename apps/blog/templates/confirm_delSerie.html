@@ -1,12 +1,17 @@
-{% extends 'base.html' %}
-
-{% block jumbo %}
-<p class="lead">Esta Seguro de eliminar:</p> <h1 class="display-4">"{{ serie.title }}"</h1>
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block jumbo %}
+<p class="lead">Esta Seguro de eliminar:</p>
+<h1 class="display-4">"{{ serie.title }}"</h1>
+{% endblock %} {% block content %}
 <div class="my-5 text-center">
-	<a href="{% url 'confirmDeleteSerie' pk=serie.pk %}" class="btn btn-outline-danger">Si, eliminar</a>
-	<a href="{% url 'cancelDeleteSerie' slug=serie.slug %}" class="btn btn-success">Cancelar</a>
+	<a
+		href="{% url 'confirmDeleteSerie' pk=serie.pk %}"
+		class="btn btn-outline-danger"
+		>Si, eliminar</a
+	>
+	<a
+		href="{% url 'cancelDeleteSerie' slug=serie.slug %}"
+		class="btn btn-success"
+		>Cancelar</a
+	>
 </div>
 {% endblock %}

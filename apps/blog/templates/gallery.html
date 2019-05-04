@@ -1,15 +1,10 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block jumbo %}
-<a href="{% url 'upload_image' %}" class="btn btn-outline-dark">Agregar Imagen</a>
-{% endblock %}
-
-{% block content %}
-	{% for image in cdn_images %}
-		<div class="wrapper_cdn">
-			<img src="{% get_media_prefix %}{{ image.img }}" alt="" height="200">
-			<p>{{ image.img }}</p>
-		</div>
-	{% endfor %}
-{% endblock %}
+{% extends 'base.html' %} {% load static %} {% block jumbo %}
+<a href="{% url 'upload_image' %}" class="btn btn-outline-dark"
+	>Agregar Imagen</a
+>
+{% endblock %} {% block content %} {% for image in cdn_images %}
+<div class="wrapper_cdn">
+	<img src="{% get_media_prefix %}{{ image.img }}" alt="" height="200" />
+	<p>{{ image.img }}</p>
+</div>
+{% endfor %} {% endblock %}

@@ -2,8 +2,8 @@ a {
 	color: rgb(56, 56, 56);
 }
 a:hover {
-	color: rgb(56,56,56);
-	text-decoration:none;
+	color: rgb(56, 56, 56);
+	text-decoration: none;
 }
 
 .wrapper-main {
@@ -13,8 +13,8 @@ a:hover {
 }
 
 .perfil-wrapper {
-	padding: .3em;
-	border: solid 1px rgb(213,213,213);
+	padding: 0.3em;
+	border: solid 1px rgb(213, 213, 213);
 	border-radius: 5px;
 	overflow: auto;
 	display: flex;

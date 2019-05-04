@@ -1,28 +1,20 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block style %}
-	<link rel="stylesheet" href="{% static 'css/wiki_styles/index_inWIKI.css' %}">
-{% endblock %}
-
-{% block title %}
-	Gamers
-{% endblock %}
-
-{% block jumbo %}
-	<h1 class="display-4">Gamers</h1>
-	{% if user.is_superuser %}
-		<a href="{% url 'addGamer' %}" class="btn btn-outline-dark">Agregar Gamer</a>
-	{% endif %}
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/wiki_styles/index_inWIKI.css' %}" />
+{% endblock %} {% block title %} Gamers {% endblock %} {% block jumbo %}
+<h1 class="display-4">Gamers</h1>
+{% if user.is_superuser %}
+<a href="{% url 'addGamer' %}" class="btn btn-outline-dark">Agregar Gamer</a>
+{% endif %} {% endblock %} {% block content %}
 
 <div class="wrapper-main mt-5">
 	{% for gamer in gamers %}
 	<a href="{% url 'detailGamer' slug=gamer.slug %}">
 		<div class="perfil-wrapper">
-			<img class="img-index" src="{% get_media_prefix %}{{ gamer.img }}" alt="img" >
+			<img
+				class="img-index"
+				src="{% get_media_prefix %}{{ gamer.img }}"
+				alt="img"
+			/>
 			<div class="content-mini">
 				<h3>{{ gamer.nickname }}</h3>
 				<p>{{ gamer.team }}</p>

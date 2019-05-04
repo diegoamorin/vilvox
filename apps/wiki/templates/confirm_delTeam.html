@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
-
-{% block jumbo %}
-	<p class="lead">Esta seguro de eliminar:</p>
-	<h1 class="display-4">{{ team.name }}</h1>
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block jumbo %}
+<p class="lead">Esta seguro de eliminar:</p>
+<h1 class="display-4">{{ team.name }}</h1>
+{% endblock %} {% block content %}
 <div class="my-5 text-center">
-	<a href="{% url 'confirmDeleteTeam' pk=team.pk %}" class="btn btn-outline-danger">Si, eliminar</a>
-	<a href="{% url 'cancelDeleteTeam' slug=team.slug %}" class="btn btn-success">Cancelar</a>
+	<a
+		href="{% url 'confirmDeleteTeam' pk=team.pk %}"
+		class="btn btn-outline-danger"
+		>Si, eliminar</a
+	>
+	<a href="{% url 'cancelDeleteTeam' slug=team.slug %}" class="btn btn-success"
+		>Cancelar</a
+	>
 </div>
 {% endblock %}

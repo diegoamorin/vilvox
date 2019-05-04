@@ -1,6 +1,6 @@
 /* Color de Seleccion */
 *::selection {
-    background: rgba(131, 131, 131, 0.350);
+	background: rgba(131, 131, 131, 0.35);
 }
 
 /* Codigo del TextField de los detailPosts */
@@ -34,7 +34,7 @@
 
 .perfil {
 	width: 150px;
-    height: 150px;
+	height: 150px;
 	border-radius: 50%;
 }
 

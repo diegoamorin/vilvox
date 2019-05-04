@@ -1,54 +1,49 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load markdown_extras %}
-
-{% block title %}
-{{ site_name }} - {{team}}
-{% endblock %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/wiki_styles/detail_inWIKI.css' %}">
-{% endblock %}
-
-{% block jumbo %}
-	<h1 class="display-4 mb-4">{{ team.name }}</h1>
-	{% if user.is_superuser %}
-		<a href="{% url 'editTeam' pk=team.pk %}" class="btn btn-success">Editar</a>
-		<a href="{% url 'deleteTeam' pk=team.pk %}" class="btn btn-danger">Eliminar</a>
-	{% endif %}
-	<hr>
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% load markdown_extras %} {% block
+title %} {{ site_name }} - {{ team }}
+{% endblock %} {% block style %}
+<link
+	rel="stylesheet"
+	href="{% static 'css/wiki_styles/detail_inWIKI.css' %}"
+/>
+{% endblock %} {% block jumbo %}
+<h1 class="display-4 mb-4">{{ team.name }}</h1>
+{% if user.is_superuser %}
+<a href="{% url 'editTeam' pk=team.pk %}" class="btn btn-success">Editar</a>
+<a href="{% url 'deleteTeam' pk=team.pk %}" class="btn btn-danger">Eliminar</a>
+{% endif %}
+<hr />
+{% endblock %} {% block content %}
 
 <div class="wrapper-main">
-
 	<div class="content-wrapper">
-		<p>{{ team.description|markdown|safe }}</p>
+		<p>{{ team.description | markdown | safe }}</p>
 	</div>
 
 	<div class="perfil-wrapper">
-
 		<div class="section-header">
-			<div><h1 class="lead section-info">{{ team.name }}</h1></div>
+			<div>
+				<h1 class="lead section-info">{{ team.name }}</h1>
+			</div>
 			<div class="caja-img">
-				<img class="img-info" src="{% get_media_prefix %}{{ team.img }}" alt="img">
+				<img
+					class="img-info"
+					src="{% get_media_prefix %}{{ team.img }}"
+					alt="img"
+				/>
 			</div>
 		</div>
 
 		<div class="section-information">
 			<table class="table">
 				{% if team.short_name %}
-					<tr>
-						<th>Short Name:</th>
-						<th>{{ team.short_name }}</th>
-					</tr>
+				<tr>
+					<th>Short Name:</th>
+					<th>{{ team.short_name }}</th>
+				</tr>
 				{% endif %}
 			</table>
 		</div>
-
 	</div>
-
 </div>
 
 {% endblock %}

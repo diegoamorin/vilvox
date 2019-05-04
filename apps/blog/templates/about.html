@@ -1,37 +1,44 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}
-	{{ site_name }} - About
-{% endblock %}
-
-{% block jumbo %}
+{% extends 'base.html' %} {% load static %} {% block title %} {{ site_name }} -
+About {% endblock %} {% block jumbo %}
 <h1 class="display-3">Mas Información</h1>
-<img class="perfil" src="{% static 'img/Vilvox_Perfil.png'%}" alt="perfil">
-{% endblock %}
-
-{% block content %}
+<img class="perfil" src="{% static 'img/Vilvox_Perfil.png'%}" alt="perfil" />
+{% endblock %} {% block content %}
 
 <div class="row d-flex justify-content-center">
 	<div class="mt-5 ">
-
-		<div  class="float-left">
-			<a href="https://twitter.com/" class="py-3 px-5 mb-2 bg-info text-white" target="_blank">
+		<div class="float-left">
+			<a
+				href="https://twitter.com/"
+				class="py-3 px-5 mb-2 bg-info text-white"
+				target="_blank"
+			>
 				Twitter
 			</a>
 		</div>
 		<div class="float-left">
-			<a href="https://www.instagram.com/" class="py-3 px-5 bg-dark text-white" target="_blank">
+			<a
+				href="https://www.instagram.com/"
+				class="py-3 px-5 bg-dark text-white"
+				target="_blank"
+			>
 				Instagram
 			</a>
 		</div>
-		<div  class="float-left">
-			<a href="https://www.facebook.com/" class="py-3 px-5 bg-primary text-white" target="_blank">
+		<div class="float-left">
+			<a
+				href="https://www.facebook.com/"
+				class="py-3 px-5 bg-primary text-white"
+				target="_blank"
+			>
 				Facebook
 			</a>
 		</div>
 		<div class="float-left">
-			<a href="https://www.youtube.com/" class="py-3 px-5 bg-danger text-white" target="_blank">
+			<a
+				href="https://www.youtube.com/"
+				class="py-3 px-5 bg-danger text-white"
+				target="_blank"
+			>
 				YouTube
 			</a>
 		</div>
@@ -39,10 +46,14 @@
 </div>
 
 <p class="lead mt-5 text-justify">
-	VILVOX es un blog de videojuegos donde puedes encontrar las nuevas novedades, temporadas, guias y eventos ESports.
+	VILVOX es un blog de videojuegos donde puedes encontrar las nuevas novedades,
+	temporadas, guias y eventos ESports.
 </p>
 
 <h3 class="my-5">Contacto</h3>
-<p class="lead">Para ponerse en contacto con el administrador del sitio puede enviarme un correo a diegoamorinsr@gmail.com</p>
+<p class="lead">
+	Para ponerse en contacto con el administrador del sitio puede enviarme un
+	correo a diegoamorinsr@gmail.com
+</p>
 
 {% endblock %}

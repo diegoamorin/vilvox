@@ -2,7 +2,7 @@
 	margin-top: 2.5em;
 }
 
-a{
+a {
 	color: rgb(54, 54, 54);
 }
 a:hover {
@@ -16,19 +16,20 @@ a:hover {
 	justify-content: space-between;
 	align-items: center;
 }
-.content h2, p {
-	margin:0;
+.content h2,
+p {
+	margin: 0;
 }
 
 .number {
 	font-size: 1.8em;
 }
 
-hr{
+hr {
 	margin: 0;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
 	.content {
 		display: inline-block;
 	}
@@ -36,4 +37,3 @@ hr{
 		font-size: 1.5em;
 	}
 }
-

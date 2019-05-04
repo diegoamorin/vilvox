@@ -5,7 +5,7 @@
 }
 
 .perfil-wrapper {
-	border: solid 1px rgb(213,213,213);
+	border: solid 1px rgb(213, 213, 213);
 	border-radius: 5px;
 }
 
@@ -43,6 +43,6 @@
 	padding: 0;
 }
 
-.item-info{
-	padding: .5em;
+.item-info {
+	padding: 0.5em;
 }

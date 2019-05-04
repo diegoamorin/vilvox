@@ -7,13 +7,13 @@
 }
 
 .card-game {
-	border: 1px solid rgb(213,213,213);
+	border: 1px solid rgb(213, 213, 213);
 	border-radius: 5px;
 	text-align: center;
 }
-.block-total{
-	margin-top: .3em;
-	margin-bottom: .3em;
+.block-total {
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
 }
 .block-name {
 	overflow: auto;
@@ -47,18 +47,18 @@ hr {
 	position: absolute;
 	width: 100%;
 	top: 20%;
-	background:blue;
-	height:0px;
+	background: blue;
+	height: 0px;
 }
 
-.owl-nome .owl-next{
-	position:absolute;
-	right:1%;
+.owl-nome .owl-next {
+	position: absolute;
+	right: 1%;
 }
 
-.owl-nome .owl-prev{
-	position:absolute;
-	left:1%;
+.owl-nome .owl-prev {
+	position: absolute;
+	left: 1%;
 }
 
 /* Seccion Articulos */
@@ -70,18 +70,18 @@ hr {
 	color: rgb(56, 56, 56);
 }
 .postLink:hover {
-	color: rgb(56,56,56);
-	text-decoration:none;
+	color: rgb(56, 56, 56);
+	text-decoration: none;
 }
 
 .post-wrapper-top {
-	clear:both;
+	clear: both;
 	position: relative;
 	padding: 20px;
 	height: 200px;
 }
 
-.post-title{
+.post-title {
 	font-size: 30px;
 	font-weight: 10;
 }
@@ -90,13 +90,13 @@ hr {
 	position: relative;
 	width: 280px;
 	height: 160px;
-	float:left;
+	float: left;
 }
 
 .post-img-2 {
 	opacity: 0;
 }
-.post-img-2:hover{
+.post-img-2:hover {
 	opacity: 1;
 }
 
@@ -112,7 +112,7 @@ hr {
 
 .post-author {
 	font-weight: 500;
-	margin-right: .8em;
+	margin-right: 0.8em;
 }
 
 /* De pequeño a mediano */

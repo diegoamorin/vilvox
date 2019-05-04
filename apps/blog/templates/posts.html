@@ -1,21 +1,10 @@
-{% extends 'base.html' %}
-{%load static%}
-{% block title %}
-	{{ site_name }} - Posts
-{% endblock %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}">
-{% endblock %}
-
-{% block jumbo %}
+{% extends 'base.html' %} {%load static%} {% block title %} {{ site_name }} -
+Posts {% endblock %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/blog_styles/index.css' %}" />
+{% endblock %} {% block jumbo %}
 <h1 class="lead">ARTICULOS</h1>
 
 {% if user.is_superuser %}
-	<a href="{% url 'addPost' %}" class="btn btn-outline-dark">Nuevo Articulo</a>
-{% endif %}
-{% endblock %}
-
-{% block content %}
-	{% include '_posts.html' %}
-{% endblock %}
+<a href="{% url 'addPost' %}" class="btn btn-outline-dark">Nuevo Articulo</a>
+{% endif %} {% endblock %} {% block content %} {% include '_posts.html' %} {%
+endblock %}

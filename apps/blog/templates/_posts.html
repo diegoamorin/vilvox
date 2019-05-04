@@ -3,30 +3,40 @@
 <div class="post-section">
 	{% for post in posts %}
 	<div class="post-wrapper">
-
 		<a href="{% url 'detailPost' slug=post.slug %}" class="postLink">
 			<div class="post-wrapper-top">
 				<div class="img-wrapper">
-					<img class="post-img post-img-1" src="{% get_media_prefix %}{{ post.img }}">
-					<img src="{% static 'img/fondoLeer.png' %}" alt="" class="post-img post-img-2">
+					<img
+						class="post-img post-img-1"
+						src="{% get_media_prefix %}{{ post.img }}"
+					/>
+					<img
+						src="{% static 'img/fondoLeer.png' %}"
+						alt=""
+						class="post-img post-img-2"
+					/>
 				</div>
 				<div class="post-info">
 					<h3 class="post-title">{{ post.title }}</h3>
 					<label class="post-author">{{ post.author.user.username }}</label>
-					<label class="post-date">{{ post.created_at|timesince }}</label>
-					<p class="post-desc">{{ post.content|truncatechars:200 }}</p>
+					<label class="post-date">{{ post.created_at | timesince }}</label>
+					<p class="post-desc">{{ post.content | truncatechars: 200 }}</p>
 				</div>
 			</div>
 		</a>
 	</div>
-	<hr/>
+	<hr />
 	{% endfor %}
 </div>
 
 <div class="pagination my-5 justify-content-center">
 	<span class="step-links">
 		{% if posts.has_previous %}
-			<a class="btn btn-outline-dark" href="?page={{ posts.previous_page_number }}">Anterior</a>
+		<a
+			class="btn btn-outline-dark"
+			href="?page={{ posts.previous_page_number }}"
+			>Anterior</a
+		>
 		{% endif %}
 
 		<span class="current mx-3">
@@ -34,7 +44,9 @@
 		</span>
 
 		{% if posts.has_next %}
-			<a class="btn btn-outline-dark" href="?page={{ posts.next_page_number }}">Siguiente</a>
+		<a class="btn btn-outline-dark" href="?page={{ posts.next_page_number }}"
+			>Siguiente</a
+		>
 		{% endif %}
 	</span>
 </div>
