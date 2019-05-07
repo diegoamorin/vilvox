@@ -7,7 +7,7 @@ from django.dispatch import receiver
 from markdownx.models import MarkdownxField
 
 
-class socialWeb(models.Model):
+class SocialWeb(models.Model):
     name = models.CharField(max_length=20)
     img_icon = models.FileField(upload_to="images/social_icons/")
 
@@ -15,9 +15,9 @@ class socialWeb(models.Model):
         return self.name
 
 
-class socialURL(models.Model):
+class SocialURL(models.Model):
     social_web = models.ForeignKey(
-        socialWeb,
+        SocialWeb,
         on_delete=models.CASCADE,
         related_name="+",
     )
@@ -29,13 +29,16 @@ class socialURL(models.Model):
 
 
 class Profile(models.Model):
+    # pylint: disable=no-self-use
+    # pylint: disable=no-self-argument
+    # pylint: disable=unused-argument
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     img_perfil = models.ImageField('images/profiles/')
     bio = models.TextField(max_length=500, blank=True, null=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     social_urls = models.ManyToManyField(
-        socialURL,
+        SocialURL,
         related_name="+",
         blank=True,
     )

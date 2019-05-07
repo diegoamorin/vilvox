@@ -1,7 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
-from ..blog.models import socialURL
+from ..blog.models import SocialURL
 
 
 class VideoGame(models.Model):
@@ -11,7 +11,7 @@ class VideoGame(models.Model):
     category = models.CharField(max_length=50)
     launch = models.DateField(blank=True, null=True)
     social_urls = models.ManyToManyField(
-        socialURL,
+        SocialURL,
         related_name="+",
         blank=True,
     )
@@ -31,7 +31,7 @@ class Team(models.Model):
     slug = models.SlugField(max_length=40, unique=True)
     img = models.ImageField(upload_to='images/teams/')
     social_urls = models.ManyToManyField(
-        socialURL,
+        SocialURL,
         related_name="+",
         blank=True,
     )
@@ -58,7 +58,7 @@ class Gamer(models.Model):
     description = models.TextField()
     country = models.CharField(max_length=30)
     social_urls = models.ManyToManyField(
-        socialURL,
+        SocialURL,
         related_name="+",
         blank=True,
     )

@@ -11,10 +11,10 @@
 	<h1 class="display-3 event-name">{{ event.name }}</h1>
 	{% if event.end_day %}
 	<h4 class="event-date">
-		{{ event.start_day | date: "D d F" }} • {{ event.end_day | date: "D d F" }}
+		{{ event.start_day | date:"D d F" }} • {{ event.end_day | date:"D d F" }}
 	</h4>
 	{% else %}
-	<h4 class="event-date">Inicia el {{ event.start_day | date: "d F" }}</h4>
+	<h4 class="event-date">Inicia el {{ event.start_day | date:"d F" }}</h4>
 	{% endif %} {% if event.watch_url %}
 	<a class="btn btn-dark mb-3" href="{{ event.watch_url }}" target="_blank"
 		>VER EN VIVO</a
@@ -68,7 +68,7 @@
 			</div>
 		</h1>
 		<div class="game-footer">
-			<p class="game-day lead">{{ game.day | date: "H:i • D d F" }}</p>
+			<p class="game-day lead">{{ game.day | date:"H:i • D d F" }}</p>
 		</div>
 		{% if user.is_superuser %}
 		<div class="options-user">

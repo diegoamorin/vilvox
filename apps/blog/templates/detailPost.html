@@ -1,5 +1,7 @@
-{% extends 'base.html'%} {% load static %} {% load markdown_extras %} {% block
-title %}
+{% extends 'base.html'%}
+{% load static %}
+{% load markdown_extras %}
+{% block title %}
 {{ post.title }}
 {% endblock %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/blog_styles/detailPost.css' %}" />
@@ -17,12 +19,12 @@ title %}
 
 <div class="wrapper-author lead">
 	<div class="author-item">
-		<a href="{% url 'profile_page' username=post.author.user.username %}">{{
-			post.author
-		}}</a>
+		<a href="{% url 'profile_page' username=post.author.user.username %}">
+			{{ post.author }}
+		</a>
 	</div>
 	<div class="dot-item">•</div>
-	<div class="date-item">{{ post.created_at | date: "d M, Y" }}</div>
+	<div class="date-item">{{ post.created_at | date:"d M, Y" }}</div>
 </div>
 
 <div class="wrapper">
@@ -76,9 +78,9 @@ title %}
 					<div class="lead post-ultimate-title">{{ recent_post.title }}</div>
 					<div>
 						<span class="post-recommend-author">{{ recent_post.author }}</span>
-						<span class="post-recommend-day">{{
-							recent_post.created_at | timesince
-						}}</span>
+						<span class="post-recommend-day">
+							{{ recent_post.created_at | timesince }}
+						</span>
 					</div>
 				</div>
 			</div>
@@ -105,12 +107,12 @@ title %}
 						alt=""
 					/>
 					<h3 class="lead post-recommend-title">
-						{{ post_recommend.title | truncatechars: 50 }}
+						{{ post_recommend.title | truncatechars:50 }}
 					</h3>
 					<span class="post-recommend-author">{{ post_recommend.author }}</span>
-					<span class="post-recommend-day">{{
-						post_recommend.created_at | timesince
-					}}</span>
+					<span class="post-recommend-day">
+						{{ post_recommend.created_at | timesince }}
+					</span>
 				</div>
 			</a>
 			{% endfor %}

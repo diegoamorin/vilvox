@@ -1,7 +1,12 @@
-{% extends 'base.html' %} {% block title %} Login {% endblock %} {% block jumbo
-%}
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block jumbo%}
 <h1 class="display-4 mb-5">Login</h1>
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 <form class="card" action="" method="post">
 	{% csrf_token %}
 	<div class="card-body">

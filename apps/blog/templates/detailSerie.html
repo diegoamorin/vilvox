@@ -15,7 +15,7 @@
 				src="{% get_media_prefix %}{{ serie.img }}"
 				alt=""
 			/>
-			<p class="serie-desc mt-3">{{ serie.description | truncatewords: 30 }}</p>
+			<p class="serie-desc mt-3">{{ serie.description | truncatewords:30 }}</p>
 		</div>
 	</div>
 	<div class="serie-loop">
@@ -28,7 +28,7 @@
 					alt=""
 				/>
 				<h3 class="serie-post-title">{{ post.title }}</h3>
-				<p class="serie-post-date">{{ post.created_at | date: "d M, Y" }}</p>
+				<p class="serie-post-date">{{ post.created_at | date:"d M, Y" }}</p>
 			</div>
 		</a>
 		{% endfor %}

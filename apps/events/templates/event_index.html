@@ -27,14 +27,15 @@ eSports {% endblock %} {% block style %}
 				<p class="lead event-day">
 					<strong>
 						{% if event.end_day %}
-						{{ event.start_day | date: "D d F" }} •
-						{{ event.end_day | date: "D d F" }} {% else %} Inicia el
-						{{ event.start_day | date: "d F" }}
+							{{ event.start_day | date:"D d F" }} •
+							{{ event.end_day | date:"D d F" }}
+						{% else %}
+							Inicia el {{ event.start_day | date:"d F" }}
 						{% endif %}
 					</strong>
 				</p>
 				<p class="lead event-desc">
-					{{ event.description | truncatechars: 150 }}
+					{{ event.description | truncatechars:150 }}
 				</p>
 			</div>
 		</div>

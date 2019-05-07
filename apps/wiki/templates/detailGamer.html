@@ -1,18 +1,26 @@
-{% extends 'base.html' %} {% load static %} {% load markdown_extras %} {% block
-title %} {{ site_name }} - {{ gamer }}
-{% endblock %} {% block style %}
+{% extends 'base.html' %}
+{% load static %}
+{% load markdown_extras %}
+
+{% block title %} {{ site_name }} - {{ gamer }} {% endblock %}
+
+{% block style %}
 <link
 	rel="stylesheet"
 	href="{% static 'css/wiki_styles/detail_inWIKI.css' %}"
 />
-{% endblock %} {% block jumbo %}
+{% endblock %}
+
+{% block jumbo %}
 <div class="display-4 mb-4">{{ gamer.nickname }}</div>
 {% if user.is_superuser %}
 <a href="{% url 'editGamer' pk=gamer.pk %}" class="btn btn-success">Editar</a>
 <a href="{% url 'deleteGamer' pk=gamer.pk%}" class="btn btn-danger">Eliminar</a>
 {% endif %}
 <hr />
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 <div class="wrapper-main">
 	<div class="content-wrapper">
 		<p>{{ gamer.description | markdown | safe }}</p>
@@ -47,9 +55,8 @@ title %} {{ site_name }} - {{ gamer }}
 				<tr>
 					<th>Equipo:</th>
 					<th>
-						<a href="{% url 'detailTeam' slug=gamer.team.slug %}">{{
-							gamer.team
-						}}</a>
+						<a href="{% url 'detailTeam' slug=gamer.team.slug %}">
+							{{ gamer.team }}</a>
 					</th>
 				</tr>
 			</table>
